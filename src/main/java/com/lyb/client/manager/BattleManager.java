@@ -87,7 +87,7 @@ public class BattleManager {
 			randomMap.put(i, random.nextInt(ApplicationConstants.HUNDRED_THOUSAND));
 		}
 		for (int i = 0; i < 5; i++) {
-			int index = random.nextInt(999);
+			int index = random.nextInt(999) + 1;
 			bufArray.addData(index, randomMap.get(index));
 		}
 		message.setBufArray(bufArray);

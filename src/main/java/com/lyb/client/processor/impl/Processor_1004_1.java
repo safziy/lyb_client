@@ -18,12 +18,18 @@ public class Processor_1004_1 extends IMessageProcessor<Message_1004_1> {
 
 	@Override
 	public void execute(PlayerManager playerManager, Message_1004_1 message) throws Exception {
+		boolean isStrongPoint = false;
 		for (StrongPointArrayItem item : message.getStrongPointArray().list()) {
 			int strongPointId = item.getStrongPointId();
 			int type = Integer.valueOf(ConfigContext.getInstance().getFileValue("Juqing_Guanka.lua",
 					String.valueOf(strongPointId), "Gtype"));
 			if (ValidateUtils.isEqual(type, 1)) {
-
+				if (item.getStarLevel() >= 3) {
+					playerManager.getStrongPointManager().getNfsSet().remove(item.getStrongPointId());
+				} else {
+					playerManager.getStrongPointManager().getNfsSet().add(item.getStrongPointId());
+				}
+				isStrongPoint = true;
 			} else if (ValidateUtils.isEqual(type, 2)) {
 				YXZData yxzData = new YXZData();
 				yxzData.setId(item.getStrongPointId());
@@ -34,6 +40,9 @@ public class Processor_1004_1 extends IMessageProcessor<Message_1004_1> {
 				yxzData.setState(item.getState());
 				playerManager.getYXZManager().getYxzDataMap().put(yxzData.getId(), yxzData);
 			}
+		}
+		if (isStrongPoint) {
+			playerManager.getStrongPointManager().checkAndPreFight();
 		}
 	}
 }

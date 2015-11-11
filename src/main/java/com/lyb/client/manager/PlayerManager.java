@@ -121,9 +121,11 @@ public class PlayerManager {
 	public void initAllWork() {
 		tenCountryManager.initWork();
 		arenaManager.initWork();
-		yxzManager.initWork();
 		
 		answerManager.initWork();
+		
+		yxzManager.initWork();
+		strongPointManager.initWork();
 	}
 
 	public void work() {

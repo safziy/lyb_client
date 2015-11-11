@@ -57,10 +57,14 @@ public class AnswerManager {
 
 	public void answer(long questionId) {
 		this.currentQuestionId = questionId;
-		Map<String, String> map = ConfigContext.getInstance().getFileRow("Shili_Jinbangtimingtiku.lua",
-				String.valueOf(this.currentQuestionId));
-		LogUtil.info("题目: " + map.get("title") + "  选项1: " + map.get("answer1") + "  选项2: " + map.get("answer2")
-				+ "  选项3: " + map.get("answer3") + "  选项4: " + map.get("answer4"));
+		try {
+			Map<String, String> map = ConfigContext.getInstance().getFileRow("Shili_Jinbangtimingtiku.lua",
+					String.valueOf(this.currentQuestionId));
+			LogUtil.info("题目: " + map.get("title") + "  选项1: " + map.get("answer1") + "  选项2: " + map.get("answer2")
+					+ "  选项3: " + map.get("answer3") + "  选项4: " + map.get("answer4"));
+		} catch (Exception e) {
+
+		}
 		Message_29_10 message_29_10 = new Message_29_10();
 		message_29_10.setValue(1);
 
@@ -82,7 +86,7 @@ public class AnswerManager {
 			LogUtil.info("题目答错了 当前分数: " + this.score + "  已答对: " + this.currentCount + "  已答 " + this.totalCount
 					+ "/15");
 		}
-		
+
 		beginAnswer();
 	}
 

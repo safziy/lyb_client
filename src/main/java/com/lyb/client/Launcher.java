@@ -18,10 +18,10 @@ public class Launcher {
 			e.printStackTrace();
 		}
 
-		// String serverIp = "127.0.0.1";
-		String serverIp = "119.29.18.208";
-//		Client client = new Client(serverIp, 1, "f555", "0");
-		Client client = new Client(serverIp, 100, "safziy", "mysafziy");
+		String serverIp = "127.0.0.1";
+		// String serverIp = "119.29.18.208";
+		Client client = new Client(serverIp, 1, "safziy", "0");
+		// Client client = new Client(serverIp, 100, "safziy", "mysafziy");
 		client.start();
 	}
 
