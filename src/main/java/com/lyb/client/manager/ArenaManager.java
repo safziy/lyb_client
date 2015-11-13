@@ -78,7 +78,7 @@ public class ArenaManager {
 		PlayerWork fight = new PlayerWork();
 		fight.setDesc("竞技场开始挑战对手");
 		fight.getMessages().add(message_16_2);
-		fight.setMicroseconds(10000);
+		fight.setMicroseconds(ApplicationConstants.FIGHT_SLEEP_TIME);
 		playerManager.getWorkQueue().offerFirst(fight);
 	}
 

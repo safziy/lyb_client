@@ -25,7 +25,7 @@ public class PlayerWork {
 	// 描述
 	private String desc;
 	// 停顿时间 默认1s
-	private long microseconds = 3000;
+	private long microseconds = ApplicationConstants.DEFAULT_SLEEP_TIME;
 	// 激活的时间
 	private long activateTime;
 
@@ -61,10 +61,6 @@ public class PlayerWork {
 
 	public List<IMessage> getMessages() {
 		return messages;
-	}
-
-	public void setMessages(List<IMessage> messages) {
-		this.messages = messages;
 	}
 
 	public long getMicroseconds() {

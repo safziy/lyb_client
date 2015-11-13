@@ -95,6 +95,9 @@ public class BattleManager {
 	}
 
 	public void battleOver() {
+		if(playerManager.getXunbaoManager().isFighting()){
+			playerManager.getXunbaoManager().check();
+		}
 		String type = ConfigContext.getInstance().getFileValue("Zhandoupeizhi_Zhanchangpeizhi.lua",
 				String.valueOf(currentBattleFiledId), "type");
 		switch (Byte.valueOf(type)) {
@@ -104,8 +107,15 @@ public class BattleManager {
 		case ApplicationConstants.BATTLE_TYPE_3:
 			playerManager.getTenCountryManager().battleOver();
 			break;
+		case ApplicationConstants.BATTLE_TYPE_5:
+		case ApplicationConstants.BATTLE_TYPE_6:
+			playerManager.getShilianManager().battleOver();
+			break;
 		case ApplicationConstants.BATTLE_TYPE_10:
 			playerManager.getYXZManager().battleOver();
+			break;
+		case ApplicationConstants.BATTLE_TYPE_12:
+			playerManager.getXunbaoManager().battleOver();
 			break;
 		default:
 			break;

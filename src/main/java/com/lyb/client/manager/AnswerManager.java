@@ -2,6 +2,7 @@ package com.lyb.client.manager;
 
 import java.util.Map;
 
+import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.context.ConfigContext;
 import com.lyb.client.log.LogUtil;
 import com.lyb.client.message.protocol.Message_29_10;
@@ -71,7 +72,7 @@ public class AnswerManager {
 		PlayerWork work = new PlayerWork();
 		work.getMessages().add(message_29_10);
 		work.setDesc("答题发送答案");
-		work.setMicroseconds(3000);
+		work.setMicroseconds(ApplicationConstants.FIGHT_SLEEP_TIME);
 		playerManager.getWorkQueue().offerFirst(work);
 	}
 

@@ -6,6 +6,7 @@ import java.util.Map;
 import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.context.ConfigContext;
 import com.lyb.client.message.protocol.Message_7_1;
+import com.lyb.client.model.InnerWork;
 import com.lyb.client.model.PlayerWork;
 import com.lyb.client.model.YXZData;
 
@@ -23,7 +24,19 @@ public class YXZManager {
 	}
 
 	public void initWork() {
-		checkCountAndFight();
+		initCheck();
+	}
+
+	public void initCheck() {
+		PlayerWork work = new PlayerWork(new InnerWork() {
+			@Override
+			public void work() {
+				checkCountAndFight();
+			}
+		});
+		work.setDesc("开始检查是否有可打的YXZ");
+		work.setActivateTime(System.currentTimeMillis());
+		playerManager.getWorkQueue().offerFirst(work);
 	}
 
 	public void checkCountAndFight() {
@@ -38,7 +51,7 @@ public class YXZManager {
 				PlayerWork work = new PlayerWork();
 				work.getMessages().add(message_7_1);
 				work.setDesc("开始挑战YXZ  strongPointId=" + yxzData.getStrongPointId());
-				work.setMicroseconds(10000);
+				work.setMicroseconds(ApplicationConstants.FIGHT_SLEEP_TIME);
 				playerManager.getWorkQueue().offerFirst(work);
 
 				playerManager.getTeamManager().viewTeam(ApplicationConstants.TEAM_TYPE_7);

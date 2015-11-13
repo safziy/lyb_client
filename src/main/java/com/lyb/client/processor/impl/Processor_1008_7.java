@@ -14,6 +14,8 @@ public class Processor_1008_7 extends IMessageProcessor<Message_1008_7> {
 
 	@Override
 	public void execute(PlayerManager playerManager, Message_1008_7 message) throws Exception {
-		
+		playerManager.getXunbaoManager().setCount(message.getCount());
+		playerManager.getXunbaoManager().setState(1);
+		playerManager.getXunbaoManager().check();
 	}
 }

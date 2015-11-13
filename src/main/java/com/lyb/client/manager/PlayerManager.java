@@ -1,10 +1,7 @@
 package com.lyb.client.manager;
 
-import java.util.Collections;
 import java.util.Deque;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 import com.lyb.client.constants.ApplicationConstants;
@@ -38,10 +35,10 @@ public class PlayerManager {
 	private ArenaManager arenaManager;
 	private TimeManager timeManager;
 	private AnswerManager answerManager;
+	private ShilianManager shilianManager;
+	private XunbaoManager xunbaoManager;
 
 	private Deque<PlayerWork> workQueue = new ConcurrentLinkedDeque<PlayerWork>();
-	@SuppressWarnings("unused")
-	private List<PlayerWork> waitList = Collections.synchronizedList(new LinkedList<PlayerWork>());
 
 	public PlayerManager(Client client) {
 		this.client = client;
@@ -59,6 +56,8 @@ public class PlayerManager {
 		arenaManager = new ArenaManager(this);
 		timeManager = new TimeManager(this);
 		answerManager = new AnswerManager(this);
+		shilianManager = new ShilianManager(this);
+		xunbaoManager = new XunbaoManager(this);
 	}
 
 	public void write(IMessage message) {
@@ -73,8 +72,13 @@ public class PlayerManager {
 		message_2_11.setPlatformId(client.getPlatformId());
 		message_2_11.setKey(client.getAccount());
 		message_2_11.setPwd(client.getPassword());
-		String dcStr = "";
-//		String dcStr = "install_key=3b81401b-f1e1-49ed-a8a9-c0d7cf242ac9&mac=C0EEFB0760E2&udid=2195a60013127174&gameversion=1.1.177&clienttype=A0001&clientversion=4.3&channel_id=0&networktype=wifi&clientpixel=1920x1080 &serial_number=19786d06&android_id=2195a60013127174&google_aid=2195a60013127174&location=cn&src=lan_test&equipment=nocrack&carrier=&idfa=&simulator=0&WifiMac=&BootTime=0&unique_key=langyabang_androidcn_prod";
+		// String dcStr =
+		// "install_key=3b81401b-f1e1-49ed-a8a9-c0d7cf242ac9&mac=C0EEFB0760E2&udid=2195a60013127174&gameversion=1.1.177
+		// &clienttype=A0001&clientversion=4.3&channel_id=0&networktype=wifi&clientpixel=1920x1080
+		// &serial_number=19786d06&android_id=2195a60013127174&google_aid=2195a60013127174&location=cn
+		// &src=lan_test&equipment=nocrack&carrier=&idfa=&simulator=0&WifiMac=&BootTime=0&unique_key=langyabang_androidcn_prod";
+
+		String dcStr = "install_key=E59AE64D-C290-4EAB-A430-D1C1504F9AE3&mac=020000000000&udid=06C9584A-B8FD-4990-9170-7484BB01DCB3&gameversion=1.4.20&clienttype=iPhone8_1&clientversion=9.1&channel_id=FJM_TEST_CCCCC&networktype=WIFI&clientpixel=1334*750&serial_number=&android_id=&google_aid=&location=cn&src=apple&equipment=nocrack&carrier=中国电信&idfa=02ACBB9F-8E41-4915-AC60-2FA0295CDC1D&simulator=0&WifiMac=a46c2a681aef&BootTime=0&unique_key=langyabang_ioscn_prod";
 		message_2_11.setDCParamStr(dcStr);
 		write(message_2_11);
 	}
@@ -119,13 +123,20 @@ public class PlayerManager {
 	}
 
 	public void initAllWork() {
-		tenCountryManager.initWork();
+		// 十国
+//		tenCountryManager.initWork();
+		// 竞技场
 		arenaManager.initWork();
-		
-		answerManager.initWork();
-		
-		yxzManager.initWork();
+		// 答题
+//		answerManager.initWork();
+		// 试练
+//		shilianManager.initWork();
+		// 关卡
 		strongPointManager.initWork();
+		// 英雄志
+//		yxzManager.initWork();
+		// 寻宝
+		xunbaoManager.initWork();
 	}
 
 	public void work() {
@@ -237,5 +248,13 @@ public class PlayerManager {
 
 	public AnswerManager getAnswerManager() {
 		return answerManager;
+	}
+
+	public ShilianManager getShilianManager() {
+		return shilianManager;
+	}
+	
+	public XunbaoManager getXunbaoManager() {
+		return xunbaoManager;
 	}
 }
