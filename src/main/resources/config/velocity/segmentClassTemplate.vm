@@ -1,0 +1,234 @@
+package com.lyb.client.message.protocol.segment;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import com.lyb.client.message.IMessageEncoder;
+import com.lyb.client.message.handler.IMessageParameterHandler;
+import com.lyb.client.net.Data;
+import com.lyb.client.message.MessageParameterContext;
+import com.lyb.client.message.handler.*;
+
+/**
+ * ${desc}
+ * 
+ * @author codeGenerator
+ * 
+ */
+#set( $this = "className")
+@SuppressWarnings("unused")
+public class ${name} implements IMessageEncoder {
+	private List<${name}Item> list = new LinkedList<${name}Item>();
+
+	public List<${name}Item> list(){
+		return list;
+	}
+
+	/**
+	 * 编码
+	 */
+	@Override
+	public void encode(Data data) {
+		data.writeInt(list.size());
+		for (${name}Item item : list) {
+#foreach( $item in $varList )
+#if ($item.get("def").equals("int"))
+			data.writeInt(item.get$item.get("methedName")());
+#end
+#if ($item.get("def").equals("long"))
+			data.writeLong(item.get$item.get("methedName")());
+#end
+#if ($item.get("def").equals("String"))
+			data.writeString(item.get$item.get("methedName")());
+#end
+#if (!$item.get("def").equals("String") && !$item.get("def").equals("long") && !$item.get("def").equals("int"))
+			item.get$item.get("methedName")().encode(data);
+#end
+#end
+		}
+	}
+	
+	/**
+	 * 解码
+	 */
+	@Override
+	public void decode(Data data) {
+		int size = data.getInt();
+		for (int i = 0; i < size; i++) {
+			${name}Item item = ${name}Item.create();
+#foreach( $item in $varList )
+#if ($item.get("def").equals("int"))
+			item.set$item.get("methedName")(data.getInt());
+#end
+#if ($item.get("def").equals("long"))
+			item.set$item.get("methedName")(data.getLong());
+#end
+#if ($item.get("def").equals("String"))
+			item.set$item.get("methedName")(data.getString());
+#end
+#if (!$item.get("def").equals("String") && !$item.get("def").equals("long") && !$item.get("def").equals("int"))
+			item.set$item.get("methedName")(${item.get("def")}.create());
+			item.get$item.get("methedName")().decode(data);
+#end
+#end
+			list.add(item);
+		}
+	}
+
+	@Override
+	public boolean validate() {
+		for (${name}Item item : list) {
+			if (!item.validate()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static ${name} create() {
+		${name} array = new ${name}();
+		return array;
+	}
+
+	public static ${name}Item createItem() {
+		${name}Item item = new ${name}Item();
+		return item;
+	}
+
+	public ${name}Item addData(#foreach( $item in $varList )$item.get("def") $item.get("name")#if(${velocityHasNext}), #end#end) {
+		${name}Item item = new ${name}Item();
+#foreach( $item in $varList )
+		item.set$item.get("methedName")($item.get("name"));
+#end
+		list.add(item);
+		return item;
+	}
+
+	public void addItem(${name}Item item) {
+		list.add(item);
+	}
+	
+	public String toString() {
+		StringBuilder bb = new StringBuilder();
+		bb.append("[");
+		int i = 0;
+		for (${name}Item item : list) {
+			bb.append("{").append(item.toString()).append("}");
+			i++;
+			if (i != list.size()) {
+				bb.append(", ");
+			}
+		}
+		bb.append("]");
+		return bb.toString();
+	}
+	
+	public static class ${name}Item implements IMessageEncoder {
+#foreach( $item in $varList )
+		private $item.get("def") $item.get("name");
+#end
+
+#foreach( $item in $varList )
+#if($item.get("def").equals("int"))
+		private static IntMessageParameterHandler $item.get("name")Handler = MessageParameterContext.getInstance().getIntMessageParameterHandler("$item.get("handlerName")");
+#end
+#if($item.get("def").equals("long"))
+		private static LongMessageParameterHandler $item.get("name")Handler = MessageParameterContext.getInstance().getLongMessageParameterHandler("$item.get("handlerName")");
+#end
+#end
+
+		public static ${name}Item create() {
+			${name}Item item = new ${name}Item();
+			return item;
+		}
+
+#foreach( $item in $varList )
+		/**
+		 * @return the $item.get("name")
+		 */
+		public $item.get("def") get$item.get("methedName")() {
+			return $item.get("name");
+		}
+
+		/**
+		 * @param $item.get("name")
+		 *            the $item.get("name") to set
+		 */
+		public void set$item.get("methedName")($item.get("def") $item.get("name")) {
+			this.$item.get("name") = $item.get("name");
+		}
+#end
+		/**
+		 * 编码
+		 */
+		@Override
+		public void encode(Data data) {
+#foreach( $item in $varList )
+#if ($item.get("def").equals("int")) 
+			data.writeInt(this.$item.get("name"));
+#end
+#if ($item.get("def").equals("long")) 
+			data.writeLong(this.$item.get("name"));
+#end
+#if ($item.get("def").equals("String")) 
+			data.writeString(this.$item.get("name"));
+#end
+#if (!$item.get("def").equals("String") && !$item.get("def").equals("long") && !$item.get("def").equals("int"))
+			${item.get("name")}.encode(data);
+#end
+#end	
+		}
+		
+		
+		/**
+		 * 解码
+		 */
+		@Override
+		public void decode(Data data) {
+#foreach( $item in $varList )
+#if ($item.get("def").equals("int")) 
+			this.$item.get("name") = data.getInt();
+#end
+#if ($item.get("def").equals("long")) 
+			this.$item.get("name") = data.getLong();
+#end
+#if ($item.get("def").equals("String")) 
+			this.$item.get("name") = data.getString();
+#end
+#if (!$item.get("def").equals("String") && !$item.get("def").equals("long") && !$item.get("def").equals("int"))
+			$item.get("name") = ${item.get("def")}.create();
+			${item.get("name")}.decode(data);
+#end
+#end	
+		}
+	
+		@Override
+		public boolean validate() {
+#foreach( $item in $varList )
+#if ($item.get("def").equals("long") || $item.get("def").equals("int"))
+			if (!${item.get("name")}Handler.validate($item.get("name"))) {
+				return false;
+			}
+#end
+#if (!$item.get("def").equals("String") && !$item.get("def").equals("long") && !$item.get("def").equals("int"))
+			if (!${item.get("name")}.validate()) {
+				return false;
+			}
+#end
+#end
+			return true;
+		}
+	
+		public String toString() {
+			StringBuilder bb = new StringBuilder();
+#foreach( $item in $varList )
+#if (!$item.get("def").equals("String") && !$item.get("def").equals("long") && !$item.get("def").equals("int"))
+			bb.append("${item.get("name")}:").append(${item.get("name")}.toString())#if(${velocityHasNext}).append(", ")#end;
+#else
+			bb.append("${item.get("name")}:").append(this.$item.get("name"))#if(${velocityHasNext}).append(", ")#end;
+#end
+#end
+			return bb.toString();	
+		}
+	}
+}

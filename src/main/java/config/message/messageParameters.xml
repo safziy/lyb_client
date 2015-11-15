@@ -1,0 +1,1297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<params>
+	<!-- ********************处理器相关******************** -->
+	<ParameterHandlerMap>
+		<handle name="byteArray">ByteArrayHandler</handle>
+		<handle name="string">StringHandler</handle>
+		<handle name="array">MapArrayHandler</handle>
+	</ParameterHandlerMap>
+
+
+	<!-- ********************通用字段******************** -->
+	<!-- UUID -->
+	<param name="AttackResult" handler="int|0|*" />
+	<param name="AttackterCoordinateX" handler="int|*|*" />
+	<param name="AttackterCoordinateY" handler="int|*|*" />
+
+	<param name="UUID" handler="int|0|*" />
+	<param name="ID" handler="long|0|*" />
+	<param name="MainCommand" handler="int|1|*" />
+	<param name="SubCommand" handler="int|1|*" />
+	<!-- 错误消息Code -->
+	<param name="ErrorCode" handler="int|0|*" />
+	<!-- 错误消息 -->
+	<param name="ErrorMessage" handler="string" />
+	<param name="ClientException" handler="string" />
+	<param name="ClientDecryptionData" handler="string" />
+	<param name="Type" handler="int|0|*" />
+	<param name="ByteType" handler="int|0|*" />
+	<param name="TimerType" handler="string" />
+	<param name="State" handler="int|0|*" />
+	<param name="ByteState" handler="int|0|*" />
+	<!-- 通用字段名标识 -->
+	<!-- 是否(0代表否，1代表是) -->
+	<param name="BooleanValue" handler="int|0|1" />
+	<param name="BooleanValue2" handler="int|0|1" />
+	<param name="BooleanValue3" handler="int|0|1" />
+	<!-- 等级 -->
+	<param name="Level" handler="int|0|*" />
+	<param name="WuxingLevel" handler="int|0|*" />
+	<param name="YunyingUserId" handler="string" />
+	<!-- 值 -->
+	<param name="Value" handler="int|0|*" />
+	<!-- 位置 -->
+	<param name="Place" handler="int|0|*" />
+	<!-- 数量 -->
+	<param name="Count" handler="int|0|*" />
+	<param name="Count2" handler="int|0|*" />
+	<!-- 领奖数量 -->
+	<param name="TakeAwardCount" handler="int|0|*" />
+	<!-- 序列 -->
+	<param name="Sequence" handler="int|0|*" />
+	<!-- 剩余时间 -->
+	<param name="RemainSeconds" handler="int|*|*" />
+	<!-- 等待 -->
+	<param name="WaiteSeconds" handler="int|*|*" />
+	<!-- 日期时间(秒为单位) -->
+	<param name="DateTime" handler="int|0|*" />
+	<param name="Month" handler="int|0|*" />
+	<param name="Param" handler="int|0|*" />
+	<param name="Param1" handler="int|0|*" />
+	<param name="Param2" handler="int|0|*" />
+	<param name="Param3" handler="int|0|*" />
+
+	<param name="ParamStr1" handler="string" />
+	<param name="ParamStr2" handler="string" />
+	<param name="ParamStr3" handler="string" />
+	<param name="ParamStr4" handler="string" />
+	<param name="ParamStr5" handler="string" />
+	<param name="ParamStr6" handler="string" />
+	<param name="ParamStr7" handler="string" />
+	<param name="ParamStr8" handler="string" />
+	<param name="ParamStr9" handler="string" />
+	<param name="AutoBattle" handler="int|0|1" />
+
+
+
+	<param name="CurrencyType" handler="int|0|*" />
+	<param name="PlaceGeneralIdMap" handler="array">
+		<sequence>Place,GeneralId,BooleanValue</sequence>
+	</param>
+	<param name="TriggerId" handler="long|0|*" />
+	<param name="ConfigId" handler="int|0|*" />
+	<param name="FamilyId" handler="long|0|*" />
+	<param name="FamilyPositionId" handler="int|0|*" />
+	<param name="FamilyContribute" handler="int|0|*" />
+	<param name="PotentialPoint" handler="int|0|*" />
+	<param name="GeneralEmployScore" handler="int|0|*" />
+	<param name="TitleId" handler="int|0|*" />
+
+	<!-- 幻化Id -->
+	<param name="TransforId" handler="int|0|*" />
+
+	<!-- 花钱进行某一操作 0为不花钱，1为花钱 -->
+	<param name="IsEnableWithCurrency" handler="int|0|1"></param>
+	<!-- 是否开启 0为未开启，1为开启 -->
+	<param name="IsEnable" handler="int|0|1"></param>
+
+	<param name="IDArray" handler="array">
+		<sequence>ID</sequence>
+	</param>
+	<param name="LevelArray" handler="array">
+		<sequence>Level</sequence>
+	</param>
+	<param name="UserItemIdArray" handler="array">
+		<sequence>UserItemId,Count</sequence>
+	</param>
+	<param name="TargetUserId" handler="long|0|*" />
+	<param name="PlaceIDArray" handler="array">
+		<sequence>Place,ID</sequence>
+	</param>
+	<param name="Time" handler="int|0|*" />
+	<param name="BeginTime" handler="int|0|*" />
+	<param name="EndTime" handler="int|0|*" />
+	<param name="ServerTime" handler="int|0|*" />
+	<param name="AddOrSub" handler="int|0|1" />
+
+	<param name="IDBooleanArray" handler="array">
+		<!-- ID BooleanValue:0-false 1-true -->
+		<sequence>ID,BooleanValue</sequence>
+	</param>
+
+	<!-- ********************玩家相关******************** -->
+	<!-- 玩家认证Key -->
+	<param name="Account" handler="string" />
+	<param name="Key" handler="string" />
+	<param name="Pwd" handler="string" />
+	<param name="InstallKey" handler="string" />
+	<param name="ServerId" handler="int|0|*" />
+	<param name="OrigainalServerId" handler="int|0|*" />
+	<param name="MAC" handler="string" />
+	<param name="UDID" handler="string" />
+	<param name="ClientgameVersion" handler="string" />
+	<param name="ClientType" handler="string" />
+	<param name="ClientOSType" handler="string" />
+	<param name="BIChannelID" handler="string" />
+	<param name="LoginState" handler="int|0|*" />
+	<param name="UserId" handler="long|-100|*" />
+	<param name="UserName" handler="string" />
+	<param name="TargetUserName" handler="string" />
+	<param name="UserGender" handler="int|0|*" />
+	<param name="ImageID" handler="int|0|*" />
+	<param name="CampId" handler="int|0|4" />
+	<param name="Speed" handler="int|0|*" />
+	<param name="Gold" handler="int|0|*" />
+	<param name="Score" handler="int|0|*" />
+	<param name="FriendPoint" handler="int|0|*" />
+	<param name="StrongPoint" handler="int|0|*" />
+	<param name="BindingGold" handler="int|0|*" />
+	<param name="Silver" handler="int|0|*" />
+	<param name="Vitality" handler="int|0|*" />
+	<param name="PhysicalPower" handler="int|0|*" />
+	<param name="Prestige" handler="int|0|*" />
+	<!-- 剧情点 -->
+	<param name="StoryLineStar" handler="int|0|*" />
+
+	<param name="TimerArray" handler="array">
+		<sequence>TimerType,Value</sequence>
+	</param>
+	<param name="CountControlType" handler="int|0|*" />
+	<param name="CountControlParam" handler="int|0|*" />
+	<param name="CurrentCount" handler="int|0|*" />
+	<param name="TotalCount" handler="int|0|*" />
+	<param name="AddCount" handler="int|0|*" />
+	<param name="MaxAddCount" handler="int|0|*" />
+	<param name="BuyCountNeedGold" handler="string" />
+	<param name="UserCountControlArray" handler="array">
+		<!-- CurrentCount:已经用了多少次,TotalCount:总次数(基本次数+vip+AddCount),AddCount:买了多少次,MaxAddCount:最大能买多少次 -->
+		<sequence>ID,CurrentCount,TotalCount,AddCount,MaxAddCount,BuyCountNeedGold
+		</sequence>
+	</param>
+	<param name="UserDataAccumulateArray" handler="array">
+		<sequence>Type,Param,Value</sequence>
+	</param>
+	<param name="LastStrongPointId" handler="int|0|*" />
+	<param name="CurrentMeridiansPointId" handler="int|0|*" />
+	<param name="NextMeridiansPointId" handler="int|0|*" />
+	<param name="Vip" handler="int|0|*" />
+	<param name="Nobility" handler="int|0|*" />
+	<param name="UserAccountInfoArray" handler="array">
+		<sequence>UserName,Career,Level,OrigainalServerId</sequence>
+	</param>
+	<param name="ZodiacId" handler="int|0|*" />
+
+	<!-- ********************道具相关******************** -->
+	<!-- 物品数组 -->
+	<param name="ItemIdArray" handler="array">
+		<sequence>ItemId,Count</sequence>
+	</param>
+	<param name="ItemId" handler="int|0|*" />
+	<param name="ItemId2" handler="int|0|*" />
+	<!-- 物品在数据库中的id -->
+	<param name="UserItemId" handler="long|0|*" />
+	<param name="IsBanding" handler="int|0|1" />
+	<param name="IsUsing" handler="int|0|1" />
+	<param name="ItemEffectId" handler="int|0|*" />
+	<param name="ItemEffectValue" handler="int|0|*" />
+	<param name="Price" handler="int|1|*" />
+	<param name="UserCount" handler="int|0|*" />
+	<param name="UserMaxCount" handler="int|0|*" />
+	<param name="Sort" handler="int|0|*" />
+
+
+	<!-- 道具使用队列 当RemainSeconds为-1时代表此道具不关心时间过期 -->
+	<param name="ItemUseQueue" handler="array">
+		<sequence>TriggerId,ItemId,RemainSeconds,ItemEffectId,ItemEffectValue,ParamStr1
+		</sequence>
+	</param>
+
+	<!-- UserCount:玩家剩余购买数量 Count:总剩余数量 -->
+	<param name="LimitShopItemArray" handler="array">
+		<sequence>ID,ItemId,Sort,CurrencyType,Price,UserCount,UserMaxCount,Count,MaxCount
+		</sequence>
+	</param>
+
+
+	<!-- ********************战斗相关******************** -->
+	<param name="BattleId" handler="int|0|*" />
+	<param name="BattleType" handler="int|0|*" />
+	<param name="BattleParam" handler="int|0|*" />
+	<param name="StandPoint1Name" handler="string" />
+	<param name="StandPoint2Name" handler="string" />
+	<param name="MapId" handler="int|0|*" />
+	<param name="BattleTemplateId" handler="int|1|*" />
+	<param name="BattleLog" handler="string" />
+
+	<param name="KillCount" handler="int|0|*" />
+	<!--立场 0 为平局 其他为胜利方的立场 -->
+	<param name="StandPoint" handler="int|0|*" />
+	<!-- newBattle 战场君主数组 BooleanValue表示是否为玩家,如果是1 否则0 StandPoint -->
+	<param name="BattleUserArray" handler="array">
+		<sequence>UserId,UserName,Career,StandPoint,BattleUnitID,CurrentRage
+		</sequence>
+	</param>
+	<!-- newBattle 战场武将数组 Type 是否是主公(1:是主公,2:是普通武将) -->
+	<param name="BattleGeneralArray" handler="array">
+		<sequence>BattleUnitID,UserId,StandPoint,Type,GeneralId,Career,Level,Place,SkillArray,UnitPropertyArray
+		</sequence>
+	</param>
+
+	<param name="BattleUnitViewArray" handler="array">
+		<sequence>BattleUnitID,Type,GeneralId,Career,Level,MaxHP,SkillArray,Place
+		</sequence>
+	</param>
+
+	<!-- 战场ID -->
+	<param name="BattleFieldId" handler="int|*|*" />
+	<param name="RandomSeed" handler="string" />
+
+	<!-- 最大血量 -->
+	<param name="MaxHP" handler="int|0|*" />
+	<!-- 当前血量 -->
+	<param name="CurrentHP" handler="int|0|*" />
+	<!-- 当前能量 -->
+	<param name="CurrentMP" handler="int|0|*" />
+	<!-- newBattle 战场持续效果 Time:效果持续毫秒 -->
+	<param name="EffectArray" handler="array">
+		<sequence>
+			AttackterBattleUnitId,SkillId,Priority,EffectId,EffectValue
+		</sequence>
+	</param>
+	<param name="WinName" handler="string" />
+	<param name="LostName" handler="string" />
+	<param name="CreateCommandTime" handler="string" />
+	<param name="BattleEmployArray" handler="array">
+		<sequence>UserId,UserName,Level,Zhanli,GeneralId,ConfigId,Grade
+		</sequence>
+	</param>
+
+
+
+	<!-- ********************武将英魂相关******************** -->
+	<param name="Zhanli" handler="int|0|*" />
+	<param name="TargetZhanli" handler="int|0|*" />
+	<param name="EquipmentZhanli" handler="int|0|*" />
+	<param name="PetZhanli" handler="int|0|*" />
+	<param name="PetConfigId" handler="int|0|*" />
+
+	<param name="LevelZhanli" handler="int|0|*" />
+	<param name="TotemZhanli" handler="int|0|*" />
+	<param name="EquipLevelZhanli" handler="int|0|*" />
+	<param name="PrincessZhanli" handler="int|0|*" />
+	<param name="PetLevelZhanli" handler="int|0|*" />
+	<param name="EmployZhanli" handler="int|0|*" />
+	<param name="LookStarLevel" handler="int|0|*" />
+	<param name="EquipStarZhanli" handler="int|0|*" />
+	<param name="MaxEmployZhanli" handler="int|0|*" />
+	<param name="MaxLevelZhanli" handler="int|0|*" />
+	<param name="MaxLookStarLevel" handler="int|0|*" />
+	<param name="MaxPrincessZhanli" handler="int|0|*" />
+	<param name="MaxEquipLevelZhanli" handler="int|0|*" />
+	<param name="MaxEquipStarZhanli" handler="int|0|*" />
+	<param name="MaxTotemZhanli" handler="int|0|*" />
+	<param name="MaxPetLevelZhanli" handler="int|0|*" />
+	<param name="SlaveGeneralZhanli" handler="int|0|*" />
+	<param name="MasterGeneralZhanli" handler="int|0|*" />
+	<param name="MasterGeneralBaseZhanli" handler="int|0|*" />
+	<param name="MeridiansZhanli" handler="int|0|*" />
+	<param name="TitleZhanli" handler="int|0|*" />
+	<param name="NobilityZhanli" handler="int|0|*" />
+	<param name="EquipmentBaseZhanli" handler="int|0|*" />
+	<param name="EquipmentStrengthenZhanli" handler="int|0|*" />
+	<param name="EquipmentStarZhanli" handler="int|0|*" />
+	<param name="EquipmentJewelZhanli" handler="int|0|*" />
+	<param name="HeroBaseZhanli" handler="int|0|*" />
+	<param name="HeroPoAndLvZhanli" handler="int|0|*" />
+	<param name="HeroStarLibZhanli" handler="int|0|*" />
+	<param name="MyPrincessZhanli" handler="int|0|*" />
+	<param name="SlavePrincessZhanli" handler="int|0|*" />
+	<param name="AdditionZhanli" handler="int|0|*" />
+	<param name="CareerAdditionAttack" handler="int|0|*" />
+	<param name="CareerAdditionDefence" handler="int|0|*" />
+	<param name="CareerAdditionHp" handler="int|0|*" />
+
+	<param name="PlatformId" handler="int|0|*" />
+	<!-- 英魂潜力 -->
+	<param name="Potential" handler="int|0|*" />
+
+	<!-- 英魂颜色 -->
+	<param name="Grade" handler="int|0|*" />
+	<!-- 英魂天赋等级 -->
+	<param name="TalentLevel" handler="int|0|*" />
+	<!-- 英魂 -->
+	<param name="GeneralArray" handler="array">
+		<!-- ID为数据库的主键 Grade:品质等级(颜色) -->
+		<sequence>GeneralId,ConfigId,SkillArray,Level,Grade,Time,IsMainGeneral,TalentLevel,WuxingLevel,StarLevel,Experience,FateLevelArray
+		</sequence>
+	</param>
+	<param name="FateLevelArray" handler="array">
+		<sequence>ID,Level</sequence>
+	</param>
+	<param name="GeneralFateArray" handler="array">
+		<sequence>GeneralId,FateLevelArray</sequence>
+	</param>
+	<!-- Type:1(增),2(删),3(改) -->
+	<param name="ChangeGeneralArray" handler="array">
+		<!-- ID为数据库的主键 Grade:品质等级(颜色) -->
+		<sequence>Type,GeneralId,ConfigId,SkillArray,Level,Experience,Grade,Time,TalentLevel,WuxingLevel,StarLevel,AddExp
+		</sequence>
+	</param>
+	<!-- 英魂 -->
+	<param name="EmployGeneralArray" handler="array">
+		<!-- Type为战场类型 -->
+		<sequence>GeneralId,Type
+		</sequence>
+	</param>
+	<param name="ArmSlaveArray" handler="array">
+		<sequence>Place,ID</sequence>
+	</param>
+	<!-- 无双技能道具 -->
+	<param name="WuShuangSkillArray" handler="array">
+		<sequence>Place,SkillId,ConfigId</sequence>
+	</param>
+	<param name="Priority" handler="int|0|*" />
+	<param name="Career" handler="int|0|*" />
+	<param name="GeneralId" handler="long|0|*" />
+	<param name="GeneralIdTable" handler="int|0|*" />
+	<param name="Experience" handler="int|0|*" />
+	<param name="AddExp" handler="int|0|*" />
+	<!-- 是否是君主武将 -->
+	<param name="IsMainGeneral" handler="int|0|1"></param>
+	<!-- 是否是出战武将 -->
+	<param name="IsPlay" handler="int|0|1"></param>
+	<!-- 属性序列 -->
+	<param name="UnitPropertyArray" handler="array">
+		<sequence>
+			PropertyKey,PropertyValue
+		</sequence>
+	</param>
+
+	<param name="PropertyKey" handler="int|0|*" />
+	<param name="PropertyValue" handler="int|0|*" />
+
+	<!-- 技能序列 -->
+	<param name="SkillArray" handler="array">
+		<sequence>ConfigId,Level</sequence>
+	</param>
+	<!-- 已经配置上的技能 -->
+	<param name="ConfigSkillArray" handler="array">
+		<sequence>SkillId,Level,Place</sequence>
+	</param>
+
+	<param name="EffectId" handler="int|1|*" />
+	<param name="ActualEffectId" handler="int|1|*" />
+	<param name="EffectValue" handler="int|0|*" />
+	<param name="Stage" handler="int|0|*" />
+	<param name="Step" handler="int|0|*" />
+	<param name="CoordinateX" handler="int|-10000000|*" />
+	<param name="CoordinateY" handler="int|0|*" />
+	<param name="MoveToCoordinateX" handler="int|-10000000|*" />
+	<param name="TargetCoordinateX" handler="int|-10000000|*" />
+	<param name="TargetCoordinateY" handler="int|-10000000|*" />
+
+	<param name="MoveCoordinateX" handler="int|0|*" />
+	<param name="MoveCoordinateY" handler="int|0|*" />
+
+	<param name="SkillId" handler="int|0|*" />
+	<param name="SkillId1" handler="int|0|*" />
+	<param name="SkillId2" handler="int|0|*" />
+	<param name="BattleUnitID" handler="long|0|*" />
+	<param name="AttackterBattleUnitId" handler="long|0|*" />
+	<param name="TargetBattleUnitId" handler="long|0|*" />
+	<param name="CurrentRage" handler="int|0|*" />
+	<param name="ChangeValue" handler="int|*|*" />
+	<param name="SkillPoint" handler="int|0|*" />
+	<param name="IsCrt" handler="int|0|1" />
+	<param name="IsHit" handler="int|0|1" />
+	<param name="GrooveId" handler="int|0|*" />
+	<!-- State:1能开始，2cd中，3能领奖 -->
+	<param name="GrooveArray" handler="array">
+		<sequence>GeneralId,GrooveId,State</sequence>
+	</param>
+	<!-- Place为卡牌在战队中的位置。从1开始 -->
+	<param name="GeneralIdArray" handler="array">
+		<sequence>Place,GeneralId</sequence>
+	</param>
+	<param name="SlaveGeneralId1" handler="int|0|*" />
+	<param name="SlaveGeneralId2" handler="int|0|*" />
+	<param name="FormationArray" handler="array">
+		<sequence>ID,Level</sequence>
+	</param>
+	<param name="FormationId" handler="int|0|*" />
+
+
+	<!-- ********************装备相关******************** -->
+	<!-- 装备位置ID 1-6代表装备位置 -->
+	<param name="EquipmentPlaceId" handler="int|0|10" />
+	<!-- 用户装备ID，即用户道具id -->
+	<param name="UserEquipmentId" handler="int|0|*" />
+	<!-- 查看其他玩家装备信息 -->
+	<param name="LookUpEquipmentArray" handler="array">
+		<sequence>EquipmentPlaceId,ItemId,UserEquipmentId,StarLevel,Zhanli,PropertyArray,StrengthenLevel,StrengthenValue,PreStrengthenValue,HoleArray,LineArray
+		</sequence>
+	</param>
+	<!-- 装备更新时使用 -->
+	<param name="ReplaceEquipmentArray" handler="array">
+		<sequence>EquipmentPlaceId,UserEquipmentId</sequence>
+	</param>
+	<!-- 强化等级 -->
+	<param name="StrengthenLevel" handler="int|0|*" />
+	<param name="PreStrengthenValue" handler="int|0|*" />
+	<param name="StrengthenValue" handler="int|0|*" />
+
+	<!-- 装备星级 -->
+	<param name="StarLevel" handler="int|0|*" />
+
+	<!-- 装备额外属性 -->
+	<param name="ExtraPropertyArray" handler="array">
+		<sequence>ID,PropertyKey,PropertyValue</sequence>
+	</param>
+	<!-- 装备信息 PreStrengthenValue当前等级加成的值 PropertyArray(洗练属性) -->
+	<param name="EquipmentInfoArray" handler="array">
+		<sequence>GeneralId,ItemId,StrengthenLevel,PropertyArray</sequence>
+	</param>
+
+	<!-- 查看装备信息 -->
+	<param name="EquipmentLookUpArray" handler="array">
+		<sequence>ItemId,StarLevel</sequence>
+	</param>
+	<!-- 属性信息 -->
+	<param name="PropertyArray" handler="array">
+		<sequence>Type,Value</sequence>
+	</param>
+	<!-- 强化历史信息 -->
+	<param name="StrengthenHistoryArray" handler="array">
+		<sequence>StrengthenLevel,StrengthenPropertyArray</sequence>
+	</param>
+	<!-- 强化属性信息 -->
+	<param name="StrengthenPropertyArray" handler="array">
+		<sequence>Type,Value</sequence>
+	</param>
+	<!-- ItemId为宝石在背包中的id -->
+	<param name="HoleArray" handler="array">
+		<sequence>Place,ItemId</sequence>
+	</param>
+	<param name="LineArray" handler="array">
+		<sequence>ID</sequence>
+	</param>
+
+
+	<!-- ********************关卡相关******************** -->
+	<!-- 关卡信息 -->
+	<!-- StrongPointId表示关卡id，State表示关卡状态 -->
+	<!-- State为1表示完成状态。为2表示未完成，并且不能进入。为3表示未完成，并且能进入,Count(今天打了的次数) TotalCount(通关次数) 
+		StarLevel(通关星级) -->
+	<param name="StrongPointArray" handler="array">
+		<sequence>StrongPointId,State,Count,TotalCount,StarLevel</sequence>
+	</param>
+	<param name="StrongPointIdCountArray" handler="array">
+		<sequence>StrongPointId,Count,StarLevel</sequence>
+	</param>
+	<!-- 剧情信息 -->
+	<param name="StoryLineArray" handler="array">
+		<sequence>StoryLineId,State</sequence>
+	</param>
+	<!-- 玩家城区数据 -->
+	<param name="UserMapInfoArray" handler="array">
+		<sequence>UserId,UserName,Vip,Speed,Career,CoordinateX,CoordinateY,Level,AbleTitleArray,PetConfigId,State,TargetUserName
+		</sequence>
+	</param>
+	<param name="StrongPointId" handler="int|0|*" />
+	<param name="StoryLineId" handler="int|0|*" />
+	<param name="StreetId" handler="int|0|*" />
+	<param name="CityId" handler="int|0|*" />
+	<param name="CityFunctionId" handler="int|0|*" />
+	<param name="AreaId" handler="int|1|*" />
+	<param name="MaxStarLevel" handler="int|0|*" />
+	<param name="StrongPointIdArray" handler="array">
+		<sequence>StrongPointId</sequence>
+	</param>
+	<param name="StoryLineIdArray" handler="array">
+		<sequence>StoryLineId</sequence>
+	</param>
+
+	<!-- ********************任务相关******************** -->
+	<param name="TaskName" handler="string" />
+	<param name="TaskConditionName" handler="string" />
+	<param name="Script" handler="string" />
+	<param name="MaxCount" handler="int|0|*" />
+	<param name="MainType" handler="int|1|*" />
+	<param name="SubType" handler="int|0|*" />
+	<param name="TaskState" handler="int|0|*" />
+	<param name="AcceptNpcId" handler="int|0|*" />
+	<param name="FinishNpcId" handler="int|0|*" />
+	<param name="ProcessNpcId" handler="int|0|*" />
+	<param name="Npc1" handler="int|0|*" />
+	<param name="Npc2" handler="int|0|*" />
+	<param name="Npc3" handler="int|0|*" />
+	<param name="NpcId" handler="int|0|*" />
+	<param name="TaskId" handler="int|1|*" />
+	<!-- 任务条件id -->
+	<param name="ConditionUUID" handler="string" />
+	<param name="AcceptNpcPosition" handler="string" />
+	<param name="FinishNpcPosition" handler="string" />
+	<param name="ProcessNpcPosition" handler="string" />
+	<param name="DailyTaskParam" handler="int|0|*" />
+	<!-- MainType 任务类型, BooleanValue 自动接收任务，BooleanValue2 自动完成任务 -->
+	<param name="TaskMapArray" handler="array">
+		<sequence>ID,MainType,TaskState,Type,Param,TaskConditionArray
+		</sequence>
+	</param>
+	<param name="TaskConditionArray" handler="array">
+		<sequence>ConditionUUID,Count,MaxCount</sequence>
+	</param>
+	<param name="IDCountArray" handler="array">
+		<sequence>ID,Count</sequence>
+	</param>
+	<param name="IDParamArray" handler="array">
+		<sequence>ID,Param</sequence>
+	</param>
+	<param name="IDStateParamArray" handler="array">
+		<sequence>ID,State,Param</sequence>
+	</param>
+	<param name="TaskScriptArray" handler="array">
+		<sequence>Script</sequence>
+	</param>
+	<!-- ID为事件库ID,Param:关卡类型任务的时候为关卡ID,BooleanValue是否为问号任务 -->
+	<param name="HunkTaskArray" handler="array">
+		<sequence>Place,ID,Param,BooleanValue</sequence>
+	</param>
+	<param name="TakeBoxArray" handler="array">
+		<sequence>Place</sequence>
+	</param>
+	<!-- 任务面板展示的数据 -->
+	<param name="ViewTaskArray" handler="array">
+		<sequence>ID,TaskState,TaskConditionArray</sequence>
+	</param>
+	<!-- State: 0,未领取 1,已领取 -->
+	<param name="IDStateArray" handler="array">
+		<sequence>ID,State</sequence>
+	</param>
+
+
+	<!-- ********************背包相关******************** -->
+	<param name="SrcPlace" handler="int|0|*" />
+	<param name="TargetPlace" handler="int|1|*" />
+	<param name="UserItemArray" handler="array">
+		<sequence>UserItemId,ItemId,Count,IsUsing,Place</sequence>
+	</param>
+	<param name="UserItemIncreArray" handler="array">
+		<sequence>UserItemId,ItemId,Count,IsBanding,IsUsing,Place</sequence>
+	</param>
+
+
+	<!-- ********************聊天相关******************** -->
+	<param name="ChatType" handler="int|0|*" />
+	<param name="ChatContentArray" handler="array">
+		<sequence>Type,ParamStr1,ParamStr2,ParamStr3,ParamStr4</sequence>
+	</param>
+	<param name="MsgRecordArray" handler="array">
+		<!-- UserName为好友UserName -->
+		<!-- State为1表示有离线消息 -->
+		<sequence>UserId,UserName,State,SendMsgArray,RevMsgArray</sequence>
+	</param>
+	<!-- DateTime为消息发送的时间 -->
+	<param name="SendMsgArray" handler="array">
+		<sequence>ChatContentArray,DateTime</sequence>
+	</param>
+	<param name="RevMsgArray" handler="array">
+		<sequence>ChatContentArray,DateTime</sequence>
+	</param>
+	<param name="ForbiddenArray" handler="array">
+		<sequence>UserId,UserName</sequence>
+	</param>
+
+
+	<!-- ********************邮件相关******************** -->
+	<param name="MailId" handler="long|0|*" />
+	<!-- 标题 -->
+	<param name="Title" handler="string" />
+	<!-- 内容 -->
+	<param name="Content" handler="string" />
+	<param name="FromUserName" handler="string" />
+	<param name="ToUserName" handler="string" />
+	<param name="Page" handler="int|1|*" />
+	<param name="MaxPage" handler="int|0|*" />
+	<!-- 是否包含附件 -->
+	<param name="IsWithAttachment" handler="int|0|1" />
+	<param name="MailArray" handler="array">
+		<!-- ConfigId不为0时邮件内容读表 ByteType: 1:一次性邮件 2:持续型邮件 ByteState: 0,未读 1,已读 -->
+		<sequence>MailId,ConfigId,ParamStr1,Title,FromUserName,DateTime,Content,ByteState,ItemIdArray,ByteType
+		</sequence>
+	</param>
+
+	<!-- 宠物培养临时灵性 -->
+	<param name="PetTempIntell" handler="int|0|*" />
+	<!-- 宠物主动技能 -->
+	<param name="PetActiveSkillArray" handler="array">
+		<sequence>ID,Level</sequence>
+	</param>
+	<!-- 宠物被动技能 -->
+	<param name="PetPassiveSkillArray" handler="array">
+		<sequence>ID,Level</sequence>
+	</param>
+	<param name="PetArray" handler="array">
+		<sequence>ID,ConfigId,Experience,UnitPropertyArray,Zhanli,PetTempIntell,Param1,PetActiveSkillArray,Param2,PetPassiveSkillArray
+		</sequence>
+	</param>
+	<param name="PlaceConfigArray" handler="array">
+		<sequence>Place,ConfigId</sequence>
+	</param>
+	<!-- AttackResult 1防守方是普通技能防御,2防守方是闪避, 3防守方是格挡 ,4攻方是普通技能攻击 ,5进攻方是暴击 BooleanValue 
+		true播放被击动作，false不播放被击; BooleanValue2 播放慢动作; -->
+	<param name="AttackResultArray" handler="array">
+		<sequence>TargetBattleUnitId,AttackResult,CurrentHP,ChangeValue,TargetCoordinateX,TargetCoordinateY,BooleanValue,BooleanValue2,CurrentRage
+		</sequence>
+	</param>
+
+	<param name="BeJidao" handler="int|0|1" />
+
+	<param name="BattleContinueTime" handler="int|0|*" />
+	<!-- ********************坐骑相关******************** -->
+	<param name="UsingMountConfigId" handler="int|1|*" />
+	<param name="LastEvolutionId" handler="int|1|*" />
+
+
+	<!-- ********************成就相关******************** -->
+	<param name="AbleTitleArray" handler="array">
+		<sequence>EnableTitleId</sequence>
+	</param>
+	<param name="EnableTitleId" handler="int|0|*" />
+	<param name="AchievementId" handler="int|0|*" />
+	<param name="TitleArray" handler="array">
+		<sequence>TitleId</sequence>
+	</param>
+	<!-- BooleanValue为是否已达成,TakeAwardCount为1表示已领取过 -->
+	<param name="AchievementArray" handler="array">
+		<sequence>AchievementId,TaskConditionArray,BooleanValue,TakeAwardCount
+		</sequence>
+	</param>
+
+
+	<!--********************竞技场相关******************** -->
+	<param name="Season" handler="int|1|*" />
+	<!-- 剩余挑战次数 -->
+	<param name="LeaveChallengeTimes" handler="int|0|*"></param>
+	<!-- 名次 -->
+	<param name="Ranking" handler="int|0|*"></param>
+	<param name="UserArenaArray" handler="array">
+		<sequence>TransforId,UserId,UserName,Level,Score,BooleanValue,Zhanli
+		</sequence>
+	</param>
+	<!-- 玩家竞技场日志 -->
+	<param name="BattleResulttype" handler="int|0|*"></param>
+	<!-- 战斗发生时间(分钟为单位) -->
+	<param name="BattleTime" handler="int|0|*"></param>
+	<param name="ChallengeName" handler="string"></param>
+	<param name="UserArenaRecordArray" handler="array">
+		<sequence>BattleResulttype,BattleTime,ChallengeName,Ranking</sequence>
+	</param>
+
+	<!-- ********************翻牌抽奖相关******************** -->
+	<param name="Position" handler="int|0|*"></param>
+	<!-- 免费翻牌 -->
+	<param name="FreePosition" handler="int|0|*"></param>
+	<param name="FreeItemArray" handler="array">
+		<sequence>Position,ItemId,Count</sequence>
+	</param>
+
+	<!-- 元宝翻牌 -->
+	<param name="GoldPosition" handler="int|0|*"></param>
+	<param name="CostType" handler="int|0|*"></param>
+	<!-- 消耗类型(0免费,1铜钱，2元宝) -->
+	<param name="CostValue" handler="int|0|*"></param>
+	<param name="GoldItemArray" handler="array">
+		<sequence>Position,ItemId,Count,CostType,CostValue</sequence>
+	</param>
+
+	<!-- ********************英魂谱相关******************** -->
+	<!-- 曾有的武将configId -->
+	<param name="GeneralIdTableArray" handler="array">
+		<sequence>ConfigId</sequence>
+	</param>
+	<param name="TakeAwardGeneralCombosArray" handler="array">
+		<sequence>ConfigId</sequence>
+	</param>
+
+	<!-- ********************图腾相关******************** -->
+	<param name="TotemId" handler="int|0|*"></param>
+	<param name="TotemArray" handler="array">
+		<sequence>TotemId,Experience,Level,IsEnableWithCurrency</sequence>
+	</param>
+
+	<!-- ********************庄园相关******************** -->
+	<param name="PrincessName" handler="string" />
+	<param name="Favors" handler="int|0|*"></param>
+	<param name="ProtectedCDTime" handler="int|0|*"></param>
+	<!-- PropertyKey为女仆属性表id -->
+	<param name="PrincessPropertyArray" handler="array">
+		<sequence>PropertyKey,Level,Experience</sequence>
+	</param>
+	<!-- ID为公主配置表ID, UserName为抢女仆的玩家名字, State为1表示能激活，否则不能激活 ProtectedTime为保护器剩余时间 -->
+	<param name="PrincessInfoArray" handler="array">
+		<sequence>ID,PrincessName,Favors,UserName,UserId,EscapeCDTime,State,ProtectedCDTime
+		</sequence>
+	</param>
+	<!-- ID为珍宝阁配置表ID,State(1):能开始;(2):cd中;(3):完成能领奖 -->
+	<param name="TreasureArray" handler="array">
+		<sequence>ID,State</sequence>
+	</param>
+	<!-- 1,在锁定中 -->
+	<param name="IsLock" handler="int|0|1"></param>
+	<!-- 幽阁中女仆的信息,ID是女仆id -->
+	<param name="SlavePrincessArray" handler="array">
+		<sequence>ID,UserName,UserId,PrincessName,Favors,EscapeCDTime,IsLock
+		</sequence>
+	</param>
+	<!-- 自动归还女仆cd时间 -->
+	<param name="EscapeCDTime" handler="int|0|*"></param>
+	<!-- 推荐女仆 -->
+	<!-- State为1表示正在被抢,State为2表示已经被抢,State为0表示可以被抢 -->
+	<param name="RecommendPrincessArray" handler="array">
+		<sequence>ID,UserName,UserId,PrincessName,State,Favors</sequence>
+	</param>
+	<!-- 仇家女仆 -->
+	<!-- State为1表示正在被抢,State为2表示已经被抢,State为3表示正在被抢的保护期,State为0表示可以被抢 -->
+	<param name="EnemyPrincessArray" handler="array">
+		<sequence>ID,UserName,PrincessName,State</sequence>
+	</param>
+	<!-- 女仆日志 -->
+	<param name="PrincessLogArray" handler="array">
+		<sequence>Type,UserName,PrincessName,DeltaTime</sequence>
+	</param>
+	<!-- BooleanValue为1表示求救的对象,为0表示抢女仆的对象 -->
+	<param name="ApplyUserArray" handler="array">
+		<sequence>UserId,UserName,Zhanli,UnitPropertyArray,Career</sequence>
+	</param>
+	<param name="HelperUserId" handler="int|0|*"></param>
+
+
+	<!-- ********************用户关系相关******************** -->
+	<param name="UserRelationArray" handler="array">
+		<!-- BooleanValue(1=在线) BooleanValue2(1=已经送过花) BooleanValue3(1=已经送过体力) -->
+		<sequence>UserId,UserName,Career,TransforId,Level,Vip,Zhanli,BooleanValue,BooleanValue2,BooleanValue3
+		</sequence>
+	</param>
+
+	<param name="GeneralMaxLevel" handler="int|0|*"></param>
+
+	<param name="PrincessId" handler="int|0|*"></param>
+	<!-- 英魂碎片Id -->
+	<param name="DebrisId" handler="int|0|*"></param>
+	<param name="CardEmployInfoArray" handler="array">
+		<sequence>ConfigId</sequence>
+	</param>
+
+	<!-- ******************* 排行榜相关 ******************** -->
+
+	<!-- ParamStr1:userName,ParamStr2:career,ParamStr3:相关排行榜对应的数值.ParamStr4:等级 -->
+	<!-- ParamStr1:家族名字,ParamStr2:家族等级,ParamStr3:帮主职业,ParamStr4:帮主名字,ParamStr5:帮主等级,ParamStr6:实力,ParamStr7:人数,ParamStr8:公告 -->
+	<!-- IDArray:玩家出战武将的ConfigId -->
+	<param name="RankArray" handler="array">
+		<sequence>ID,Ranking,ParamStr1,ParamStr2,ParamStr3,ParamStr4,ParamStr5,ParamStr6,ParamStr7,ParamStr8,ParamStr9,RankGeneralArray,Count,Vip
+		</sequence>
+	</param>
+	<!-- BooleanValue(1=主角，0=英雄) -->
+	<param name="RankGeneralArray" handler="array">
+		<sequence>ConfigId,Grade,StarLevel,Level</sequence>
+	</param>
+
+	<!-- ********************附件相关******************** -->
+	<param name="DeltaTime" handler="int|0|*"></param>
+	<!-- ID:附件ID, DeltaTime为生成了多长时间,ConfigId表示系统奖励提示id -->
+	<param name="AttachmentArray" handler="array">
+		<sequence>ID,ConfigId,ItemIdArray,DateTime</sequence>
+	</param>
+	<!-- 标记奖励是否能领取 0:不能 1：能 -->
+	<param name="CanTake" handler="int|0|1" />
+
+	<!-- ********************活动福利相关******************** -->
+	<!-- Place:位置,ID:登陆抽奖表id -->
+	<param name="AlongLoginAwardArray" handler="array">
+		<sequence>Place,ID</sequence>
+	</param>
+	<!-- Place:位置,ID:登陆抽奖表id -->
+	<param name="SignAwardArray" handler="array">
+		<sequence>Place,ID</sequence>
+	</param>
+	<!-- 活动时间 Type: 运营活动=1, 系统活动=2 -->
+	<param name="RemainSecondsBegin" handler="int|0|*" />
+	<param name="RemainSecondsEnd" handler="int|0|*" />
+	<param name="ActivityInfoArray" handler="array">
+		<sequence>ConfigId,RemainSecondsBegin,RemainSecondsEnd,BooleanValue
+		</sequence>
+	</param>
+
+	<!-- ID:天数 State: 0:未领 1:已领 -->
+	<param name="FundStateArray" handler="array">
+		<sequence>ID,State</sequence>
+	</param>
+
+	<!-- state:1,可领;2,已领;3,时间未到;4,错过; -->
+	<param name="GiftArray" handler="array">
+		<sequence>ConfigId,State</sequence>
+	</param>
+
+	<param name="BeginTimeStr" handler="string" />
+	<param name="EndTimeStr" handler="string" />
+
+	<!-- CDKey -->
+	<param name="CDKey" handler="string" />
+
+	<!-- 世界boss 排行 -->
+	<param name="WorldBossRankingArray" handler="array">
+		<sequence>Ranking,UserName,Count</sequence>
+	</param>
+	<!-- 阵营 -->
+	<param name="Faction" handler="int|0|*" />
+	<!-- 加成buf -->
+	<param name="BufArray" handler="array">
+		<sequence>Type,Value</sequence>
+	</param>
+	<!-- 奖励货币 -->
+	<param name="FactionAwardArray" handler="array">
+		<sequence>Type,Value</sequence>
+	</param>
+	<param name="FactionTotalAwardArray" handler="array">
+		<sequence>Type,Value</sequence>
+	</param>
+	<!-- 杀神奖励 -->
+	<param name="TopKillerAwardArray" handler="array">
+		<sequence>Type,Value</sequence>
+	</param>
+	<!-- TotalKill最高杀人,FactionComboKill连杀,TopFactionComboKill最高连杀,TopKillerFaction杀神阵营 -->
+	<param name="TotalKill" handler="int|0|*" />
+	<param name="FactionComboKill" handler="int|0|*" />
+	<param name="TopFactionComboKill" handler="int|0|*" />
+	<param name="TopKillerUserName" handler="string" />
+	<param name="TopKillerFaction" handler="int|0|*" />
+	<!-- Place表示所在的区段 -->
+	<param name="TopKillerArray" handler="array">
+		<sequence>Place,TopKillerUserName,Count,TopKillerFaction</sequence>
+	</param>
+	<!-- 阵营战结束cd时间 -->
+	<param name="FactionCDTime" handler="int|0|*" />
+	<!-- 1,侠积分.2,王积分 -->
+	<param name="Integral1" handler="int|0|*" />
+	<param name="Integral2" handler="int|0|*" />
+	<!-- 1,侠阵营玩家信息.2,王阵营.Place表示所在的区段 -->
+	<param name="FactionUserArray1" handler="array">
+		<sequence>UserName,Level,Place</sequence>
+	</param>
+	<param name="FactionUserArray2" handler="array">
+		<sequence>UserName,Level,Place</sequence>
+	</param>
+	<!-- Param1表示玩家1的阵营,Parma2表示玩家2的阵营 -->
+	<param name="RecordArray" handler="array">
+		<sequence>ID,ParamStr1,ParamStr2,ParamStr3,ParamStr4,Param1,Param2
+		</sequence>
+	</param>
+	<!-- Count为可购回次数 -->
+	<param name="OfflineCountArray" handler="array">
+		<sequence>ID,Count
+		</sequence>
+	</param>
+
+	<!-- ******************* 观星相关 ******************** -->
+	<param name="StarId" handler="int|0|*" />
+	<param name="DestStarId" handler="int|0|*" />
+	<!-- 星库中的星星 -->
+	<!-- StarId为星星在数据库中的主键，ConfigId为星星在excel表中的id，place为星星的位置 -->
+	<param name="StarLibArray" handler="array">
+		<sequence>StarId,ConfigId,Place,Experience</sequence>
+	</param>
+	<!-- ConfigId为星星在excel表中的id，GeneralIdTable为星星在哪个武将上 -->
+	<param name="LookUpStarLibArray" handler="array">
+		<sequence>ConfigId,GeneralIdTable,Level</sequence>
+	</param>
+	<param name="FriendLogArray" handler="array">
+		<sequence>ID,ParamStr1,ParamStr2,ParamStr3,Time</sequence>
+	</param>
+
+	<!-- 一键观星的星星 -->
+	<!-- ID:表示从第几个星宿产出的,StarId为星星在数据库中的主键，ConfigId为星星在excel表中的id，place为星星的位置 -->
+	<param name="BatchObStarArray" handler="array">
+		<sequence>ID,StarId,ConfigId,Place,Experience</sequence>
+	</param>
+	<!-- 信息有变化的星星，包含新近包包的星星 -->
+	<!-- StarId为星星在数据库中的主键，place为星星的位置 -->
+	<param name="ChangeStarArray" handler="array">
+		<sequence>StarId,Place,Experience</sequence>
+	</param>
+	<!-- 删除的星星 -->
+	<!-- StarId为星星在数据库中的主键 -->
+	<param name="DelStarArray" handler="array">
+		<sequence>StarId</sequence>
+	</param>
+	<!-- 是否摘了全部的星星 -->
+	<param name="PickAllStars" handler="int|0|1" />
+	<param name="Huoyuedu" handler="int|0|*" />
+	<param name="FamilyLevel" handler="int|0|*" />
+	<param name="StandID" handler="int|0|*" />
+	<param name="Agree" handler="int|0|*" />
+	<param name="IsApplied" handler="int|0|*" />
+	<param name="FamilyName" handler="string" />
+	<param name="FamilyLeader" handler="string" />
+	<param name="Notice" handler="string" />
+	<param name="InviterName" handler="string" />
+	<!-- ConfigId帮主职业 -->
+	<param name="FamilyInfoArray" handler="array">
+		<sequence>FamilyId,FamilyName,Ranking,FamilyLevel,UserId,UserName,ConfigId,Count,IsApplied
+		</sequence>
+	</param>
+	<!-- ConfigId职业 -->
+	<param name="ChangeMemberArray" handler="array">
+		<sequence>UserId,UserName,FamilyPositionId,ConfigId</sequence>
+	</param>
+	<!-- ConfigId为职业,Huoyuedu为总活跃度 -->
+	<param name="MemberArray" handler="array">
+		<sequence>UserId,UserName,ConfigId,Level,FamilyPositionId,Huoyuedu,Zhanli,Time,Vip
+		</sequence>
+	</param>
+	<!-- configId为职业id -->
+	<param name="SceneMemberArray" handler="array">
+		<sequence>UserId,UserName,ConfigId,Vip
+		</sequence>
+	</param>
+	<!-- Ranking为论剑排名 -->
+	<param name="ApplierArray" handler="array">
+		<sequence>UserId,UserName,Level,Ranking,ConfigId,Vip</sequence>
+	</param>
+	<param name="FamilyLogArray" handler="array">
+		<sequence>ID,ParamStr1,ParamStr2,ParamStr3,Time</sequence>
+	</param>
+	<!-- 当前任务的进度为CurrentCount/MaxCount -->
+	<param name="FamilyTaskTotalCountArray" handler="array">
+		<sequence>Place,TaskId,CurrentCount,MaxCount</sequence>
+	</param>
+	<!-- 当前任务的进度为CurrentCount/MaxCount,Count表示我捐了几个 -->
+	<param name="FamilyTaskCountArray" handler="array">
+		<sequence>Place,TaskId,CurrentCount,MaxCount,Count</sequence>
+	</param>
+
+	<param name="BathroomId" handler="int|0|*" />
+	<param name="BathroomArray" handler="array">
+		<sequence>BathroomId,UserName,Career,Level</sequence>
+	</param>
+
+	<param name="IDAndStateArray" handler="array">
+		<sequence>ID,State,Time</sequence>
+	</param>
+
+	<!-- ******************* 帮派相关 ******************** -->
+	<param name="FamilyMemberArray" handler="array">
+		<sequence>UserName,Level,UserId</sequence>
+	</param>
+	<!-- ConfigId为卡牌excel表id,Count为已被雇佣次数,UserCount为玩家使用此卡牌的次数,Time为派遣的时间,UserName为玩家名字 -->
+	<param name="EmployArray" handler="array">
+		<sequence>GeneralId,ConfigId,Level,Grade,StarLevel,Zhanli,Count,UserCount,Time,UserName
+		</sequence>
+	</param>
+	<!-- Type:1(增),2(删),3(改) -->
+	<param name="ChangeEmployArray" handler="array">
+		<sequence>Type,GeneralId,ConfigId,Level,Grade,StarLevel,Zhanli,Count,Time,UserName
+		</sequence>
+	</param>
+	<!-- ******************* 组队副本相关 ******************** -->
+	<!-- ConfigId表示excel表副本id,BooleanValue为1表示能进入,CaptainName是房主的名字 -->
+	<param name="BattleRoomArray" handler="array">
+		<sequence>ID,IsFull,ConfigId,BooleanValue,CaptainName</sequence>
+	</param>
+	<!-- BooleanValue为1表示房主 -->
+	<param name="RoomMemberArray" handler="array">
+		<sequence>BooleanValue,UserName,Level,Career,UserId</sequence>
+	</param>
+	<param name="FriendArray" handler="array">
+		<sequence>UserName,Level,Vip,UserId,Career,TransforId</sequence>
+	</param>
+	<param name="TeamInviteUserArray" handler="array">
+		<sequence>UserName,Level,UserId</sequence>
+	</param>
+
+	<!-- GeneralIdTable为英魂配置表id,Count为当前拥有英魂的数量 -->
+	<param name="GeneralComboBufArray" handler="array">
+		<sequence>GeneralIdTable,Count</sequence>
+	</param>
+	<param name="IsFull" handler="int|0|1" />
+	<!-- 队长 -->
+	<param name="CaptainUserId" handler="int|0|*" />
+	<param name="SevenDayRewardArray" handler="array">
+		<!-- ID State:0-未领取1-已领取2-可领 -->
+		<sequence>ID,State</sequence>
+	</param>
+	<param name="CaptainName" handler="string" />
+
+	<param name="ConditionID" handler="int|0|*" />
+	<param name="Group" handler="int|0|*" />
+	
+	<!-- 模版ID -->
+	<param name="TemplateId" handler="int|0|*" />
+
+	<param name="OperationActivityArray" handler="array">
+		<!-- ID Value:ArtID BooleanValue:0-不能领奖 1-可以领奖 Type:活动时间类型   TemplateId:模版ID Content:活动描述 -->
+		<sequence>ID,Title,Value,Sort,BooleanValue,Type,BeginTime,EndTime,RemainSeconds,TemplateId,Content
+		</sequence>
+	</param>
+
+	<param name="OperationActivityDetailArray" handler="array">
+		<!-- ID BooleanValue:0-未领取1-已领取 -->
+		<sequence>ID,ActivityConditionArray</sequence>
+	</param>
+
+	<param name="ActivityConditionArray" handler="array">
+		<!-- BooleanValue(0=没有领取过, 1=已经领取过) Type:运营活动条件 -->
+		<sequence>ConditionID,ItemIdArray,Count,MaxCount,BooleanValue,Type,Param1,Param2,Param3,Group
+		</sequence>
+	</param>
+
+	<param name="PayAwardArray" handler="array">
+		<!-- State(0=没有领取过, 1=可以领取 2=已经领取过) -->
+		<sequence>ID,State</sequence>
+	</param>
+
+	<param name="MonsterInvadeArray" handler="array">
+		<!-- ID=唯一键 State:0-死亡 -1活着 -->
+		<sequence>ID,BattleFieldId,State,CoordinateX,CoordinateY</sequence>
+	</param>
+	<param name="MonsterId" handler="int|0|*" />
+
+	<param name="TurnTableArray" handler="array">
+		<sequence>ItemId,Count</sequence>
+	</param>
+
+	<!-- 家族领地战相关 -->
+
+	<!-- State(1=正在战斗，0=没有战斗) -->
+	<!-- 家族领地战相关 -->
+	<param name="PromotionPositionId" handler="int|0|*" />
+	<param name="PartAFamilyId" handler="int|0|*" />
+	<param name="PartAFamilyName" handler="string" />
+	<param name="PartAFamilyLevel" handler="int|0|*" />
+	<param name="PartBFamilyId" handler="int|0|*" />
+	<param name="PartBFamilyName" handler="string" />
+	<param name="PartBFamilyLevel" handler="int|0|*" />
+	<param name="WinFamilyId" handler="int|0|*" />
+
+	<!-- State: 0: 不在争夺 1：正在争夺 -->
+	<param name="ApplyFamilyWarInfoArray" handler="array">
+		<sequence>Place,FamilyId,FamilyName,State</sequence>
+	</param>
+	<!-- BooleanValue(1=已报名,0=未报名) BooleanValue2(1=已经部署了军队，0=没有部署军队) FamilyId(占领者) -->
+	<param name="MapInfoArray" handler="array">
+		<sequence>MapId,Count,BooleanValue,BooleanValue2,FamilyId,FamilyName
+		</sequence>
+	</param>
+
+	<param name="ArmyTeamArray" handler="array">
+		<sequence>MapId,ID,UserId,UserName,Level,Zhanli</sequence>
+	</param>
+
+	<param name="BattleInfoArray" handler="array">
+		<sequence>ID,BattleId,WinFamilyId</sequence>
+	</param>
+
+	<!-- BooleanValue(1=活着，0=死亡) -->
+	<param name="FamilyPromotionArray" handler="array">
+		<sequence>MapId,PromotionPositionId,FamilyId,FamilyName,BooleanValue
+		</sequence>
+	</param>
+	<param name="FamilyPromotionInfoArray" handler="array">
+		<sequence>ID,PartAFamilyId,PartAFamilyName,PartBFamilyId,PartBFamilyName,WinFamilyId,BattleInfoArray
+		</sequence>
+	</param>
+
+	<param name="BanquetInfoArray" handler="array">
+		<sequence>ID,UserId,UserName,Type,RemainSeconds,Count</sequence>
+	</param>
+	<param name="UserIdNameArray" handler="array">
+		<sequence>UserId,UserName,Career,Level</sequence>
+	</param>
+	<param name="HeatWineArray" handler="array">
+		<sequence>UserName,Count</sequence>
+	</param>
+
+	<!-- ******************* 银域争霸战相关 ******************** -->
+	<param name="BufValue" handler="int|0|*" />
+	<!-- 堡垒的配置表id -->
+	<param name="FortId" handler="int|0|*" />
+	<!-- 占领碉堡倒计时 -->
+	<param name="HoldCDTime" handler="int|0|*" />
+	<!-- 领取奖励倒计时 -->
+	<param name="TakeAwardCDTime" handler="int|0|*" />
+	<!-- 马车的配置表id -->
+	<param name="CarriageId" handler="int|0|*" />
+	<!-- Place地域中点的位置 -->
+	<param name="CarriageArray" handler="array">
+		<sequence>CarriageId,Place</sequence>
+	</param>
+	<!-- BooleanValue为1表示正在被抢 -->
+	<param name="FortArray" handler="array">
+		<sequence>FortId,UserId,UserName,BooleanValue</sequence>
+	</param>
+	<!-- 占领碉堡次数 -->
+	<param name="RemainSnatchCount" handler="int|0|*" />
+	<!-- 鼓舞次数 -->
+	<param name="AddBufCount" handler="int|0|*" />
+	<!-- 日志 -->
+	<param name="FortGameLogArray" handler="array">
+		<sequence>ParamStr1,ParamStr2</sequence>
+	</param>
+	<param name="GloableDataArray" handler="array">
+		<sequence>ID,UserId,UserName,Level</sequence>
+	</param>
+
+	<!-- ******************* 邀请码相关 ******************** -->
+	<!-- 没有接受邀请的位置不在InviteArray中 -->
+	<!-- 邀请礼包array.Count第几天,BooleanValue为是否赠送(1为是),BooleanValue2为是否领奖(1为是),Time为接受邀请的时间 -->
+	<param name="InviteArray" handler="array">
+		<sequence>UserId,UserName,Level,Career,Count,BooleanValue,BooleanValue2,Time
+		</sequence>
+	</param>
+	<!-- Level为接受邀请后每天到达的等级,Count第几天,BooleanValue为是否赠送(1为是) -->
+	<param name="BeInvitedArray" handler="array">
+		<sequence>Count,Level,BooleanValue</sequence>
+	</param>
+
+	<!-- 攻击距离 -->
+	<param name="AttackDistance" handler="int|0|*" />
+	<param name="BattleUnitPropertyArray" handler="array">
+		<sequence>BattleUnitID,CurrentRage,Level,UnitPropertyArray</sequence>
+	</param>
+	<!-- Round=波数 -->
+	<param name="BattleUnitIDArray" handler="array">
+		<sequence>MonsterId,Round,BattleUnitID,Place,Level</sequence>
+	</param>
+	<param name="Round" handler="int|0|*" />
+	<param name="SmallRound" handler="int|0|*" />
+
+	<param name="BattleFieldAttackRecordArray" handler="array">
+		<sequence>Time,Index,BattleUnitID,SkillId,Count,HurtEffectArray,HurtArray
+		</sequence>
+	</param>
+	<param name="Index" handler="int|1|*" />
+	<param name="IndexArray" handler="array">
+		<sequence>Index</sequence>
+	</param>
+	<param name="HurtArray" handler="array">
+		<sequence>BattleUnitID,ChangeValue,AttackStage,HurtEffectArray
+		</sequence>
+	</param>
+	<param name="HurtEffectArray" handler="array">
+		<sequence>EffectId,EffectValue</sequence>
+	</param>
+	<param name="AttackStage" handler="int|0|*" />
+	<param name="BaseAttack" handler="int|0|*" />
+	<param name="BaseDefence" handler="int|0|*" />
+	<param name="BaseHp" handler="int|0|*" />
+	<param name="PetLevel" handler="int|0|*" />
+	<!-- 宠物属性序列 -->
+	<param name="PetPropertyArray" handler="array">
+		<sequence>PropertyKey,PropertyValue</sequence>
+	</param>
+	<param name="CheckBattleUnitArray" handler="array">
+		<sequence>BattleUnitID,BaseAttack,BaseDefence,BaseHp,UnitPropertyArray
+		</sequence>
+	</param>
+	<param name="CartoonTime" handler="int|0|*" />
+	<!-- Time:间隔时间，CartoonTime:动画时间 -->
+	<param name="SkillCDArray" handler="array">
+		<sequence>SkillId,Time,CartoonTime</sequence>
+	</param>
+
+	<!-- 英魂限时招募 -->
+	<param name="ActivityEmployScore" handler="int|0|*" />
+	<param name="ActivityEmployRankingArray" handler="array">
+		<sequence>UserId,UserName,Ranking,ActivityEmployScore</sequence>
+	</param>
+	<param name="ActivityEmployAwardArray" handler="array">
+		<sequence>ParamStr1,ItemIdArray</sequence>
+	</param>
+	<param name="ErrorMessageArray" handler="array">
+		<sequence>ErrorMessage</sequence>
+	</param>
+
+	<param name="TypeAndTimeArray" handler="array">
+		<sequence>ByteType,Time</sequence>
+	</param>
+
+	<!-- 好友 -->
+	<param name="Flower" handler="int|0|*" />
+	<param name="FlowerHistoryArray" handler="array">
+		<sequence>UserId,UserName,TargetUserId,TargetUserName,Type,Time
+		</sequence>
+	</param>
+
+	<param name="RoundItemIdArray" handler="array">
+		<sequence>Round,ItemIdArray</sequence>
+	</param>
+
+	<param name="CDTimeArray" handler="array">
+		<sequence>Type,Time</sequence>
+	</param>
+
+	<param name="PlaceGeneralIdArray" handler="array">
+		<sequence>Place,GeneralId</sequence>
+	</param>
+
+	<param name="GeneralStateArray" handler="array">
+		<sequence>BattleUnitID,CurrentHP,CurrentMP</sequence>
+	</param>
+
+	<param name="TargetStateArray" handler="array">
+		<sequence>BattleUnitID,CurrentHP,CurrentMP</sequence>
+	</param>
+
+
+	<!-- 打点专用 -->
+	<param name="DCParamStr" handler="string" />
+
+	<!-- 小红点 ID(对应功能开启表的id) -->
+	<param name="RedPointArray" handler="array">
+		<sequence>ID</sequence>
+	</param>
+
+	<param name="NoticeBarArray" handler="array">
+		<sequence>ID,Content,Time</sequence>
+	</param>
+
+	<param name="YXZStrongPointArray" handler="array">
+		<sequence>ID,StrongPointId,Count,TotalCount,State,StarLevel</sequence>
+	</param>
+
+	<!-- 分享装备 -->
+	<param name="ShareEquipArray" handler="array">
+		<sequence>GeneralId,ItemId</sequence>
+	</param>
+
+	<!-- 答题排名 -->
+	<param name="RankingArray" handler="array">
+		<sequence>Ranking,UserName,Score</sequence>
+	</param>
+
+	<!-- 公告列表 -->
+	<param name="NoticeArray" handler="array">
+		<!-- Sort: 优先级 BooleanValue: 是否为新 -->
+		<sequence>ID,Title,Sort,BooleanValue</sequence>
+	</param>
+	
+	<param name="ChancellorArray" handler="array">
+		<!-- BooleanValue:是否膜拜过 -->
+		<sequence>ID,UserId,UserName,Level,TransforId,BooleanValue</sequence>
+	</param>
+	
+	<param name="ChancellorStateArray" handler="array">
+		<!-- State: 0-正常状态  1-新官上任  2-战斗中 Time:剩余保护时间 -->
+		<sequence>ID,State,Time</sequence>
+	</param>
+	
+	<param name="UserDungeonArray" handler="array">
+		<sequence>ID,Param</sequence>
+	</param>
+	
+</params>
+
+
+
+

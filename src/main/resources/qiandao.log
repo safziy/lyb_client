@@ -1,0 +1,4 @@
+2015-11-12 19:04:38,695 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=24_5
+2015-11-12 19:04:38,695 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 24_5  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:04:38,696 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 用户货币[1003_8]  _pass  data={ FamilyContribute->3361:PhysicalPower->120:BooleanValue->1:StoryLineStar->38:Prestige->11269:Gold->730894:Score->185:Silver->7684924 } checkSequence=[sequence-size:↑][Gold:↑][Silver:↑][PhysicalPower:↑][Prestige:↑][Score:↑][FamilyContribute:↑][StoryLineStar:↑][BooleanValue:↑]
+2015-11-12 19:04:38,696 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 签到奖励[1024_4]  _pass  data={ Count->1:TotalCount->14:BooleanValue->1:Month->11 } checkSequence=[sequence-size:↑][Month:↑][Count:↑][BooleanValue:↑][TotalCount:↑]

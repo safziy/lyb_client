@@ -1,0 +1,104 @@
+2015-11-12 19:09:41,950 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=19_17
+2015-11-12 19:09:41,950 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 19_17  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:09:41,950 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 打开势力界面[1019_17]  _pass  data={ ID->10 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:09:43,043 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_8
+2015-11-12 19:09:43,043 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_8  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:09:43,053 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题数量分数[1029_8]  _pass  data={ Count->0:BooleanValue->0:RankingArray->[]:Score->0:Count2->0 } checkSequence=[sequence-size:↑][Count:↑][Count2:↑][Score:↑][BooleanValue:↑][RankingArray:↑]
+2015-11-12 19:09:46,593 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:09:46,594 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:09:46,595 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->39 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:09:48,818 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:09:48,818 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->4 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:09:48,831 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->0 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:09:51,932 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:09:51,932 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:09:51,932 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->253 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:09:52,785 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:09:52,785 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->3 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:09:52,786 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->0 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:09:55,865 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:09:55,865 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:09:55,865 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->244 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:09:56,729 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:09:56,730 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->4 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:09:56,730 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->0 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:09:59,832 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:09:59,832 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:09:59,832 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->191 } checkSequence=[sequence-size:↑][ID:↑]
+19:10:00.000 [PandoraQuartzScheduler_QuartzSchedulerThread] DEBUG org.quartz.simpl.SimpleJobFactory - Producing instance of Job 'default.Per5MinutesJob', class=com.youlongqingfeng.yanhuang.tasks.timer.Per5MinutesJob
+19:10:00.000 [PandoraQuartzScheduler_Worker-2] DEBUG org.quartz.core.JobRunShell - Calling execute on job default.Per5MinutesJob
+2015-11-12 19:10:00,506 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:10:00,506 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->4 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:10:00,506 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->0 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:10:03,599 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:10:03,599 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:10:03,600 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->231 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:10:04,210 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:10:04,210 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->3 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:10:04,210 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->0 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:10:07,299 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:10:07,299 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:10:07,300 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->61 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:10:07,917 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:10:07,917 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->2 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:10:07,918 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->0 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:10:10,999 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:10:10,999 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:10:10,999 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->155 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:10:11,530 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:10:11,530 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->2 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:10:11,530 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->0 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:10:14,603 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:10:14,603 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:10:14,603 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->226 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:10:15,337 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:10:15,338 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->4 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:10:15,338 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->0 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:10:18,440 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:10:18,440 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:10:18,440 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->237 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:10:19,146 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:10:19,146 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->2 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:10:19,146 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->0 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:10:22,248 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:10:22,248 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:10:22,248 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->80 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:10:22,738 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:10:22,738 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->3 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:10:22,738 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->0 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:10:25,814 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:10:25,814 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:10:25,814 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->224 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:10:26,522 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:10:26,522 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->2 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:10:26,522 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->0 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:10:29,623 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:10:29,623 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:10:29,624 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->297 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:10:30,153 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:10:30,153 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->2 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:10:30,154 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->0 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:10:33,223 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:10:33,224 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:10:33,224 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->239 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:10:33,681 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:10:33,681 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->1 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:10:33,681 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->6 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:10:36,770 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:10:36,770 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:10:36,770 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->48 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:10:37,182 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:10:37,182 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->3 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:10:37,182 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->6 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:10:40,262 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_9
+2015-11-12 19:10:40,262 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_9  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:10:40,263 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 题目[1029_9]  _pass  data={ ID->255 } checkSequence=[sequence-size:↑][ID:↑]
+2015-11-12 19:10:40,938 INFO    SOCKET_SERVER |decode  , packageLength=12 actualPackageLength=12 命令=29_10
+2015-11-12 19:10:40,938 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_10  _pass  data={ Value->2 } checkSequence=[sequence-size:↑][Value:↑]
+2015-11-12 19:10:40,938 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 答题结果[1029_10]  _pass  data={ Value->1:ID->0:Score->6 } checkSequence=[sequence-size:↑][Score:↑][Value:↑][ID:↑]
+2015-11-12 19:10:45,170 INFO    SOCKET_SERVER |decode  , packageLength=8 actualPackageLength=8 命令=29_11
+2015-11-12 19:10:45,170 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 decodeAndCheck 中 processKey is 29_11  _pass  data={  } checkSequence=[sequence-size:↑]
+2015-11-12 19:10:45,171 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 同步背包所有数据[1009_1]  _pass  data={ BooleanValue2->1:Type->2:UserItemArray->[{ Place->75:ItemId->1015004:Count->4:IsUsing->0:UserItemId->2003100861492 }, { Place->52:ItemId->1014001:Count->308:IsUsing->0:UserItemId->2003100395336 }, { Place->24:ItemId->1012001:Count->183:IsUsing->0:UserItemId->2003100855502 }] } checkSequence=[sequence-size:↑][[sequence-size:↑][UserItemId:↑][ItemId:↑][Count:↑][IsUsing:↑][Place:↑][sequence-size:↑][UserItemId:↑][ItemId:↑][Count:↑][IsUsing:↑][Place:↑][sequence-size:↑][UserItemId:↑][ItemId:↑][Count:↑][IsUsing:↑][Place:↑]UserItemArray:↑][Type:↑][BooleanValue2:↑]
+2015-11-12 19:10:45,171 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 同步任务详细[1008_1]  _pass  data={ TaskMapArray->[{ Param->0:MainType->3:Type->0:ID->300162:TaskConditionArray->[{ Count->0:MaxCount->1:ConditionUUID->30016245091 }]:TaskState->2 }] } checkSequence=[sequence-size:↑][[sequence-size:↑][ID:↑][MainType:↑][TaskState:↑][Type:↑][Param:↑][[sequence-size:↑][ConditionUUID:↑][Count:↑][MaxCount:↑]TaskConditionArray:↑]TaskMapArray:↑]
+2015-11-12 19:10:45,172 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回 用户货币[1003_8]  _pass  data={ FamilyContribute->3361:PhysicalPower->102:BooleanValue->1:StoryLineStar->41:Prestige->11369:Gold->730894:Score->185:Silver->7687164 } checkSequence=[sequence-size:↑][Gold:↑][Silver:↑][PhysicalPower:↑][Prestige:↑][Score:↑][FamilyContribute:↑][StoryLineStar:↑][BooleanValue:↑]
+2015-11-12 19:10:45,172 INFO    MESSAGE_PROCESSOR_LOG |-1091262792 checkAndEncode 中 processKey->返回  玩家常修改属性[1003_17]  _pass  data={ Experience->3780:Vip->21420:Level->45 } checkSequence=[sequence-size:↑][Vip:↑][Level:↑][Experience:↑]

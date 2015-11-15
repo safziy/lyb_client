@@ -1,0 +1,146 @@
+package com.lyb.client.message.protocol;
+
+import com.lyb.client.message.IMessage;
+import com.lyb.client.net.Data;
+import com.lyb.client.utils.DummyUtils;
+import com.lyb.client.message.protocol.segment.*;
+import com.lyb.client.message.MessageParameterContext;
+import com.lyb.client.message.handler.IntMessageParameterHandler;
+import com.lyb.client.message.handler.LongMessageParameterHandler;
+
+/**
+ * ${desc}
+ *
+ * @author codeGenerator
+ * 
+ */
+#set( $this = "className")
+@SuppressWarnings("unused")
+public class Message_${main}_$sub implements IMessage {
+
+	private static int MAIN = $main;
+	private static int SUB = $sub;
+	private static String MESSAGE_KEY = DummyUtils.getCompositeKey($main, $sub);
+
+#foreach( $item in $varList )
+	private $item.get("def") $item.get("name");
+#end
+
+#foreach( $item in $varList )
+#if($item.get("def").equals("int"))
+	private static IntMessageParameterHandler $item.get("name")Handler = MessageParameterContext.getInstance().getIntMessageParameterHandler("$item.get("handlerName")");
+#end
+#if($item.get("def").equals("long"))
+	private static LongMessageParameterHandler $item.get("name")Handler = MessageParameterContext.getInstance().getLongMessageParameterHandler("$item.get("handlerName")");
+#end
+#end
+
+	public static Message_${main}_$sub create() {
+		return new Message_${main}_${sub}();
+	}
+
+#foreach( $item in $varList )
+	/**
+	 * @return the $item.get("name")
+	 */
+	public $item.get("def") get$item.get("methedName")() {
+		return $item.get("name");
+	}
+
+	/**
+	 * @param $item.get("name")
+	 *            the $item.get("name") to set
+	 */
+	public void set$item.get("methedName")($item.get("def") $item.get("name")) {
+		this.$item.get("name") = $item.get("name");
+	}
+
+#end
+
+	/**
+	 * 编码
+	 */
+	@Override
+	public void encode(Data data) {
+#foreach( $item in $varList )
+#if ($item.get("def").equals("int")) 
+		data.writeInt(this.$item.get("name"));
+#end
+#if ($item.get("def").equals("long")) 
+		data.writeLong(this.$item.get("name"));
+#end
+#if ($item.get("def").equals("String")) 
+		data.writeString(this.$item.get("name"));
+#end
+#if (!$item.get("def").equals("String") && !$item.get("def").equals("long") && !$item.get("def").equals("int"))
+		${item.get("name")}.encode(data);
+#end
+#end	
+	}
+	
+	/**
+	 * 解码
+	 */
+	@Override
+	public void decode(Data data) {
+#foreach( $item in $varList )
+#if ($item.get("def").equals("int")) 
+		this.$item.get("name") = data.getInt();
+#end
+#if ($item.get("def").equals("long")) 
+		this.$item.get("name") = data.getLong();
+#end
+#if ($item.get("def").equals("String")) 
+		this.$item.get("name") = data.getString();
+#end
+#if (!$item.get("def").equals("String") && !$item.get("def").equals("long") && !$item.get("def").equals("int"))
+		$item.get("name") = ${item.get("def")}.create();
+		${item.get("name")}.decode(data);
+#end
+#end	
+	}
+
+	@Override
+	public boolean validate() {
+#foreach( $item in $varList )
+#if ($item.get("def").equals("long") || $item.get("def").equals("int"))
+		if (!${item.get("name")}Handler.validate($item.get("name"))) {
+			return false;
+		}
+#end
+#if (!$item.get("def").equals("String") && !$item.get("def").equals("long") && !$item.get("def").equals("int"))
+		if (!${item.get("name")}.validate()) {
+			return false;
+		}
+#end
+#end
+		return true;
+	}
+
+	@Override
+	public int getMain() {
+		return MAIN;
+	}
+
+	@Override
+	public int getSub() {
+		return SUB;
+	}
+
+	@Override
+	public String getMessageKey() {
+		return MESSAGE_KEY;
+	}
+	
+	public String toString() {
+		StringBuilder bb = new StringBuilder();
+#foreach( $item in $varList )
+#if (!$item.get("def").equals("String") && !$item.get("def").equals("long") && !$item.get("def").equals("int"))
+		bb.append("${item.get("name")}:").append(${item.get("name")}.toString())#if(${velocityHasNext}).append(", ")#end;
+#else
+		bb.append("${item.get("name")}:").append(this.$item.get("name"))#if(${velocityHasNext}).append(", ")#end;
+#end
+#end
+		return bb.toString();	
+	}
+}
