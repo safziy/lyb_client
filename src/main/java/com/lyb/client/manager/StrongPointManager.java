@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.lyb.client.constants.ApplicationConstants;
+import com.lyb.client.context.ConfigContext;
 import com.lyb.client.log.LogUtil;
 import com.lyb.client.message.protocol.Message_7_1;
 import com.lyb.client.model.InnerWork;
@@ -64,6 +65,13 @@ public class StrongPointManager {
 			return;
 		}
 		int strongPointId = nfsSet.iterator().next();
+		String levelLimit = ConfigContext.getInstance().getFileValue("Juqing_Guanka.lua", String.valueOf(strongPointId),
+				"jinruLv");
+		if (playerManager.getPlayerData().getLevel() < Integer.parseInt(levelLimit)) {
+			LogUtil.info("等级不够,无法继续挑战关卡");
+			return;
+		}
+
 		Message_7_1 message_7_1 = new Message_7_1();
 		message_7_1.setStrongPointId(strongPointId);
 
