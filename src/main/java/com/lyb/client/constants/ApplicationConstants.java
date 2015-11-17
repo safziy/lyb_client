@@ -187,6 +187,6 @@ public class ApplicationConstants {
 	// 默认命令间隔时间
 	public static final long DEFAULT_SLEEP_TIME = 3000;
 	// 战斗类型命令间隔时间
-	public static final long FIGHT_SLEEP_TIME = 90000;
+	public static final long FIGHT_SLEEP_TIME = 45000;
 
 }

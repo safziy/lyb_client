@@ -111,6 +111,9 @@ public class BattleManager {
 		case ApplicationConstants.BATTLE_TYPE_6:
 			playerManager.getShilianManager().battleOver();
 			break;
+		case ApplicationConstants.BATTLE_TYPE_9:
+			playerManager.getChaotangManager().battleOver();
+			break;
 		case ApplicationConstants.BATTLE_TYPE_10:
 			playerManager.getYXZManager().battleOver();
 			break;
