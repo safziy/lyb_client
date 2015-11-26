@@ -1,7 +1,7 @@
 ExcelLua.Bangpai_Jiazurizhi={{"id","type","txt"},
 key1={1,"创建帮派","<content><font color='#ffffff'>八方庆祝，</font><font color='#fff600'>@1</font><font color='#ffffff'>创建了帮派</font><font color='#ffa800'>@2</font><font color='#ffffff'>。</font></content>"},
 key2={2,"成员加入","<content><font color='#ffffff'>欢迎新伙伴</font><font color='#fff600'>@1</font><font color='#ffffff'>加入帮派。</font></content>"},
-key3={3,"成员离开","<content><font color='#ffffff'>小伙伴</font><font color='#fff600'>@1</font><font color='#ffffff'>悄悄的离开了帮派。</font></content>"},
+key3={3,"成员离开","<content><font color='#ffffff'>咱</font><font color='#fff600'>@1</font><font color='#ffffff'>离开了帮派，带走了他贡献的活跃。</font></content>"},
 key4={4,"公告修改","<content><font color='#ffffff'>咱</font><font color='#fff600'>@1</font><font color='#ffffff'>大人</font><font color='#ffa800'>@2</font><font color='#ffffff'>修改了公告。</font></content>"},
 key5={5,"升职","<content><font color='#ffffff'>咱</font><font color='#fff600'>@1</font><font color='#ffffff'>将</font><font color='#ffa800'>@2</font><font color='#ffffff'>的职位提升为副帮主。</font></content>"},
 key6={6,"降职","<content><font color='#ffffff'>咱</font><font color='#fff600'>@1</font><font color='#ffffff'>将</font><font color='#ffa800'>@2</font><font color='#ffffff'>降职了成帮众了。</font></content>"},

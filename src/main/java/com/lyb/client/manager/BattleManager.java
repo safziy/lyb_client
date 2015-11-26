@@ -120,6 +120,9 @@ public class BattleManager {
 		case ApplicationConstants.BATTLE_TYPE_12:
 			playerManager.getXunbaoManager().battleOver();
 			break;
+		case ApplicationConstants.BATTLE_TYPE_15:
+			playerManager.getDilaoManager().battleOver();
+			break;
 		default:
 			break;
 		}

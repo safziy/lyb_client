@@ -38,6 +38,7 @@ public class PlayerManager {
 	private ShilianManager shilianManager;
 	private XunbaoManager xunbaoManager;
 	private ChaotangManager chaotangManager;
+	private DilaoManager dilaoManager;
 
 	private Deque<PlayerWork> workQueue = new ConcurrentLinkedDeque<PlayerWork>();
 
@@ -60,6 +61,7 @@ public class PlayerManager {
 		shilianManager = new ShilianManager(this);
 		xunbaoManager = new XunbaoManager(this);
 		chaotangManager = new ChaotangManager(this);
+		dilaoManager = new DilaoManager(this);
 	}
 
 	public void write(IMessage message) {
@@ -125,20 +127,22 @@ public class PlayerManager {
 	}
 
 	public void initAllWork() {
-		// 十国
-		tenCountryManager.initWork();
-		// 竞技场
-		arenaManager.initWork();
-		// 答题
-		answerManager.initWork();
-		// 试练
-		shilianManager.initWork();
-		// 朝堂
-		chaotangManager.initWork();
-		// 关卡
-//		strongPointManager.initWork();
-		// 寻宝
-		xunbaoManager.initWork();
+		// // 十国
+		// tenCountryManager.initWork();
+		// // 竞技场
+		// arenaManager.initWork();
+		// 地牢
+		dilaoManager.initWork();
+		// // 答题
+		// answerManager.initWork();
+		// // 试练
+		// shilianManager.initWork();
+		// // 朝堂
+		// chaotangManager.initWork();
+		// // 关卡
+		// // strongPointManager.initWork();
+		// // 寻宝
+		// xunbaoManager.initWork();
 		// 英雄志
 		// yxzManager.initWork();
 	}
@@ -264,5 +268,9 @@ public class PlayerManager {
 
 	public ChaotangManager getChaotangManager() {
 		return chaotangManager;
+	}
+
+	public DilaoManager getDilaoManager() {
+		return dilaoManager;
 	}
 }

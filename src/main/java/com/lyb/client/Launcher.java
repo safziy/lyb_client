@@ -19,9 +19,11 @@ public class Launcher {
 		}
 
 //		 String serverIp = "127.0.0.1";
-//		 Client client = new Client(serverIp, 1, "f562", "0");
+//		 Client client = new Client(serverIp, 1, "f555", "0");
 		
 		String serverIp = "119.29.25.197";
+//		String serverIp = "119.29.27.206";
+//		String serverIp = "119.29.119.47";
 		Client client = new Client(serverIp, 100, "safziy", "mysafziy");
 		client.start();
 	}
