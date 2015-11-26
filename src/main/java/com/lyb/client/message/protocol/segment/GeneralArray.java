@@ -42,6 +42,7 @@ public class GeneralArray implements IMessageEncoder {
 			data.writeInt(item.getStarLevel());
 			data.writeInt(item.getExperience());
 			item.getFateLevelArray().encode(data);
+			item.getBingShuArray().encode(data);
 		}
 	}
 	
@@ -67,6 +68,8 @@ public class GeneralArray implements IMessageEncoder {
 			item.setExperience(data.getInt());
 			item.setFateLevelArray(FateLevelArray.create());
 			item.getFateLevelArray().decode(data);
+			item.setBingShuArray(BingShuArray.create());
+			item.getBingShuArray().decode(data);
 			list.add(item);
 		}
 	}
@@ -91,7 +94,7 @@ public class GeneralArray implements IMessageEncoder {
 		return item;
 	}
 
-	public GeneralArrayItem addData(long generalId, int configId, SkillArray skillArray, int level, int grade, int time, int isMainGeneral, int talentLevel, int wuxingLevel, int starLevel, int experience, FateLevelArray fateLevelArray) {
+	public GeneralArrayItem addData(long generalId, int configId, SkillArray skillArray, int level, int grade, int time, int isMainGeneral, int talentLevel, int wuxingLevel, int starLevel, int experience, FateLevelArray fateLevelArray, BingShuArray bingShuArray) {
 		GeneralArrayItem item = new GeneralArrayItem();
 		item.setGeneralId(generalId);
 		item.setConfigId(configId);
@@ -105,6 +108,7 @@ public class GeneralArray implements IMessageEncoder {
 		item.setStarLevel(starLevel);
 		item.setExperience(experience);
 		item.setFateLevelArray(fateLevelArray);
+		item.setBingShuArray(bingShuArray);
 		list.add(item);
 		return item;
 	}
@@ -141,6 +145,7 @@ public class GeneralArray implements IMessageEncoder {
 		private int starLevel;
 		private int experience;
 		private FateLevelArray fateLevelArray;
+		private BingShuArray bingShuArray;
 
 		private static LongMessageParameterHandler generalIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("GeneralId");
 		private static IntMessageParameterHandler configIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("ConfigId");
@@ -327,6 +332,20 @@ public class GeneralArray implements IMessageEncoder {
 			this.fateLevelArray = fateLevelArray;
 		}
 		/**
+		 * @return the bingShuArray
+		 */
+		public BingShuArray getBingShuArray() {
+			return bingShuArray;
+		}
+
+		/**
+		 * @param bingShuArray
+		 *            the bingShuArray to set
+		 */
+		public void setBingShuArray(BingShuArray bingShuArray) {
+			this.bingShuArray = bingShuArray;
+		}
+		/**
 		 * 编码
 		 */
 		@Override
@@ -343,6 +362,7 @@ public class GeneralArray implements IMessageEncoder {
 			data.writeInt(this.starLevel);
 			data.writeInt(this.experience);
 			fateLevelArray.encode(data);
+			bingShuArray.encode(data);
 		}
 		
 		
@@ -365,6 +385,8 @@ public class GeneralArray implements IMessageEncoder {
 			this.experience = data.getInt();
 			fateLevelArray = FateLevelArray.create();
 			fateLevelArray.decode(data);
+			bingShuArray = BingShuArray.create();
+			bingShuArray.decode(data);
 		}
 	
 		@Override
@@ -405,6 +427,9 @@ public class GeneralArray implements IMessageEncoder {
 			if (!fateLevelArray.validate()) {
 				return false;
 			}
+			if (!bingShuArray.validate()) {
+				return false;
+			}
 			return true;
 		}
 	
@@ -421,7 +446,8 @@ public class GeneralArray implements IMessageEncoder {
 			bb.append("wuxingLevel:").append(this.wuxingLevel).append(", ");
 			bb.append("starLevel:").append(this.starLevel).append(", ");
 			bb.append("experience:").append(this.experience).append(", ");
-			bb.append("fateLevelArray:").append(fateLevelArray.toString());
+			bb.append("fateLevelArray:").append(fateLevelArray.toString()).append(", ");
+			bb.append("bingShuArray:").append(bingShuArray.toString());
 			return bb.toString();	
 		}
 	}

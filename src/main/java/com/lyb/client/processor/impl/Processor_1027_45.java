@@ -5,15 +5,15 @@ import com.lyb.client.processor.*;
 import com.lyb.client.message.protocol.*;
 
 /**
- * 返回 查看卡牌列表
+ * 返回 打开帮派技能界面
  * 
  * @author codeGenerator
  * 
  */
-public class Processor_1006_1 extends IMessageProcessor<Message_1006_1> {
+public class Processor_1027_45 extends IMessageProcessor<Message_1027_45> {
 
 	@Override
-	public void execute(PlayerManager playerManager, Message_1006_1 message) throws Exception {
+	public void execute(PlayerManager playerManager, Message_1027_45 message) throws Exception {
 		
 	}
 }

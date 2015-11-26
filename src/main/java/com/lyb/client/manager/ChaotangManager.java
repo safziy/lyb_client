@@ -45,7 +45,8 @@ public class ChaotangManager {
 			// LogUtil.info("朝堂上" + item.getID() + "号位置站着的是" +
 			// item.getUserName() + ",等级" + item.getLevel() + "UserId"
 			// + item.getUserId());
-			if (ValidateUtils.isEqual(item.getBooleanValue(), 0) && ValidateUtils.isNotEqual(item.getUserId(), 0)) {
+			if (ValidateUtils.isEqual(item.getBooleanValue(), 0) && ValidateUtils.isNotEqual(item.getUserId(), 0)
+					&& ValidateUtils.isNotEqual(item.getUserId(), playerManager.getPlayerData().getUserId())) {
 				// 如果没有膜拜的话 就膜拜
 				Message_19_22 message_19_22 = new Message_19_22();
 				message_19_22.setID(item.getID());
@@ -131,6 +132,6 @@ public class ChaotangManager {
 	}
 
 	public void battleOver() {
-		openView();
+		// openView();
 	}
 }

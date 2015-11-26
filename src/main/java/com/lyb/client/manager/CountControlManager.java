@@ -29,4 +29,25 @@ public class CountControlManager {
 		CountControlData countControlData = countControlMap.get(key);
 		return countControlData.getTotalCount() - countControlData.getCurrentCount();
 	}
+
+	public int getBuyCount(int type, int param) {
+		String key = DummyUtils.getCompositeKey(type, param);
+		if (ValidateUtils.isFalse(countControlMap.containsKey(key))) {
+			return 0;
+		}
+		CountControlData countControlData = countControlMap.get(key);
+		return countControlData.getMaxAddCount() - countControlData.getAddCount();
+	}
+
+	public int getNeedGold(int type, int param) {
+		String key = DummyUtils.getCompositeKey(type, param);
+		if (ValidateUtils.isFalse(countControlMap.containsKey(key))) {
+			return 0;
+		}
+		CountControlData countControlData = countControlMap.get(key);
+		if (countControlData.getBuyCountNeedGold().contains(countControlData.getAddCount())) {
+			return countControlData.getBuyCountNeedGold().get(countControlData.getAddCount());
+		}
+		return countControlData.getBuyCountNeedGold().get(0);
+	}
 }

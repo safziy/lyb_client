@@ -9,38 +9,38 @@ import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.message.handler.LongMessageParameterHandler;
 
 /**
- * 返回 查看卡牌列表
+ * 返回 gm道具
  *
  * @author codeGenerator
  * 
  */
 @SuppressWarnings("unused")
-public class Message_1006_1 implements IMessage {
+public class Message_1009_16 implements IMessage {
 
-	private static int MAIN = 1006;
-	private static int SUB = 1;
-	private static String MESSAGE_KEY = DummyUtils.getCompositeKey(1006, 1);
+	private static int MAIN = 1009;
+	private static int SUB = 16;
+	private static String MESSAGE_KEY = DummyUtils.getCompositeKey(1009, 16);
 
-	private GeneralArray generalArray;
+	private GMItemArray gMItemArray;
 
 
-	public static Message_1006_1 create() {
-		return new Message_1006_1();
+	public static Message_1009_16 create() {
+		return new Message_1009_16();
 	}
 
 	/**
-	 * @return the generalArray
+	 * @return the gMItemArray
 	 */
-	public GeneralArray getGeneralArray() {
-		return generalArray;
+	public GMItemArray getGMItemArray() {
+		return gMItemArray;
 	}
 
 	/**
-	 * @param generalArray
-	 *            the generalArray to set
+	 * @param gMItemArray
+	 *            the gMItemArray to set
 	 */
-	public void setGeneralArray(GeneralArray generalArray) {
-		this.generalArray = generalArray;
+	public void setGMItemArray(GMItemArray gMItemArray) {
+		this.gMItemArray = gMItemArray;
 	}
 
 
@@ -49,7 +49,7 @@ public class Message_1006_1 implements IMessage {
 	 */
 	@Override
 	public void encode(Data data) {
-		generalArray.encode(data);
+		gMItemArray.encode(data);
 	}
 	
 	/**
@@ -57,13 +57,13 @@ public class Message_1006_1 implements IMessage {
 	 */
 	@Override
 	public void decode(Data data) {
-		generalArray = GeneralArray.create();
-		generalArray.decode(data);
+		gMItemArray = GMItemArray.create();
+		gMItemArray.decode(data);
 	}
 
 	@Override
 	public boolean validate() {
-		if (!generalArray.validate()) {
+		if (!gMItemArray.validate()) {
 			return false;
 		}
 		return true;
@@ -86,7 +86,7 @@ public class Message_1006_1 implements IMessage {
 	
 	public String toString() {
 		StringBuilder bb = new StringBuilder();
-		bb.append("generalArray:").append(generalArray.toString());
+		bb.append("gMItemArray:").append(gMItemArray.toString());
 		return bb.toString();	
 	}
 }

@@ -41,6 +41,7 @@ public class OperationActivityArray implements IMessageEncoder {
 			data.writeInt(item.getRemainSeconds());
 			data.writeInt(item.getTemplateId());
 			data.writeString(item.getContent());
+			data.writeInt(item.getArtId());
 		}
 	}
 	
@@ -63,6 +64,7 @@ public class OperationActivityArray implements IMessageEncoder {
 			item.setRemainSeconds(data.getInt());
 			item.setTemplateId(data.getInt());
 			item.setContent(data.getString());
+			item.setArtId(data.getInt());
 			list.add(item);
 		}
 	}
@@ -87,7 +89,7 @@ public class OperationActivityArray implements IMessageEncoder {
 		return item;
 	}
 
-	public OperationActivityArrayItem addData(long iD, String title, int value, int sort, int booleanValue, int type, int beginTime, int endTime, int remainSeconds, int templateId, String content) {
+	public OperationActivityArrayItem addData(long iD, String title, int value, int sort, int booleanValue, int type, int beginTime, int endTime, int remainSeconds, int templateId, String content, int artId) {
 		OperationActivityArrayItem item = new OperationActivityArrayItem();
 		item.setID(iD);
 		item.setTitle(title);
@@ -100,6 +102,7 @@ public class OperationActivityArray implements IMessageEncoder {
 		item.setRemainSeconds(remainSeconds);
 		item.setTemplateId(templateId);
 		item.setContent(content);
+		item.setArtId(artId);
 		list.add(item);
 		return item;
 	}
@@ -135,6 +138,7 @@ public class OperationActivityArray implements IMessageEncoder {
 		private int remainSeconds;
 		private int templateId;
 		private String content;
+		private int artId;
 
 		private static LongMessageParameterHandler iDHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("ID");
 		private static IntMessageParameterHandler valueHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Value");
@@ -145,6 +149,7 @@ public class OperationActivityArray implements IMessageEncoder {
 		private static IntMessageParameterHandler endTimeHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("EndTime");
 		private static IntMessageParameterHandler remainSecondsHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("RemainSeconds");
 		private static IntMessageParameterHandler templateIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("TemplateId");
+		private static IntMessageParameterHandler artIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("ArtId");
 
 		public static OperationActivityArrayItem create() {
 			OperationActivityArrayItem item = new OperationActivityArrayItem();
@@ -306,6 +311,20 @@ public class OperationActivityArray implements IMessageEncoder {
 			this.content = content;
 		}
 		/**
+		 * @return the artId
+		 */
+		public int getArtId() {
+			return artId;
+		}
+
+		/**
+		 * @param artId
+		 *            the artId to set
+		 */
+		public void setArtId(int artId) {
+			this.artId = artId;
+		}
+		/**
 		 * 编码
 		 */
 		@Override
@@ -321,6 +340,7 @@ public class OperationActivityArray implements IMessageEncoder {
 			data.writeInt(this.remainSeconds);
 			data.writeInt(this.templateId);
 			data.writeString(this.content);
+			data.writeInt(this.artId);
 		}
 		
 		
@@ -340,6 +360,7 @@ public class OperationActivityArray implements IMessageEncoder {
 			this.remainSeconds = data.getInt();
 			this.templateId = data.getInt();
 			this.content = data.getString();
+			this.artId = data.getInt();
 		}
 	
 		@Override
@@ -371,6 +392,9 @@ public class OperationActivityArray implements IMessageEncoder {
 			if (!templateIdHandler.validate(templateId)) {
 				return false;
 			}
+			if (!artIdHandler.validate(artId)) {
+				return false;
+			}
 			return true;
 		}
 	
@@ -386,7 +410,8 @@ public class OperationActivityArray implements IMessageEncoder {
 			bb.append("endTime:").append(this.endTime).append(", ");
 			bb.append("remainSeconds:").append(this.remainSeconds).append(", ");
 			bb.append("templateId:").append(this.templateId).append(", ");
-			bb.append("content:").append(this.content);
+			bb.append("content:").append(this.content).append(", ");
+			bb.append("artId:").append(this.artId);
 			return bb.toString();	
 		}
 	}

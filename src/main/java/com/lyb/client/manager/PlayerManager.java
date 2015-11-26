@@ -126,17 +126,17 @@ public class PlayerManager {
 
 	public void initAllWork() {
 		// 十国
-		// tenCountryManager.initWork();
+		tenCountryManager.initWork();
 		// 竞技场
-		// arenaManager.initWork();
+		arenaManager.initWork();
 		// 答题
-		// answerManager.initWork();
+		answerManager.initWork();
 		// 试练
-		// shilianManager.initWork();
+		shilianManager.initWork();
 		// 朝堂
-		// chaotangManager.initWork();
+		chaotangManager.initWork();
 		// 关卡
-		// strongPointManager.initWork();
+//		strongPointManager.initWork();
 		// 寻宝
 		xunbaoManager.initWork();
 		// 英雄志

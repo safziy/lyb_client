@@ -8,6 +8,7 @@ import com.lyb.client.context.ConfigContext;
 import com.lyb.client.log.LogUtil;
 import com.lyb.client.message.protocol.Message_7_1;
 import com.lyb.client.message.protocol.Message_8_11;
+import com.lyb.client.message.protocol.Message_8_14;
 import com.lyb.client.message.protocol.Message_8_6;
 import com.lyb.client.message.protocol.Message_8_7;
 import com.lyb.client.message.protocol.Message_8_8;
@@ -77,6 +78,16 @@ public class XunbaoManager {
 			break;
 		case 4:
 			LogUtil.info("本轮寻宝已完成");
+			int canBuyCount = playerManager.getCountControlManager().getBuyCount(
+					ApplicationConstants.COUNTCONTROL_TYPE_11, 0);
+			int needGold = playerManager.getCountControlManager().getNeedGold(
+					ApplicationConstants.COUNTCONTROL_TYPE_11, 0);
+			if (canBuyCount > 0 && playerManager.getPlayerData().getGold() >= needGold) {
+				PlayerWork work = new PlayerWork();
+				work.setDesc("开始重置寻宝");
+				work.getMessages().add(new Message_8_14());
+				playerManager.getWorkQueue().offerFirst(work);
+			}
 			break;
 		default:
 			break;

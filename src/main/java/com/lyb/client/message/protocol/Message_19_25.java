@@ -9,38 +9,39 @@ import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.message.handler.LongMessageParameterHandler;
 
 /**
- * 返回 查看卡牌列表
+ * 请求 刷新路线或马车
  *
  * @author codeGenerator
  * 
  */
 @SuppressWarnings("unused")
-public class Message_1006_1 implements IMessage {
+public class Message_19_25 implements IMessage {
 
-	private static int MAIN = 1006;
-	private static int SUB = 1;
-	private static String MESSAGE_KEY = DummyUtils.getCompositeKey(1006, 1);
+	private static int MAIN = 19;
+	private static int SUB = 25;
+	private static String MESSAGE_KEY = DummyUtils.getCompositeKey(19, 25);
 
-	private GeneralArray generalArray;
+	private int type;
 
+	private static IntMessageParameterHandler typeHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Type");
 
-	public static Message_1006_1 create() {
-		return new Message_1006_1();
+	public static Message_19_25 create() {
+		return new Message_19_25();
 	}
 
 	/**
-	 * @return the generalArray
+	 * @return the type
 	 */
-	public GeneralArray getGeneralArray() {
-		return generalArray;
+	public int getType() {
+		return type;
 	}
 
 	/**
-	 * @param generalArray
-	 *            the generalArray to set
+	 * @param type
+	 *            the type to set
 	 */
-	public void setGeneralArray(GeneralArray generalArray) {
-		this.generalArray = generalArray;
+	public void setType(int type) {
+		this.type = type;
 	}
 
 
@@ -49,7 +50,7 @@ public class Message_1006_1 implements IMessage {
 	 */
 	@Override
 	public void encode(Data data) {
-		generalArray.encode(data);
+		data.writeInt(this.type);
 	}
 	
 	/**
@@ -57,13 +58,12 @@ public class Message_1006_1 implements IMessage {
 	 */
 	@Override
 	public void decode(Data data) {
-		generalArray = GeneralArray.create();
-		generalArray.decode(data);
+		this.type = data.getInt();
 	}
 
 	@Override
 	public boolean validate() {
-		if (!generalArray.validate()) {
+		if (!typeHandler.validate(type)) {
 			return false;
 		}
 		return true;
@@ -86,7 +86,7 @@ public class Message_1006_1 implements IMessage {
 	
 	public String toString() {
 		StringBuilder bb = new StringBuilder();
-		bb.append("generalArray:").append(generalArray.toString());
+		bb.append("type:").append(this.type);
 		return bb.toString();	
 	}
 }

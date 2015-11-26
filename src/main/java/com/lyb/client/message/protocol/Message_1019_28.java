@@ -9,38 +9,38 @@ import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.message.handler.LongMessageParameterHandler;
 
 /**
- * 返回 查看卡牌列表
+ * 返回 掠夺界面需要同步的信息
  *
  * @author codeGenerator
  * 
  */
 @SuppressWarnings("unused")
-public class Message_1006_1 implements IMessage {
+public class Message_1019_28 implements IMessage {
 
-	private static int MAIN = 1006;
-	private static int SUB = 1;
-	private static String MESSAGE_KEY = DummyUtils.getCompositeKey(1006, 1);
+	private static int MAIN = 1019;
+	private static int SUB = 28;
+	private static String MESSAGE_KEY = DummyUtils.getCompositeKey(1019, 28);
 
-	private GeneralArray generalArray;
+	private PlunderArray plunderArray;
 
 
-	public static Message_1006_1 create() {
-		return new Message_1006_1();
+	public static Message_1019_28 create() {
+		return new Message_1019_28();
 	}
 
 	/**
-	 * @return the generalArray
+	 * @return the plunderArray
 	 */
-	public GeneralArray getGeneralArray() {
-		return generalArray;
+	public PlunderArray getPlunderArray() {
+		return plunderArray;
 	}
 
 	/**
-	 * @param generalArray
-	 *            the generalArray to set
+	 * @param plunderArray
+	 *            the plunderArray to set
 	 */
-	public void setGeneralArray(GeneralArray generalArray) {
-		this.generalArray = generalArray;
+	public void setPlunderArray(PlunderArray plunderArray) {
+		this.plunderArray = plunderArray;
 	}
 
 
@@ -49,7 +49,7 @@ public class Message_1006_1 implements IMessage {
 	 */
 	@Override
 	public void encode(Data data) {
-		generalArray.encode(data);
+		plunderArray.encode(data);
 	}
 	
 	/**
@@ -57,13 +57,13 @@ public class Message_1006_1 implements IMessage {
 	 */
 	@Override
 	public void decode(Data data) {
-		generalArray = GeneralArray.create();
-		generalArray.decode(data);
+		plunderArray = PlunderArray.create();
+		plunderArray.decode(data);
 	}
 
 	@Override
 	public boolean validate() {
-		if (!generalArray.validate()) {
+		if (!plunderArray.validate()) {
 			return false;
 		}
 		return true;
@@ -86,7 +86,7 @@ public class Message_1006_1 implements IMessage {
 	
 	public String toString() {
 		StringBuilder bb = new StringBuilder();
-		bb.append("generalArray:").append(generalArray.toString());
+		bb.append("plunderArray:").append(plunderArray.toString());
 		return bb.toString();	
 	}
 }

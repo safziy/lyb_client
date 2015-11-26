@@ -72,7 +72,7 @@ public class AnswerManager {
 		PlayerWork work = new PlayerWork();
 		work.getMessages().add(message_29_10);
 		work.setDesc("答题发送答案");
-		work.setMicroseconds(ApplicationConstants.FIGHT_SLEEP_TIME);
+		work.setMicroseconds(ApplicationConstants.DEFAULT_SLEEP_TIME);
 		playerManager.getWorkQueue().offerFirst(work);
 	}
 

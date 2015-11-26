@@ -9,38 +9,39 @@ import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.message.handler.LongMessageParameterHandler;
 
 /**
- * 返回 查看卡牌列表
+ * 请求 掠夺马车
  *
  * @author codeGenerator
  * 
  */
 @SuppressWarnings("unused")
-public class Message_1006_1 implements IMessage {
+public class Message_19_31 implements IMessage {
 
-	private static int MAIN = 1006;
-	private static int SUB = 1;
-	private static String MESSAGE_KEY = DummyUtils.getCompositeKey(1006, 1);
+	private static int MAIN = 19;
+	private static int SUB = 31;
+	private static String MESSAGE_KEY = DummyUtils.getCompositeKey(19, 31);
 
-	private GeneralArray generalArray;
+	private long userId;
 
+	private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserId");
 
-	public static Message_1006_1 create() {
-		return new Message_1006_1();
+	public static Message_19_31 create() {
+		return new Message_19_31();
 	}
 
 	/**
-	 * @return the generalArray
+	 * @return the userId
 	 */
-	public GeneralArray getGeneralArray() {
-		return generalArray;
+	public long getUserId() {
+		return userId;
 	}
 
 	/**
-	 * @param generalArray
-	 *            the generalArray to set
+	 * @param userId
+	 *            the userId to set
 	 */
-	public void setGeneralArray(GeneralArray generalArray) {
-		this.generalArray = generalArray;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 
@@ -49,7 +50,7 @@ public class Message_1006_1 implements IMessage {
 	 */
 	@Override
 	public void encode(Data data) {
-		generalArray.encode(data);
+		data.writeLong(this.userId);
 	}
 	
 	/**
@@ -57,13 +58,12 @@ public class Message_1006_1 implements IMessage {
 	 */
 	@Override
 	public void decode(Data data) {
-		generalArray = GeneralArray.create();
-		generalArray.decode(data);
+		this.userId = data.getLong();
 	}
 
 	@Override
 	public boolean validate() {
-		if (!generalArray.validate()) {
+		if (!userIdHandler.validate(userId)) {
 			return false;
 		}
 		return true;
@@ -86,7 +86,7 @@ public class Message_1006_1 implements IMessage {
 	
 	public String toString() {
 		StringBuilder bb = new StringBuilder();
-		bb.append("generalArray:").append(generalArray.toString());
+		bb.append("userId:").append(this.userId);
 		return bb.toString();	
 	}
 }

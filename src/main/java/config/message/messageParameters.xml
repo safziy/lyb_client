@@ -199,7 +199,20 @@
 	<param name="UserCount" handler="int|0|*" />
 	<param name="UserMaxCount" handler="int|0|*" />
 	<param name="Sort" handler="int|0|*" />
-
+	<param name="ArtId" handler="int|0|*" />
+	<param name="ItemName" handler="string" />
+	<param name="Color" handler="int|0|*" />
+	<param name="Overlap" handler="int|0|*" />
+	<param name="FunctionId" handler="int|0|*" />
+	<param name="Function" handler="string" />
+	<param name="Origin" handler="string" />
+	<param name="GMItemArray" handler="array">
+		<sequence>ItemId,ItemName,ArtId,Color,Price,Overlap,FunctionId,Function,Origin,Param1,Param2</sequence>
+	</param>
+	<param name="Tag" handler="int|0|*" />
+	<param name="ShopItemArray" handler="array">
+		<sequence>ID,Type,Tag,ItemId,Count,Sort,CurrencyType,Price,Param1</sequence>
+	</param>
 
 	<!-- 道具使用队列 当RemainSeconds为-1时代表此道具不关心时间过期 -->
 	<param name="ItemUseQueue" handler="array">
@@ -323,8 +336,11 @@
 	<!-- 英魂 -->
 	<param name="GeneralArray" handler="array">
 		<!-- ID为数据库的主键 Grade:品质等级(颜色) -->
-		<sequence>GeneralId,ConfigId,SkillArray,Level,Grade,Time,IsMainGeneral,TalentLevel,WuxingLevel,StarLevel,Experience,FateLevelArray
+		<sequence>GeneralId,ConfigId,SkillArray,Level,Grade,Time,IsMainGeneral,TalentLevel,WuxingLevel,StarLevel,Experience,FateLevelArray,BingShuArray
 		</sequence>
+	</param>
+	<param name="BingShuArray" handler="array">
+		<sequence>ID,Level,StrengthenLevel</sequence>
 	</param>
 	<param name="FateLevelArray" handler="array">
 		<sequence>ID,Level</sequence>
@@ -335,7 +351,7 @@
 	<!-- Type:1(增),2(删),3(改) -->
 	<param name="ChangeGeneralArray" handler="array">
 		<!-- ID为数据库的主键 Grade:品质等级(颜色) -->
-		<sequence>Type,GeneralId,ConfigId,SkillArray,Level,Experience,Grade,Time,TalentLevel,WuxingLevel,StarLevel,AddExp
+		<sequence>Type,GeneralId,ConfigId,SkillArray,Level,Experience,Grade,Time,TalentLevel,WuxingLevel,StarLevel,AddExp,BingShuArray
 		</sequence>
 	</param>
 	<!-- 英魂 -->
@@ -771,7 +787,7 @@
 	<!-- ********************用户关系相关******************** -->
 	<param name="UserRelationArray" handler="array">
 		<!-- BooleanValue(1=在线) BooleanValue2(1=已经送过花) BooleanValue3(1=已经送过体力) -->
-		<sequence>UserId,UserName,Career,TransforId,Level,Vip,Zhanli,BooleanValue,BooleanValue2,BooleanValue3
+		<sequence>UserId,UserName,Career,TransforId,Level,Vip,Zhanli,BooleanValue,BooleanValue2,BooleanValue3,Time
 		</sequence>
 	</param>
 
@@ -1030,8 +1046,8 @@
 	<param name="TemplateId" handler="int|0|*" />
 
 	<param name="OperationActivityArray" handler="array">
-		<!-- ID Value:ArtID BooleanValue:0-不能领奖 1-可以领奖 Type:活动时间类型   TemplateId:模版ID Content:活动描述 -->
-		<sequence>ID,Title,Value,Sort,BooleanValue,Type,BeginTime,EndTime,RemainSeconds,TemplateId,Content
+		<!-- ID Value:ArtID BooleanValue:0-不能领奖 1-可以领奖 Type:活动时间类型   TemplateId:模版ID Content:活动描述  ArtId:角标 -->
+		<sequence>ID,Title,Value,Sort,BooleanValue,Type,BeginTime,EndTime,RemainSeconds,TemplateId,Content,ArtId
 		</sequence>
 	</param>
 
@@ -1120,8 +1136,6 @@
 	<param name="HoldCDTime" handler="int|0|*" />
 	<!-- 领取奖励倒计时 -->
 	<param name="TakeAwardCDTime" handler="int|0|*" />
-	<!-- 马车的配置表id -->
-	<param name="CarriageId" handler="int|0|*" />
 	<!-- Place地域中点的位置 -->
 	<param name="CarriageArray" handler="array">
 		<sequence>CarriageId,Place</sequence>
@@ -1288,6 +1302,20 @@
 	
 	<param name="UserDungeonArray" handler="array">
 		<sequence>ID,Param</sequence>
+	</param>
+	<!-- ******************* 势力相关 ******************** -->
+	<!-- 马车的配置表id -->
+	<param name="CarriageId" handler="int|0|*" />
+	<!-- Place:为配置表路线的id,Time为剩余的秒数,Count为剩余的次数 -->
+	<param name="PlunderArray" handler="array">
+		<sequence>UserId,UserName,CarriageId,StartId,EndId,Time,Count</sequence>
+	</param>
+	<!-- 路线的起点和终点 -->
+	<param name="StartId" handler="int|0|*" />
+	<param name="EndId" handler="int|0|*" />
+	
+	<param name="ActivityArray" handler="array">
+		<sequence>Type,Param1,Param2,Param3,Value,BeginTime,EndTime,RemainSeconds</sequence>
 	</param>
 	
 </params>

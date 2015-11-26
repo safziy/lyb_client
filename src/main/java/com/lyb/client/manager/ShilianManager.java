@@ -63,7 +63,7 @@ public class ShilianManager {
 			int id = Integer.valueOf(row.get("id"));
 			int rowType = Integer.valueOf(row.get("type"));
 			int rowLevel = Integer.valueOf(row.get("level"));
-			if (ValidateUtils.isEqual(rowType, type) && playerManager.getPlayerData().getLevel() > rowLevel
+			if (ValidateUtils.isEqual(rowType, type) && playerManager.getPlayerData().getLevel() >= rowLevel
 					&& id > fightId) {
 				fightId = id;
 			}
