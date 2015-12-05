@@ -145,6 +145,15 @@ public class ApplicationConstants {
 	// 地牢
 	public static final byte BATTLE_TYPE_15 = 15;
 
+	// 主线剧情
+	public static final int GUANQIA_TYPE_1 = 1;
+	// 英雄志
+	public static final int GUANQIA_TYPE_2 = 2;
+	// 十国
+	public static final int GUANQIA_TYPE_3 = 3;
+	// 试炼
+	public static final int GUANQIA_TYPE_4 = 4;
+
 	/********************************** 次数控制 ***************************************/
 	// 好友送花
 	public static final int COUNTCONTROL_TYPE_1 = 1;
@@ -176,17 +185,22 @@ public class ApplicationConstants {
 	public static final int COUNTCONTROL_TYPE_14 = 14;
 	// 地牢每日次数
 	public static final int COUNTCONTROL_TYPE_15 = 15;
-	
-	/****************************时间冷却类型********************************************/
+
+	/**************************** 时间冷却类型 ********************************************/
 	// 竞技场
 	public static final int TIME_TYPE_1 = 1;
 	// 琅琊试炼
 	public static final int TIME_TYPE_2 = 2;
-	
-	
+
 	// 默认命令间隔时间
 	public static final long DEFAULT_SLEEP_TIME = 3000;
 	// 战斗类型命令间隔时间
-	public static final long FIGHT_SLEEP_TIME = 45000;
+	public static final long FIGHT_SLEEP_TIME = 30000;
+	
+	/**************************** 道具ID ********************************************/
+	// 扫荡券ID
+	public static final int ITEM_ID_1015003 = 1015003;
+	
+	public static final int ITEM_ID_1009002 = 1009002;
 
 }

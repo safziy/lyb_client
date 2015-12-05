@@ -4,7 +4,9 @@ import java.util.Deque;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
+import com.lyb.client.config.ConfigContainer;
 import com.lyb.client.constants.ApplicationConstants;
+import com.lyb.client.context.ConfigContext;
 import com.lyb.client.log.LogUtil;
 import com.lyb.client.message.IMessage;
 import com.lyb.client.message.protocol.Message_1_6;
@@ -12,10 +14,12 @@ import com.lyb.client.message.protocol.Message_2_1;
 import com.lyb.client.message.protocol.Message_2_11;
 import com.lyb.client.message.protocol.Message_2_13;
 import com.lyb.client.message.protocol.Message_2_7;
+import com.lyb.client.message.protocol.Message_9_15;
 import com.lyb.client.model.Client;
 import com.lyb.client.model.PlayerData;
 import com.lyb.client.model.PlayerWork;
 import com.lyb.client.model.RoleMessage;
+import com.lyb.client.utils.ValidateUtils;
 import com.safziy.commom.utils.TimeUtils;
 
 public class PlayerManager {
@@ -39,6 +43,7 @@ public class PlayerManager {
 	private XunbaoManager xunbaoManager;
 	private ChaotangManager chaotangManager;
 	private DilaoManager dilaoManager;
+	private ChoukaManager choukaManager;
 
 	private Deque<PlayerWork> workQueue = new ConcurrentLinkedDeque<PlayerWork>();
 
@@ -62,6 +67,7 @@ public class PlayerManager {
 		xunbaoManager = new XunbaoManager(this);
 		chaotangManager = new ChaotangManager(this);
 		dilaoManager = new DilaoManager(this);
+		choukaManager = new ChoukaManager(this);
 	}
 
 	public void write(IMessage message) {
@@ -127,24 +133,27 @@ public class PlayerManager {
 	}
 
 	public void initAllWork() {
-		// // 十国
-		// tenCountryManager.initWork();
-		// // 竞技场
-		// arenaManager.initWork();
+		// 十国
+		tenCountryManager.initWork();
+		// 竞技场
+		arenaManager.initWork();
 		// 地牢
 		dilaoManager.initWork();
-		// // 答题
-		// answerManager.initWork();
-		// // 试练
-		// shilianManager.initWork();
-		// // 朝堂
-		// chaotangManager.initWork();
-		// // 关卡
-		// // strongPointManager.initWork();
-		// // 寻宝
-		// xunbaoManager.initWork();
+		// 答题
+		answerManager.initWork();
+		// 试练
+		shilianManager.initWork();
+		// 朝堂
+		chaotangManager.initWork();
+		// 寻宝
+		xunbaoManager.initWork();
+		// 关卡
+		strongPointManager.initWork();
 		// 英雄志
-		// yxzManager.initWork();
+		yxzManager.initWork();
+		
+		// 来一波银两抽卡
+//		choukaManager.initWork();
 	}
 
 	public void work() {
@@ -167,6 +176,7 @@ public class PlayerManager {
 						break;
 					case ApplicationConstants.WORK_STATE_2:
 						if (work.checkActiveTime()) {
+							LogUtil.info(work.getDesc());
 							for (IMessage message : work.getMessages()) {
 								write(message);
 							}
@@ -273,4 +283,37 @@ public class PlayerManager {
 	public DilaoManager getDilaoManager() {
 		return dilaoManager;
 	}
+	
+	public ChoukaManager getChoukaManager() {
+		return choukaManager;
+	}
+
+	public boolean checkCanBuyTili() {
+		if (ValidateUtils.isFalse(ConfigContainer.getInstance().getConfigs().isAutoBuyTili())) {
+			return false;
+		}
+		int remainCount = getCountControlManager().getRemainCount(ApplicationConstants.COUNTCONTROL_TYPE_6, 0);
+		int needGold = Integer.parseInt(ConfigContext.getInstance().getFileValue("Shangdian_Shangdianwupin.lua",
+				String.valueOf(3000024), "price"));
+		if (remainCount > 0 && getPlayerData().getGold() >= needGold) {
+			return true;
+		}
+		return false;
+	}
+
+	public void buyTili() {
+		int remainCount = getCountControlManager().getRemainCount(ApplicationConstants.COUNTCONTROL_TYPE_6, 0);
+		int needGold = Integer.parseInt(ConfigContext.getInstance().getFileValue("Shangdian_Shangdianwupin.lua",
+				String.valueOf(3000024), "price"));
+		if (remainCount > 0 && getPlayerData().getGold() >= needGold) {
+			Message_9_15 message_9_15 = new Message_9_15();
+			message_9_15.setID(3000024);
+
+			PlayerWork work = new PlayerWork();
+			work.getMessages().add(message_9_15);
+			work.setDesc("购买并使用饺子");
+			workQueue.offerFirst(work);
+		}
+	}
+	
 }

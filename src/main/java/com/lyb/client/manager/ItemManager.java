@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.lyb.client.model.ItemData;
+import com.lyb.client.utils.ValidateUtils;
 
 public class ItemManager {
 	@SuppressWarnings("unused")
@@ -17,6 +18,16 @@ public class ItemManager {
 
 	public Map<Long, ItemData> getItemDataMap() {
 		return itemDataMap;
+	}
+
+	public int getItemCountByItemId(int itemId) {
+		int count = 0;
+		for (ItemData itemData : itemDataMap.values()) {
+			if (ValidateUtils.isEqual(itemData.getItemId(), itemId)) {
+				count += itemData.getCount();
+			}
+		}
+		return count;
 	}
 
 }

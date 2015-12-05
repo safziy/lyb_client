@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.lyb.client.config.ConfigContainer;
 import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.context.ConfigContext;
 import com.lyb.client.message.protocol.Message_30_1;
@@ -12,6 +13,7 @@ import com.lyb.client.message.protocol.Message_30_4;
 import com.lyb.client.message.protocol.Message_30_5;
 import com.lyb.client.message.protocol.segment.UserDungeonArray;
 import com.lyb.client.message.protocol.segment.UserDungeonArray.UserDungeonArrayItem;
+import com.lyb.client.model.InnerWork;
 import com.lyb.client.model.PlayerWork;
 import com.lyb.client.utils.ValidateUtils;
 import com.safziy.commom.service.log.LogUtil;
@@ -19,10 +21,14 @@ import com.safziy.commom.service.log.LogUtil;
 public class DilaoManager {
 	private PlayerManager playerManager;
 
+	@SuppressWarnings("unused")
 	private int floor;
 	private int isFinish;
+	@SuppressWarnings("unused")
 	private int isFirst;
+	@SuppressWarnings("unused")
 	private int score;
+	@SuppressWarnings("unused")
 	private int remainSeconds;
 	private Map<Long, Integer> map = new HashMap<Long, Integer>();
 
@@ -55,7 +61,18 @@ public class DilaoManager {
 			map.put(item.getID(), item.getParam());
 			LogUtil.info("地牢随机到的boss id=" + item.getID() + "  param=" + item.getParam());
 		}
-		check();
+		innerCheck();
+	}
+
+	public void innerCheck() {
+		PlayerWork work = new PlayerWork(new InnerWork() {
+			@Override
+			public void work() {
+				check();
+			}
+		});
+		work.setDesc("检查地牢是否可以挑战");
+		playerManager.getWorkQueue().offerFirst(work);
 	}
 
 	public void check() {
@@ -98,8 +115,12 @@ public class DilaoManager {
 				lID = entry.getKey();
 			}
 		}
-		if (playerManager.getPlayerData().getGold() >= 30 && refreshCount <= 6) {
-			refresh(lID);
+		if (ConfigContainer.getInstance().getConfigs().isDilaoRefresh()) {
+			if (playerManager.getPlayerData().getGold() >= 30 && refreshCount <= 6) {
+				refresh(lID);
+			} else {
+				fight(hID);
+			}
 		} else {
 			fight(hID);
 		}

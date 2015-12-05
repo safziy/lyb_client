@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configs>
+	<!-- 体力不足时是否自动买体力 -->
+	<auto_buy_tili>true</auto_buy_tili>
+	<!-- 英雄志是否扫荡 -->
+	<xyz_quick_battle>true</xyz_quick_battle>
+	<!-- 地牢是否刷新品质 -->
+	<dilao_refresh>true</dilao_refresh>
+	
+	
+	
+	
+	
+	
+	<!-- 是否银两抽卡 -->
+	<chouka_yingliang>true</chouka_yingliang>
+</configs>
+
+
+
+
