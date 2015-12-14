@@ -3,6 +3,7 @@ package com.lyb.client.manager;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.lyb.client.config.ConfigContainer;
 import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.context.ConfigContext;
 import com.lyb.client.log.LogUtil;
@@ -34,7 +35,9 @@ public class XunbaoManager {
 	}
 
 	public void initWork() {
-		openView();
+		if (ConfigContainer.getInstance().getConfig().isAutoXunbao()) {
+			openView();
+		}
 	}
 
 	public void openView() {
@@ -78,15 +81,17 @@ public class XunbaoManager {
 			break;
 		case 4:
 			LogUtil.info("本轮寻宝已完成");
-			int canBuyCount = playerManager.getCountControlManager().getBuyCount(
-					ApplicationConstants.COUNTCONTROL_TYPE_11, 0);
-			int needGold = playerManager.getCountControlManager().getNeedGold(
-					ApplicationConstants.COUNTCONTROL_TYPE_11, 0);
-			if (canBuyCount > 0 && playerManager.getPlayerData().getGold() >= needGold) {
-				PlayerWork work = new PlayerWork();
-				work.setDesc("开始重置寻宝");
-				work.getMessages().add(new Message_8_14());
-				playerManager.getWorkQueue().offerFirst(work);
+			if (ConfigContainer.getInstance().getConfig().isXunbaoReset()) {
+				int canBuyCount = playerManager.getCountControlManager().getBuyCount(
+						ApplicationConstants.COUNTCONTROL_TYPE_11, 0);
+				int needGold = playerManager.getCountControlManager().getNeedGold(
+						ApplicationConstants.COUNTCONTROL_TYPE_11, 0);
+				if (canBuyCount > 0 && playerManager.getPlayerData().getGold() >= needGold) {
+					PlayerWork work = new PlayerWork();
+					work.setDesc("开始重置寻宝");
+					work.getMessages().add(new Message_8_14());
+					playerManager.getWorkQueue().offerFirst(work);
+				}
 			}
 			break;
 		default:

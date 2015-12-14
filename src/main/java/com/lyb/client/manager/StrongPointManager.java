@@ -3,6 +3,7 @@ package com.lyb.client.manager;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.lyb.client.config.ConfigContainer;
 import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.context.ConfigContext;
 import com.lyb.client.log.LogUtil;
@@ -22,7 +23,22 @@ public class StrongPointManager {
 	}
 
 	public void initWork() {
-		checkAndFight();
+		if (ConfigContainer.getInstance().getConfig().isAutoStrongpoint()) {
+			innerCheck();
+		}
+	}
+
+	public void innerCheck() {
+		PlayerWork work = new PlayerWork(new InnerWork() {
+			@Override
+			public void work() {
+				checkAndFight();
+			}
+		});
+		work.setDesc("开始检查是否有可打的关卡");
+		work.setState(ApplicationConstants.WORK_STATE_2);
+		work.setActivateTime(System.currentTimeMillis());
+		playerManager.getWorkQueue().offerFirst(work);
 	}
 
 	public void checkAndFight() {
@@ -38,7 +54,7 @@ public class StrongPointManager {
 			PlayerWork waitWork = new PlayerWork(new InnerWork() {
 				@Override
 				public void work() {
-					checkAndFight();
+					innerCheck();
 				}
 			});
 			waitWork.setActivateTime(System.currentTimeMillis() + needPhysicalPower * 6
@@ -52,7 +68,7 @@ public class StrongPointManager {
 		PlayerWork waitWork = new PlayerWork(new InnerWork() {
 			@Override
 			public void work() {
-				checkAndFight();
+				innerCheck();
 			}
 		});
 		waitWork.setActivateTime(System.currentTimeMillis());
@@ -65,8 +81,8 @@ public class StrongPointManager {
 			return;
 		}
 		int strongPointId = nfsSet.iterator().next();
-		String levelLimit = ConfigContext.getInstance().getFileValue("Juqing_Guanka.lua", String.valueOf(strongPointId),
-				"jinruLv");
+		String levelLimit = ConfigContext.getInstance().getFileValue("Juqing_Guanka.lua",
+				String.valueOf(strongPointId), "jinruLv");
 		if (playerManager.getPlayerData().getLevel() < Integer.parseInt(levelLimit)) {
 			LogUtil.info("等级不够,无法继续挑战关卡");
 			return;

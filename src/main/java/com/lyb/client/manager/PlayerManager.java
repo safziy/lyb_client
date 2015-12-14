@@ -4,7 +4,6 @@ import java.util.Deque;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-import com.lyb.client.config.ConfigContainer;
 import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.context.ConfigContext;
 import com.lyb.client.log.LogUtil;
@@ -19,7 +18,6 @@ import com.lyb.client.model.Client;
 import com.lyb.client.model.PlayerData;
 import com.lyb.client.model.PlayerWork;
 import com.lyb.client.model.RoleMessage;
-import com.lyb.client.utils.ValidateUtils;
 import com.safziy.commom.utils.TimeUtils;
 
 public class PlayerManager {
@@ -45,6 +43,7 @@ public class PlayerManager {
 	private DilaoManager dilaoManager;
 	private ChoukaManager choukaManager;
 	private ChatManager chatManager;
+	private ActivityManager activityManager;
 
 	private Deque<PlayerWork> workQueue = new ConcurrentLinkedDeque<PlayerWork>();
 
@@ -70,6 +69,7 @@ public class PlayerManager {
 		dilaoManager = new DilaoManager(this);
 		choukaManager = new ChoukaManager(this);
 		chatManager = new ChatManager(this);
+		activityManager = new ActivityManager(this);
 	}
 
 	public void write(IMessage message) {
@@ -135,10 +135,15 @@ public class PlayerManager {
 	}
 
 	public void initAllWork() {
+		// 来一波银两抽卡
+		// choukaManager.initWork();
+		// 来刷一波广告
+		// chatManager.initWork();
+
 		// 十国
 		tenCountryManager.initWork();
 		// 竞技场
-//		arenaManager.initWork();
+		arenaManager.initWork();
 		// 地牢
 		dilaoManager.initWork();
 		// 答题
@@ -150,15 +155,11 @@ public class PlayerManager {
 		// 寻宝
 		xunbaoManager.initWork();
 		// 关卡
-//		strongPointManager.initWork();
+		strongPointManager.initWork();
 		// 英雄志
-//		yxzManager.initWork();
-		
-		// 来一波银两抽卡
-//		choukaManager.initWork();
-		// 来刷一波广告
-//		chatManager.initWork();
-		
+		yxzManager.initWork();
+		// 活动
+		activityManager.initWork();
 	}
 
 	public void work() {
@@ -288,26 +289,36 @@ public class PlayerManager {
 	public DilaoManager getDilaoManager() {
 		return dilaoManager;
 	}
-	
+
 	public ChoukaManager getChoukaManager() {
 		return choukaManager;
 	}
-	
+
 	public ChatManager getChatManager() {
 		return chatManager;
 	}
 
+	public ActivityManager getActivityManager() {
+		return activityManager;
+	}
+
 	public boolean checkCanBuyTili() {
-		if (ValidateUtils.isFalse(ConfigContainer.getInstance().getConfigs().isAutoBuyTili())) {
-			return false;
-		}
-		int remainCount = getCountControlManager().getRemainCount(ApplicationConstants.COUNTCONTROL_TYPE_6, 0);
-		int needGold = Integer.parseInt(ConfigContext.getInstance().getFileValue("Shangdian_Shangdianwupin.lua",
-				String.valueOf(3000024), "price"));
-		if (remainCount > 0 && getPlayerData().getGold() >= needGold) {
-			return true;
-		}
 		return false;
+		// if
+		// (ValidateUtils.isFalse(ConfigContainer.getInstance().getConfigs().isAutoBuyTili()))
+		// {
+		// return false;
+		// }
+		// int remainCount =
+		// getCountControlManager().getRemainCount(ApplicationConstants.COUNTCONTROL_TYPE_6,
+		// 0);
+		// int needGold =
+		// Integer.parseInt(ConfigContext.getInstance().getFileValue("Shangdian_Shangdianwupin.lua",
+		// String.valueOf(3000024), "price"));
+		// if (remainCount > 0 && getPlayerData().getGold() >= needGold) {
+		// return true;
+		// }
+		// return false;
 	}
 
 	public void buyTili() {
@@ -324,5 +335,5 @@ public class PlayerManager {
 			workQueue.offerFirst(work);
 		}
 	}
-	
+
 }

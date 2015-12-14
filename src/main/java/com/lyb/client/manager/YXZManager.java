@@ -28,7 +28,10 @@ public class YXZManager {
 	}
 
 	public void initWork() {
-		initCheck();
+		// 开启了自动XYZ 才会检查英雄志
+		if (ConfigContainer.getInstance().getConfig().isAutoXYZ()) {
+			initCheck();
+		}
 	}
 
 	public void initCheck() {
@@ -87,7 +90,7 @@ public class YXZManager {
 	private void fight(int strongPointId) {
 		final YXZData yxzData = yxzDataMap.get((long) strongPointId);
 		int count = playerManager.getItemManager().getItemCountByItemId(ApplicationConstants.ITEM_ID_1015003);
-		if (ConfigContainer.getInstance().getConfigs().isXyzQuickBattle() && count > 0 && yxzData.getStarLevel() >= 3) {
+		if (ConfigContainer.getInstance().getConfig().isXyzQuickBattle() && count > 0 && yxzData.getStarLevel() >= 3) {
 			Message_7_58 message_7_58 = new Message_7_58();
 			message_7_58.setCount(1);
 			message_7_58.setStrongPointId(strongPointId);

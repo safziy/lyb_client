@@ -3,6 +3,7 @@ package com.lyb.client.manager;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.lyb.client.config.ConfigContainer;
 import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.context.ConfigContext;
 import com.lyb.client.message.protocol.Message_19_1;
@@ -21,7 +22,9 @@ public class ShilianManager {
 	}
 
 	public void initWork() {
-		openView();
+		if (ConfigContainer.getInstance().getConfig().isAutoShilian()) {
+			openView();
+		}
 	}
 
 	public void openView() {

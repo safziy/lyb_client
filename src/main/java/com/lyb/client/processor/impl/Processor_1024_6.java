@@ -14,6 +14,6 @@ public class Processor_1024_6 extends IMessageProcessor<Message_1024_6> {
 
 	@Override
 	public void execute(PlayerManager playerManager, Message_1024_6 message) throws Exception {
-		
+		playerManager.getActivityManager().setYueka(message.getCount(),message.getBooleanValue());
 	}
 }

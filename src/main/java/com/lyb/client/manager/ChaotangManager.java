@@ -1,5 +1,6 @@
 package com.lyb.client.manager;
 
+import com.lyb.client.config.ConfigContainer;
 import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.context.ConfigContext;
 import com.lyb.client.log.LogUtil;
@@ -28,7 +29,9 @@ public class ChaotangManager {
 	private int state;
 
 	public void initWork() {
-		openView();
+		if (ConfigContainer.getInstance().getConfig().isAutoChaotang()) {
+			openView();
+		}
 	}
 
 	public void openView() {

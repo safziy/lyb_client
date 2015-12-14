@@ -1,35 +1,28 @@
 package com.lyb.client.config;
 
+import java.util.List;
+
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+
+import com.lyb.client.utils.ValidateUtils;
 
 @Root(name = "configs")
 public class Configs {
-	@Element(name = "auto_buy_tili")
-	private boolean autoBuyTili;
-	@Element(name = "xyz_quick_battle")
-	private boolean xyzQuickBattle;
-	@Element(name = "dilao_refresh")
-	private boolean dilaoRefresh;
+	@Element(name = "config-name")
+	private String configName;
+	@ElementList(inline = true)
+	private List<Config> configList;
 	
-	
-	@Element(name = "chouka_yingliang")
-	private boolean silverEmploy;
-
-	public boolean isAutoBuyTili() {
-		return autoBuyTili;
-	}
-
-	public boolean isXyzQuickBattle() {
-		return xyzQuickBattle;
+	public Config getConfig(){
+		for (Config config : configList) {
+			if(ValidateUtils.isEqual(config.getName(), configName)){
+				return config;
+			}
+		}
+		return null;
 	}
 	
-	public boolean isDilaoRefresh() {
-		return dilaoRefresh;
-	}
-	
-	public boolean isSilverEmploy() {
-		return silverEmploy;
-	}
 
 }

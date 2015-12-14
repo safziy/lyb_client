@@ -11,8 +11,8 @@ public class ConfigContainer {
 
 	private Configs configs;
 
-	public Configs getConfigs() {
-		return configs;
+	public Config getConfig(){
+		return configs.getConfig();
 	}
 
 	public void setConfigs(Configs configs) {

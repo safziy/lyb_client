@@ -2,6 +2,7 @@ package com.lyb.client.manager;
 
 import java.util.Map;
 
+import com.lyb.client.config.ConfigContainer;
 import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.context.ConfigContext;
 import com.lyb.client.log.LogUtil;
@@ -27,7 +28,9 @@ public class AnswerManager {
 	}
 
 	public void initWork() {
-		openView();
+		if (ConfigContainer.getInstance().getConfig().isAutoAnswer()) {
+			openView();
+		}
 	}
 
 	public void openView() {
@@ -52,11 +55,10 @@ public class AnswerManager {
 		PlayerWork work = new PlayerWork();
 		work.getMessages().add(new Message_29_9());
 		work.setDesc("请求题目");
-//		work.setMicroseconds(MathUtils.randomGetInt(15, 26) * 1000);
 		if (MathUtils.checkHappen(5000)) {
 			work.setMicroseconds(MathUtils.randomGetInt(3, 7) * 1000);
 		} else {
-			work.setMicroseconds(MathUtils.randomGetInt(3, 5) * 1000);
+			work.setMicroseconds(MathUtils.randomGetInt(2, 4) * 1000);
 		}
 		playerManager.getWorkQueue().offerFirst(work);
 	}

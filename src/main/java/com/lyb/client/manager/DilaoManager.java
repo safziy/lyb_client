@@ -39,7 +39,9 @@ public class DilaoManager {
 	}
 
 	public void initWork() {
-		openView();
+		if (ConfigContainer.getInstance().getConfig().isAutoDilao()) {
+			openView();
+		}
 	}
 
 	public void openView() {
@@ -77,20 +79,22 @@ public class DilaoManager {
 
 	public void check() {
 		if (ValidateUtils.isEqual(isFinish, 1)) {
-//			int remainCount = playerManager.getCountControlManager().getRemainCount(
-//					ApplicationConstants.COUNTCONTROL_TYPE_15, 0);
-//			if (remainCount > 0) {
-//				reset();
-//				return;
-//			}
-//			int buyCount = playerManager.getCountControlManager().getBuyCount(
-//					ApplicationConstants.COUNTCONTROL_TYPE_15, 0);
-//			int needGold = playerManager.getCountControlManager().getNeedGold(
-//					ApplicationConstants.COUNTCONTROL_TYPE_15, 0);
-//			if (buyCount > 0 && playerManager.getPlayerData().getGold() >= needGold) {
-//				reset();
-//				return;
-//			}
+			if (ConfigContainer.getInstance().getConfig().isDilaoReset()) {
+				int remainCount = playerManager.getCountControlManager().getRemainCount(
+						ApplicationConstants.COUNTCONTROL_TYPE_15, 0);
+				if (remainCount > 0) {
+					reset();
+					return;
+				}
+				int buyCount = playerManager.getCountControlManager().getBuyCount(
+						ApplicationConstants.COUNTCONTROL_TYPE_15, 0);
+				int needGold = playerManager.getCountControlManager().getNeedGold(
+						ApplicationConstants.COUNTCONTROL_TYPE_15, 0);
+				if (buyCount > 0 && playerManager.getPlayerData().getGold() >= needGold) {
+					reset();
+					return;
+				}
+			}
 			LogUtil.info("地牢今天的次数用完了");
 			return;
 		}
@@ -115,16 +119,21 @@ public class DilaoManager {
 				lID = entry.getKey();
 			}
 		}
-		fight(lID);
-//		if (ConfigContainer.getInstance().getConfigs().isDilaoRefresh()) {
-//			if (playerManager.getPlayerData().getGold() >= 30 && refreshCount <= 6) {
-//				refresh(lID);
-//			} else {
-//				fight(hID);
-//			}
-//		} else {
-//			fight(hID);
-//		}
+		if (playerManager.getPlayerData().getGold() >= 30
+				&& refreshCount < ConfigContainer.getInstance().getConfig().getDilaoRefreshCount()) {
+			refresh(lID);
+		} else {
+
+		}
+		if (playerManager.getPlayerData().getGold() >= 30 && refreshCount <= 6) {
+			refresh(lID);
+		} else {
+			if (ConfigContainer.getInstance().getConfig().isDilaoDiff()) {
+				fight(hID);
+			} else {
+				fight(lID);
+			}
+		}
 	}
 
 	private void reset() {

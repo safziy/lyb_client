@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.lyb.client.config.ConfigContainer;
 import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.log.LogUtil;
 import com.lyb.client.message.protocol.Message_19_18;
@@ -27,10 +28,12 @@ public class TenCountryManager {
 	}
 
 	public void initWork() {
-		PlayerWork work = new PlayerWork();
-		work.getMessages().add(new Message_19_3());
-		work.setDesc("打开十国界面");
-		playerManager.getWorkQueue().offerFirst(work);
+		if (ConfigContainer.getInstance().getConfig().isAutoShiguo()) {
+			PlayerWork work = new PlayerWork();
+			work.getMessages().add(new Message_19_3());
+			work.setDesc("打开十国界面");
+			playerManager.getWorkQueue().offerFirst(work);
+		}
 	}
 
 	public void state(long id, int state, Map<Long, Integer> heroStateMap) {
@@ -62,7 +65,7 @@ public class TenCountryManager {
 				refresh.getMessages().add(new Message_19_8());
 				refresh.setDesc("请求重置十国  remainCount=" + remainCount);
 				playerManager.getWorkQueue().offerFirst(refresh);
-			}else{
+			} else {
 				LogUtil.info("十国的次数今天已经用完!");
 			}
 			break;

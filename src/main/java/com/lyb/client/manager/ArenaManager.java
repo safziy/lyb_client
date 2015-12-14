@@ -1,5 +1,6 @@
 package com.lyb.client.manager;
 
+import com.lyb.client.config.ConfigContainer;
 import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.log.LogUtil;
 import com.lyb.client.message.protocol.Message_16_1;
@@ -22,7 +23,9 @@ public class ArenaManager {
 	}
 
 	public void initWork() {
-		openArena();
+		if (ConfigContainer.getInstance().getConfig().isAutoArena()) {
+			openArena();
+		}
 	}
 
 	public void openArena() {

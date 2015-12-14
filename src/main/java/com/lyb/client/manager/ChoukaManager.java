@@ -18,7 +18,7 @@ import com.lyb.client.utils.ValidateUtils;
 
 public class ChoukaManager {
 	private PlayerManager playerManager;
-	
+
 	private Map<Integer, Integer> calMap = new HashMap<Integer, Integer>();
 
 	public ChoukaManager(PlayerManager playerManager) {
@@ -26,10 +26,12 @@ public class ChoukaManager {
 	}
 
 	public void initWork() {
-		innerCheck();
+		if (ConfigContainer.getInstance().getConfig().isSilverEmploy()) {
+			innerCheck();
+		}
 	}
-	
-	public void innerCheck(){
+
+	public void innerCheck() {
 		PlayerWork work = new PlayerWork(new InnerWork() {
 			@Override
 			public void work() {
@@ -39,15 +41,12 @@ public class ChoukaManager {
 		work.setDesc("检查是否自动抽卡");
 		playerManager.getWorkQueue().offerFirst(work);
 	}
-	
-	public void check(){
-		if(ValidateUtils.isFalse(ConfigContainer.getInstance().getConfigs().isSilverEmploy())){
-			return;
-		}
+
+	public void check() {
 		int itemCount = playerManager.getItemManager().getItemCountByItemId(ApplicationConstants.ITEM_ID_1009002);
-		if(itemCount >= 10 || playerManager.getPlayerData().getSilver() >= 200000){
+		if (itemCount >= 10 || playerManager.getPlayerData().getSilver() >= 200000) {
 			innerCheck();
-			
+
 			Message_6_3 message_6_3 = new Message_6_3();
 			message_6_3.setByteType(1);
 			message_6_3.setCount(10);
@@ -66,7 +65,7 @@ public class ChoukaManager {
 		for (Entry<Integer, Integer> entry : calMap.entrySet()) {
 			Map<String, String> map = ConfigContext.getInstance().getFileRow("Daoju_Daojubiao.lua",
 					String.valueOf(entry.getKey()));
-			if(ValidateUtils.isNull(map) || map.size() <= 0){
+			if (ValidateUtils.isNull(map) || map.size() <= 0) {
 				continue;
 			}
 			sb.append(map.get("name")).append("*").append(entry.getValue()).append("  ");
