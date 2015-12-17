@@ -81,7 +81,7 @@ public class ShilianManager {
 		PlayerWork work = new PlayerWork();
 		work.getMessages().add(message_19_2);
 		work.setDesc("请求挑战试练  ID=" + fightId);
-		work.setMicroseconds(ApplicationConstants.FIGHT_SLEEP_TIME);
+		work.setMicroseconds(ConfigContainer.getInstance().getBattleTime());
 		playerManager.getWorkQueue().offerFirst(work);
 	}
 

@@ -129,7 +129,7 @@ public class XunbaoManager {
 			PlayerWork plaWork = new PlayerWork();
 			plaWork.getMessages().add(message_7_1);
 			plaWork.setDesc("开始挑战关卡  strongPointId=" + grid.param);
-			plaWork.setMicroseconds(ApplicationConstants.FIGHT_SLEEP_TIME);
+			plaWork.setMicroseconds(ConfigContainer.getInstance().getBattleTime());
 			playerManager.getWorkQueue().offerFirst(plaWork);
 
 			isFight = true;

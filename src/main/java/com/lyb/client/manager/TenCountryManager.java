@@ -78,7 +78,7 @@ public class TenCountryManager {
 		PlayerWork fight = new PlayerWork();
 		fight.getMessages().add(new Message_19_6());
 		fight.setDesc("开始挑战十国  curCountry=" + curCountry);
-		fight.setMicroseconds(ApplicationConstants.FIGHT_SLEEP_TIME);
+		fight.setMicroseconds(ConfigContainer.getInstance().getBattleTime());
 		playerManager.getWorkQueue().offerFirst(fight);
 
 		if (playerManager.getTeamManager().getTeam(ApplicationConstants.TEAM_TYPE_2).size() <= 0) {

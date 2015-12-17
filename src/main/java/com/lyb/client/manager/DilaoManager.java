@@ -166,7 +166,7 @@ public class DilaoManager {
 		PlayerWork work = new PlayerWork();
 		work.getMessages().add(message_30_2);
 		work.setDesc("开始挑战地牢");
-		work.setMicroseconds(ApplicationConstants.FIGHT_SLEEP_TIME);
+		work.setMicroseconds(ConfigContainer.getInstance().getBattleTime());
 		playerManager.getWorkQueue().offerFirst(work);
 
 		playerManager.getTeamManager().viewTeam(ApplicationConstants.TEAM_TYPE_14);

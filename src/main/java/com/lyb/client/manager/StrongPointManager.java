@@ -94,7 +94,7 @@ public class StrongPointManager {
 		PlayerWork plaWork = new PlayerWork();
 		plaWork.getMessages().add(message_7_1);
 		plaWork.setDesc("开始挑战关卡  strongPointId=" + strongPointId);
-		plaWork.setMicroseconds(ApplicationConstants.FIGHT_SLEEP_TIME);
+		plaWork.setMicroseconds(ConfigContainer.getInstance().getBattleTime());
 		playerManager.getWorkQueue().offerFirst(plaWork);
 	}
 

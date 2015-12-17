@@ -3,6 +3,7 @@ package com.lyb.client.model;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.lyb.client.config.ConfigContainer;
 import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.message.IMessage;
 
@@ -25,7 +26,7 @@ public class PlayerWork {
 	// 描述
 	private String desc;
 	// 停顿时间 默认1s
-	private long microseconds = ApplicationConstants.DEFAULT_SLEEP_TIME;
+	private long microseconds = ConfigContainer.getInstance().getSleepTime();
 	// 激活的时间
 	private long activateTime;
 

@@ -191,12 +191,10 @@ public class ApplicationConstants {
 	public static final int TIME_TYPE_1 = 1;
 	// 琅琊试炼
 	public static final int TIME_TYPE_2 = 2;
-
-	// 默认命令间隔时间
-	public static final long DEFAULT_SLEEP_TIME = 3000;
-	// 战斗类型命令间隔时间
-	public static final long FIGHT_SLEEP_TIME = 10000;
 	
+	
+	public static final int ANSWER_SLEEP_TIME = 3;
+
 	/**************************** 道具ID ********************************************/
 	// 扫荡券ID
 	public static final int ITEM_ID_1015003 = 1015003;

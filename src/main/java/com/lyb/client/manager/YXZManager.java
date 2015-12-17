@@ -109,7 +109,7 @@ public class YXZManager {
 			PlayerWork work = new PlayerWork();
 			work.getMessages().add(message_7_1);
 			work.setDesc("开始挑战YXZ  strongPointId=" + strongPointId);
-			work.setMicroseconds(ApplicationConstants.FIGHT_SLEEP_TIME);
+			work.setMicroseconds(ConfigContainer.getInstance().getBattleTime());
 			playerManager.getWorkQueue().offerFirst(work);
 		}
 		playerManager.getTeamManager().viewTeam(ApplicationConstants.TEAM_TYPE_7);

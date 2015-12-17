@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configs>
+	<sleep_time>2</sleep_time>
+	<battle_time>5</battle_time>
+
 	<config-name>mydefault</config-name>
 
 	<config name="mydefault" serverIp="127.0.0.1" platform="1" account="f557" password="0">

@@ -128,7 +128,7 @@ public class ChaotangManager {
 		PlayerWork tianWork = new PlayerWork();
 		tianWork.getMessages().add(message_19_11);
 		tianWork.setDesc("朝堂提案开始战斗");
-		tianWork.setMicroseconds(ApplicationConstants.FIGHT_SLEEP_TIME);
+		tianWork.setMicroseconds(ConfigContainer.getInstance().getBattleTime());
 		playerManager.getWorkQueue().offerFirst(tianWork);
 
 		playerManager.getTeamManager().viewTeam(ApplicationConstants.TEAM_TYPE_9);
