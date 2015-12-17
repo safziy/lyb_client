@@ -12,6 +12,7 @@ public class PlayerWork {
 
 	public PlayerWork() {
 		this.state = ApplicationConstants.WORK_STATE_0;
+		this.microseconds = ConfigContainer.getInstance().getSleepTime();
 	}
 
 	public PlayerWork(InnerWork innerWork) {
@@ -26,7 +27,7 @@ public class PlayerWork {
 	// 描述
 	private String desc;
 	// 停顿时间 默认1s
-	private long microseconds = ConfigContainer.getInstance().getSleepTime();
+	private long microseconds;
 	// 激活的时间
 	private long activateTime;
 

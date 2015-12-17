@@ -50,14 +50,16 @@ public class ChaotangManager {
 			// + item.getUserId());
 			if (ValidateUtils.isEqual(item.getBooleanValue(), 0) && ValidateUtils.isNotEqual(item.getUserId(), 0)
 					&& ValidateUtils.isNotEqual(item.getUserId(), playerManager.getPlayerData().getUserId())) {
-				// 如果没有膜拜的话 就膜拜
-				Message_19_22 message_19_22 = new Message_19_22();
-				message_19_22.setID(item.getID());
-				PlayerWork mobaiWork = new PlayerWork();
-				mobaiWork.getMessages().add(message_19_22);
-				mobaiWork.setDesc("开始膜拜玩家");
-				mobaiWork.setMicroseconds(1000);
-				playerManager.getWorkQueue().offerFirst(mobaiWork);
+				if (ConfigContainer.getInstance().getConfig().isChaotangMobai()) {
+					// 如果没有膜拜的话 就膜拜
+					Message_19_22 message_19_22 = new Message_19_22();
+					message_19_22.setID(item.getID());
+					PlayerWork mobaiWork = new PlayerWork();
+					mobaiWork.getMessages().add(message_19_22);
+					mobaiWork.setDesc("开始膜拜玩家");
+					mobaiWork.setMicroseconds(1000);
+					playerManager.getWorkQueue().offerFirst(mobaiWork);
+				}
 			}
 		}
 	}

@@ -39,6 +39,8 @@ public class Config {
 	// 朝堂
 	@Element(name = "auto_chaotang", required = false)
 	private boolean autoChaotang;
+	@Element(name = "chaotang_mobai", required = false)
+	private boolean chaotangMobai;
 
 	// 试练
 	@Element(name = "auto_shilian", required = false)
@@ -152,6 +154,10 @@ public class Config {
 
 	public boolean isDilaoDiff() {
 		return dilaoDiff;
+	}
+	
+	public boolean isChaotangMobai() {
+		return chaotangMobai;
 	}
 
 }

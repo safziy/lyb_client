@@ -123,11 +123,6 @@ public class DilaoManager {
 				&& refreshCount < ConfigContainer.getInstance().getConfig().getDilaoRefreshCount()) {
 			refresh(lID);
 		} else {
-
-		}
-		if (playerManager.getPlayerData().getGold() >= 30 && refreshCount <= 6) {
-			refresh(lID);
-		} else {
 			if (ConfigContainer.getInstance().getConfig().isDilaoDiff()) {
 				fight(hID);
 			} else {

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configs>
-	<sleep_time>2</sleep_time>
-	<battle_time>5</battle_time>
+	<sleep_time>2000</sleep_time>
+	<battle_time>5000</battle_time>
 
-	<config-name>mydefault</config-name>
+	<config-name>safziy</config-name>
 
-	<config name="mydefault" serverIp="127.0.0.1" platform="1" account="f557" password="0">
+	<config name="mydefault" serverIp="127.0.0.1" platform="1" account="f555" password="0">
 		<!-- 体力不足时是否自动买体力 -->
 		<auto_buy_tili>true</auto_buy_tili>
 
@@ -25,6 +25,8 @@
 
 		<!-- 朝堂 -->
 		<auto_chaotang>true</auto_chaotang>
+		<!-- 是否膜拜 -->
+		<chaotang_mobai>true</chaotang_mobai>
 
 		<!-- 试练 -->
 		<auto_shilian>true</auto_shilian>
@@ -49,6 +51,76 @@
 
 		<!-- 是否银两抽卡 -->
 		<auto_chouka_yingliang>true</auto_chouka_yingliang>
+	</config>
+	
+	<config name="safziy" serverIp="119.29.25.197" platform="100" account="safziy" password="safziymy">
+		<!-- 体力不足时是否自动买体力 -->
+		<auto_buy_tili>true</auto_buy_tili>
+
+		<!-- 英雄志 -->
+		<auto_xyz>true</auto_xyz>
+		<!-- 英雄志是否扫荡 -->
+		<xyz_quick_battle>true</xyz_quick_battle>
+
+		<!-- 关卡 -->
+		<auto_strongpoint>true</auto_strongpoint>
+
+		<!-- 寻宝 -->
+		<auto_xunbao>true</auto_xunbao>
+		<!-- 寻宝是否自动重置 -->
+		<xunbao_reset>true</xunbao_reset>
+
+		<!-- 朝堂 -->
+		<auto_chaotang>true</auto_chaotang>
+		<!-- 是否膜拜 -->
+		<chaotang_mobai>true</chaotang_mobai>
+
+		<!-- 试练 -->
+		<auto_shilian>true</auto_shilian>
+
+		<!-- 答题 -->
+		<auto_answer>true</auto_answer>
+
+		<!-- 地牢 -->
+		<auto_dilao>true</auto_dilao>
+		<!-- 地牢是否重置 -->
+		<dilao_reset>true</dilao_reset>
+		<!-- 地牢刷新品质次数 -->
+		<dilao_refresh_count>10</dilao_refresh_count>
+		<!-- 是否选择高难度 -->
+		<dilao_diff>true</dilao_diff>
+
+		<!-- 竞技场 -->
+		<auto_arena>true</auto_arena>
+		
+		<!-- 十国 -->
+		<auto_shiguo>true</auto_shiguo>
+
+		<!-- 是否银两抽卡 -->
+		<auto_chouka_yingliang>false</auto_chouka_yingliang>
+	</config>
+	
+	<config name="safziy1" serverIp="119.29.25.197" platform="100" account="safziy4" password="mysafziy">
+		<!-- 关卡 -->
+		<auto_strongpoint>true</auto_strongpoint>
+
+		<!-- 寻宝 -->
+		<auto_xunbao>true</auto_xunbao>
+
+		<!-- 朝堂 -->
+		<auto_chaotang>true</auto_chaotang>
+		<!-- 是否膜拜 -->
+		<chaotang_mobai>false</chaotang_mobai>
+
+		<!-- 试练 -->
+		<auto_shilian>true</auto_shilian>
+
+		<!-- 竞技场 -->
+		<auto_arena>true</auto_arena>
+		
+		<!-- 十国 -->
+		<auto_shiguo>true</auto_shiguo>
+
 	</config>
 	
 	<config name="youyou" serverIp="119.29.25.197" platform="100" account="62683011" password="woshiziyi">
