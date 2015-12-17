@@ -195,7 +195,7 @@ public class ApplicationConstants {
 	// 默认命令间隔时间
 	public static final long DEFAULT_SLEEP_TIME = 3000;
 	// 战斗类型命令间隔时间
-	public static final long FIGHT_SLEEP_TIME = 30000;
+	public static final long FIGHT_SLEEP_TIME = 10000;
 	
 	/**************************** 道具ID ********************************************/
 	// 扫荡券ID

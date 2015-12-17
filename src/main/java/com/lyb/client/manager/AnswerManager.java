@@ -52,7 +52,8 @@ public class AnswerManager {
 		PlayerWork work = new PlayerWork();
 		work.getMessages().add(new Message_29_9());
 		work.setDesc("请求题目");
-		if (MathUtils.checkHappen(10000)) {
+//		work.setMicroseconds(MathUtils.randomGetInt(15, 26) * 1000);
+		if (MathUtils.checkHappen(5000)) {
 			work.setMicroseconds(MathUtils.randomGetInt(3, 7) * 1000);
 		} else {
 			work.setMicroseconds(MathUtils.randomGetInt(3, 5) * 1000);

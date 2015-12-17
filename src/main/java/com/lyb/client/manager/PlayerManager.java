@@ -44,6 +44,7 @@ public class PlayerManager {
 	private ChaotangManager chaotangManager;
 	private DilaoManager dilaoManager;
 	private ChoukaManager choukaManager;
+	private ChatManager chatManager;
 
 	private Deque<PlayerWork> workQueue = new ConcurrentLinkedDeque<PlayerWork>();
 
@@ -68,6 +69,7 @@ public class PlayerManager {
 		chaotangManager = new ChaotangManager(this);
 		dilaoManager = new DilaoManager(this);
 		choukaManager = new ChoukaManager(this);
+		chatManager = new ChatManager(this);
 	}
 
 	public void write(IMessage message) {
@@ -136,7 +138,7 @@ public class PlayerManager {
 		// 十国
 		tenCountryManager.initWork();
 		// 竞技场
-		arenaManager.initWork();
+//		arenaManager.initWork();
 		// 地牢
 		dilaoManager.initWork();
 		// 答题
@@ -148,12 +150,15 @@ public class PlayerManager {
 		// 寻宝
 		xunbaoManager.initWork();
 		// 关卡
-		strongPointManager.initWork();
+//		strongPointManager.initWork();
 		// 英雄志
-		yxzManager.initWork();
+//		yxzManager.initWork();
 		
 		// 来一波银两抽卡
 //		choukaManager.initWork();
+		// 来刷一波广告
+//		chatManager.initWork();
+		
 	}
 
 	public void work() {
@@ -286,6 +291,10 @@ public class PlayerManager {
 	
 	public ChoukaManager getChoukaManager() {
 		return choukaManager;
+	}
+	
+	public ChatManager getChatManager() {
+		return chatManager;
 	}
 
 	public boolean checkCanBuyTili() {

@@ -32,15 +32,34 @@ public class Launcher {
 			System.exit(0);
 		}
 
-//		String serverIp = "127.0.0.1";
-//		Client client = new Client(serverIp, 1, "f555", "0");
+		// String serverIp = "127.0.0.1";
+		// Client client = new Client(serverIp, 1, "f556", "0");
 
 		// String serverIp = "119.29.27.206";
 		// String serverIp = "119.29.119.47";
 		// 22服 - 廷尉府
-		String serverIp = "119.29.25.197";
-		Client client = new Client(serverIp, 100, "safziy", "mysafziy");
-		client.start();
+		 String serverIp = "119.29.25.197";
+//		 Client client = new Client(serverIp, 100, "safziy", "mysafziy");
+		 Client client = new Client(serverIp, 100, "62683011", "woshiziyi");
+		 client.start();
+
+		// String serverIp = "119.29.25.197";
+		// for (int i = 1; i <= 4; i++) {
+		// final int index = i;
+		// new Thread(new Runnable() {
+		// @Override
+		// public void run() {
+		// Client client = new Client(serverIp, 100, "safziy" + index,
+		// "mysafziy");
+		// client.start();
+		// }
+		// }).start();
+		// }
+
+		// String serverIp = "119.29.25.197";
+		// Client client = new Client(serverIp, 100, "safziy1", "mysafziy");
+		// client.start();
+
 	}
 
 	private static void readConfig() throws Exception {
