@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configs>
-	<sleep_time>2000</sleep_time>
-	<battle_time>5000</battle_time>
+	<sleep_time>3000</sleep_time>
+	<battle_time>35000</battle_time>
 
 	<config-name>safziy</config-name>
 
@@ -79,12 +79,12 @@
 		<auto_shilian>true</auto_shilian>
 
 		<!-- 答题 -->
-		<auto_answer>true</auto_answer>
+		<auto_answer>false</auto_answer>
 
 		<!-- 地牢 -->
 		<auto_dilao>true</auto_dilao>
 		<!-- 地牢是否重置 -->
-		<dilao_reset>true</dilao_reset>
+		<dilao_reset>false</dilao_reset>
 		<!-- 地牢刷新品质次数 -->
 		<dilao_refresh_count>10</dilao_refresh_count>
 		<!-- 是否选择高难度 -->
@@ -100,7 +100,7 @@
 		<auto_chouka_yingliang>false</auto_chouka_yingliang>
 	</config>
 	
-	<config name="safziy1" serverIp="119.29.25.197" platform="100" account="safziy4" password="mysafziy">
+	<config name="safziy1" serverIp="119.29.25.197" platform="100" account="safziy4" password="safziymy">
 		<!-- 关卡 -->
 		<auto_strongpoint>true</auto_strongpoint>
 
@@ -115,11 +115,11 @@
 		<!-- 试练 -->
 		<auto_shilian>true</auto_shilian>
 
-		<!-- 竞技场 -->
-		<auto_arena>true</auto_arena>
+		<!-- 竞技场 
+		<auto_arena>true</auto_arena> -->
 		
-		<!-- 十国 -->
-		<auto_shiguo>true</auto_shiguo>
+		<!-- 十国 
+		<auto_shiguo>true</auto_shiguo> -->
 
 	</config>
 	

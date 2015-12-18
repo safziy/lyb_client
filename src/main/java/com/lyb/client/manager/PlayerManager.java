@@ -4,6 +4,7 @@ import java.util.Deque;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
+import com.lyb.client.config.ConfigContainer;
 import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.context.ConfigContext;
 import com.lyb.client.log.LogUtil;
@@ -18,6 +19,7 @@ import com.lyb.client.model.Client;
 import com.lyb.client.model.PlayerData;
 import com.lyb.client.model.PlayerWork;
 import com.lyb.client.model.RoleMessage;
+import com.lyb.client.utils.ValidateUtils;
 import com.safziy.commom.utils.TimeUtils;
 
 public class PlayerManager {
@@ -139,15 +141,15 @@ public class PlayerManager {
 		// choukaManager.initWork();
 		// 来刷一波广告
 		// chatManager.initWork();
-
+		
+		// 答题
+		answerManager.initWork();
 		// 十国
 		tenCountryManager.initWork();
 		// 竞技场
 		arenaManager.initWork();
 		// 地牢
 		dilaoManager.initWork();
-		// 答题
-		answerManager.initWork();
 		// 试练
 		shilianManager.initWork();
 		// 朝堂
@@ -303,22 +305,16 @@ public class PlayerManager {
 	}
 
 	public boolean checkCanBuyTili() {
+		if (ValidateUtils.isFalse(ConfigContainer.getInstance().getConfig().isAutoBuyTili())) {
+			return false;
+		}
+		int remainCount = getCountControlManager().getRemainCount(ApplicationConstants.COUNTCONTROL_TYPE_6, 0);
+		int needGold = Integer.parseInt(ConfigContext.getInstance().getFileValue("Shangdian_Shangdianwupin.lua",
+				String.valueOf(3000024), "price"));
+		if (remainCount > 0 && getPlayerData().getGold() >= needGold) {
+			return true;
+		}
 		return false;
-		// if
-		// (ValidateUtils.isFalse(ConfigContainer.getInstance().getConfigs().isAutoBuyTili()))
-		// {
-		// return false;
-		// }
-		// int remainCount =
-		// getCountControlManager().getRemainCount(ApplicationConstants.COUNTCONTROL_TYPE_6,
-		// 0);
-		// int needGold =
-		// Integer.parseInt(ConfigContext.getInstance().getFileValue("Shangdian_Shangdianwupin.lua",
-		// String.valueOf(3000024), "price"));
-		// if (remainCount > 0 && getPlayerData().getGold() >= needGold) {
-		// return true;
-		// }
-		// return false;
 	}
 
 	public void buyTili() {
