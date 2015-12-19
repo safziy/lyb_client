@@ -193,7 +193,7 @@ public class ApplicationConstants {
 	public static final int TIME_TYPE_2 = 2;
 	
 	
-	public static final int ANSWER_SLEEP_TIME = 3;
+	public static final int ANSWER_SLEEP_TIME = 2500;
 
 	/**************************** 道具ID ********************************************/
 	// 扫荡券ID
