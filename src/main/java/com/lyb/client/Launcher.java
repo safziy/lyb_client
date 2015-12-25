@@ -32,11 +32,12 @@ public class Launcher {
 			System.exit(0);
 		}
 
+		int serverId = ConfigContainer.getInstance().getConfig().getServerId();
 		String serverIp = ConfigContainer.getInstance().getConfig().getServerIp();
 		int paltformId = ConfigContainer.getInstance().getConfig().getPlatformId();
 		String account = ConfigContainer.getInstance().getConfig().getAccount();
 		String password = ConfigContainer.getInstance().getConfig().getPassword();
-		Client client = new Client(serverIp, paltformId, account, password);
+		Client client = new Client(serverId, serverIp, paltformId, account, password);
 		client.start();
 
 		// String serverIp = "119.29.25.197";

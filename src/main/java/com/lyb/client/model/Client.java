@@ -13,6 +13,7 @@ import com.lyb.client.net.ClientChannelInitializer;
 
 public class Client {
 	private String serverIp;
+	private int serverId;
 	private int platformId;
 	private String account;
 	private String password;
@@ -21,7 +22,8 @@ public class Client {
 
 	private PlayerManager playerManager;
 
-	public Client(String serverIp, int platformId, String account,String password) {
+	public Client(int serverId,String serverIp, int platformId, String account,String password) {
+		this.serverId = serverId;
 		this.serverIp = serverIp;
 		this.platformId = platformId;
 		this.account = account;
@@ -52,6 +54,10 @@ public class Client {
 	public void write(IMessage message) {
 		channel.write(message);
 		channel.flush();
+	}
+	
+	public int getServerId() {
+		return serverId;
 	}
 
 	public int getPlatformId() {

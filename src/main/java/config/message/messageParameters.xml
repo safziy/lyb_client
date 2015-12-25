@@ -109,6 +109,9 @@
 	<param name="PlaceIDArray" handler="array">
 		<sequence>Place,ID</sequence>
 	</param>
+	<param name="PlaceIDArray2" handler="array">
+		<sequence>Place,ID,BodyId</sequence>
+	</param>
 	<param name="Time" handler="int|0|*" />
 	<param name="BeginTime" handler="int|0|*" />
 	<param name="EndTime" handler="int|0|*" />
@@ -207,11 +210,13 @@
 	<param name="Function" handler="string" />
 	<param name="Origin" handler="string" />
 	<param name="GMItemArray" handler="array">
-		<sequence>ItemId,ItemName,ArtId,Color,Price,Overlap,FunctionId,Function,Origin,Param1,Param2</sequence>
+		<sequence>ItemId,ItemName,ArtId,Color,Price,Overlap,FunctionId,Function,Origin,Param1,Param2
+		</sequence>
 	</param>
 	<param name="Tag" handler="int|0|*" />
 	<param name="ShopItemArray" handler="array">
-		<sequence>ID,Type,Tag,ItemId,Count,Sort,CurrencyType,Price,Param1</sequence>
+		<sequence>ID,Type,Tag,ItemId,Count,Sort,CurrencyType,Price,Param1
+		</sequence>
 	</param>
 
 	<!-- 道具使用队列 当RemainSeconds为-1时代表此道具不关心时间过期 -->
@@ -245,11 +250,12 @@
 		<sequence>UserId,UserName,Career,StandPoint,BattleUnitID,CurrentRage
 		</sequence>
 	</param>
-	<!-- newBattle 战场武将数组 Type 是否是主公(1:是主公,2:是普通武将) -->
+	<!-- ConfigId为模型id -->
 	<param name="BattleGeneralArray" handler="array">
-		<sequence>BattleUnitID,UserId,StandPoint,Type,GeneralId,Career,Level,Place,SkillArray,UnitPropertyArray
+		<sequence>BattleUnitID,UserId,StandPoint,Type,GeneralId,Career,Level,Place,SkillArray,UnitPropertyArray,BodyId
 		</sequence>
 	</param>
+	
 
 	<param name="BattleUnitViewArray" handler="array">
 		<sequence>BattleUnitID,Type,GeneralId,Career,Level,MaxHP,SkillArray,Place
@@ -279,7 +285,7 @@
 		<sequence>UserId,UserName,Level,Zhanli,GeneralId,ConfigId,Grade
 		</sequence>
 	</param>
-
+	<param name="BodyId" handler="int|0|*" />
 
 
 	<!-- ********************武将英魂相关******************** -->
@@ -436,7 +442,9 @@
 		<sequence>ID,Level</sequence>
 	</param>
 	<param name="FormationId" handler="int|0|*" />
-
+	<param name="HuanzhuangArray" handler="array">
+		<sequence>GeneralId,BodyId</sequence>
+	</param>
 
 	<!-- ********************装备相关******************** -->
 	<!-- 装备位置ID 1-6代表装备位置 -->
@@ -725,7 +733,7 @@
 	<!-- ********************英魂谱相关******************** -->
 	<!-- 曾有的武将configId -->
 	<param name="GeneralIdTableArray" handler="array">
-		<sequence>ConfigId</sequence>
+		<sequence>ConfigId,BodyId</sequence>
 	</param>
 	<param name="TakeAwardGeneralCombosArray" handler="array">
 		<sequence>ConfigId</sequence>
@@ -806,7 +814,7 @@
 	<!-- ParamStr1:家族名字,ParamStr2:家族等级,ParamStr3:帮主职业,ParamStr4:帮主名字,ParamStr5:帮主等级,ParamStr6:实力,ParamStr7:人数,ParamStr8:公告 -->
 	<!-- IDArray:玩家出战武将的ConfigId -->
 	<param name="RankArray" handler="array">
-		<sequence>ID,Ranking,ParamStr1,ParamStr2,ParamStr3,ParamStr4,ParamStr5,ParamStr6,ParamStr7,ParamStr8,ParamStr9,RankGeneralArray,Count,Vip
+		<sequence>ID,Ranking,ParamStr1,ParamStr2,ParamStr3,ParamStr4,ParamStr5,ParamStr6,ParamStr7,ParamStr8,ParamStr9,BodyId,RankGeneralArray,Count,Vip
 		</sequence>
 	</param>
 	<!-- BooleanValue(1=主角，0=英雄) -->
@@ -959,7 +967,7 @@
 	</param>
 	<!-- ConfigId职业 -->
 	<param name="ChangeMemberArray" handler="array">
-		<sequence>UserId,UserName,FamilyPositionId,ConfigId</sequence>
+		<sequence>UserId,UserName,FamilyPositionId,ConfigId,BodyId</sequence>
 	</param>
 	<!-- ConfigId为职业,Huoyuedu为总活跃度 -->
 	<param name="MemberArray" handler="array">
@@ -968,7 +976,7 @@
 	</param>
 	<!-- configId为职业id -->
 	<param name="SceneMemberArray" handler="array">
-		<sequence>UserId,UserName,ConfigId,Vip
+		<sequence>UserId,UserName,ConfigId,BodyId,Vip
 		</sequence>
 	</param>
 	<!-- Ranking为论剑排名 -->
@@ -1041,13 +1049,14 @@
 
 	<param name="ConditionID" handler="int|0|*" />
 	<param name="Group" handler="int|0|*" />
-	
+
 	<!-- 模版ID -->
 	<param name="TemplateId" handler="int|0|*" />
 
 	<param name="OperationActivityArray" handler="array">
-		<!-- ID Value:ArtID BooleanValue:0-不能领奖 1-可以领奖 Type:活动时间类型   TemplateId:模版ID Content:活动描述  ArtId:角标 -->
-		<sequence>ID,Title,Value,Sort,BooleanValue,Type,BeginTime,EndTime,RemainSeconds,TemplateId,Content,ArtId
+
+		<!-- ID Value:ArtID BooleanValue:0-不能领奖 1-可以领奖 Type:活动时间类型(暂时去掉)   TemplateId:模版ID Content:活动描述  ArtId:角标 -->
+		<sequence>ID,Title,Value,Sort,BooleanValue,BeginTime,EndTime,RemainSeconds,TemplateId,Content,ArtId,Param1,Param2
 		</sequence>
 	</param>
 
@@ -1289,17 +1298,17 @@
 		<!-- Sort: 优先级 BooleanValue: 是否为新 -->
 		<sequence>ID,Title,Sort,BooleanValue</sequence>
 	</param>
-	
+
 	<param name="ChancellorArray" handler="array">
 		<!-- BooleanValue:是否膜拜过 -->
-		<sequence>ID,UserId,UserName,Level,TransforId,BooleanValue</sequence>
+		<sequence>ID,UserId,UserName,Level,TransforId,BodyId,BooleanValue</sequence>
 	</param>
-	
+
 	<param name="ChancellorStateArray" handler="array">
-		<!-- State: 0-正常状态  1-新官上任  2-战斗中 Time:剩余保护时间 -->
+		<!-- State: 0-正常状态 1-新官上任 2-战斗中 Time:剩余保护时间 -->
 		<sequence>ID,State,Time</sequence>
 	</param>
-	
+
 	<param name="UserDungeonArray" handler="array">
 		<sequence>ID,Param</sequence>
 	</param>
@@ -1308,16 +1317,29 @@
 	<param name="CarriageId" handler="int|0|*" />
 	<!-- Place:为配置表路线的id,Time为剩余的秒数,Count为剩余的次数 -->
 	<param name="PlunderArray" handler="array">
-		<sequence>UserId,UserName,CarriageId,StartId,EndId,Time,Count</sequence>
+		<sequence>UserId,UserName,CarriageId,Level,StartId,EndId,Time,Count
+		</sequence>
 	</param>
 	<!-- 路线的起点和终点 -->
 	<param name="StartId" handler="int|0|*" />
 	<param name="EndId" handler="int|0|*" />
-	
-	<param name="ActivityArray" handler="array">
-		<sequence>Type,Param1,Param2,Param3,Value,BeginTime,EndTime,RemainSeconds</sequence>
+	<param name="YabiaoLogArray" handler="array">
+		<sequence>ID,ParamStr1,ParamStr2,ParamStr3,Time</sequence>
 	</param>
-	
+
+	<param name="ActivityArray" handler="array">
+		<sequence>Type,Param1,Param2,Param3,Value,BeginTime,EndTime,RemainSeconds
+		</sequence>
+	</param>
+
+	<param name="HusongUsedGeneralArray" handler="array">
+		<sequence>ConfigId</sequence>
+	</param>
+
+	<param name="PlunderUsedGeneralArray" handler="array">
+		<sequence>ConfigId</sequence>
+	</param>
+
 </params>
 
 

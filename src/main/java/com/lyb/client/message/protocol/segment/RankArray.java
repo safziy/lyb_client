@@ -41,6 +41,7 @@ public class RankArray implements IMessageEncoder {
 			data.writeString(item.getParamStr7());
 			data.writeString(item.getParamStr8());
 			data.writeString(item.getParamStr9());
+			data.writeInt(item.getBodyId());
 			item.getRankGeneralArray().encode(data);
 			data.writeInt(item.getCount());
 			data.writeInt(item.getVip());
@@ -66,6 +67,7 @@ public class RankArray implements IMessageEncoder {
 			item.setParamStr7(data.getString());
 			item.setParamStr8(data.getString());
 			item.setParamStr9(data.getString());
+			item.setBodyId(data.getInt());
 			item.setRankGeneralArray(RankGeneralArray.create());
 			item.getRankGeneralArray().decode(data);
 			item.setCount(data.getInt());
@@ -94,7 +96,7 @@ public class RankArray implements IMessageEncoder {
 		return item;
 	}
 
-	public RankArrayItem addData(long iD, int ranking, String paramStr1, String paramStr2, String paramStr3, String paramStr4, String paramStr5, String paramStr6, String paramStr7, String paramStr8, String paramStr9, RankGeneralArray rankGeneralArray, int count, int vip) {
+	public RankArrayItem addData(long iD, int ranking, String paramStr1, String paramStr2, String paramStr3, String paramStr4, String paramStr5, String paramStr6, String paramStr7, String paramStr8, String paramStr9, int bodyId, RankGeneralArray rankGeneralArray, int count, int vip) {
 		RankArrayItem item = new RankArrayItem();
 		item.setID(iD);
 		item.setRanking(ranking);
@@ -107,6 +109,7 @@ public class RankArray implements IMessageEncoder {
 		item.setParamStr7(paramStr7);
 		item.setParamStr8(paramStr8);
 		item.setParamStr9(paramStr9);
+		item.setBodyId(bodyId);
 		item.setRankGeneralArray(rankGeneralArray);
 		item.setCount(count);
 		item.setVip(vip);
@@ -145,12 +148,14 @@ public class RankArray implements IMessageEncoder {
 		private String paramStr7;
 		private String paramStr8;
 		private String paramStr9;
+		private int bodyId;
 		private RankGeneralArray rankGeneralArray;
 		private int count;
 		private int vip;
 
 		private static LongMessageParameterHandler iDHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("ID");
 		private static IntMessageParameterHandler rankingHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Ranking");
+		private static IntMessageParameterHandler bodyIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BodyId");
 		private static IntMessageParameterHandler countHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Count");
 		private static IntMessageParameterHandler vipHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Vip");
 
@@ -314,6 +319,20 @@ public class RankArray implements IMessageEncoder {
 			this.paramStr9 = paramStr9;
 		}
 		/**
+		 * @return the bodyId
+		 */
+		public int getBodyId() {
+			return bodyId;
+		}
+
+		/**
+		 * @param bodyId
+		 *            the bodyId to set
+		 */
+		public void setBodyId(int bodyId) {
+			this.bodyId = bodyId;
+		}
+		/**
 		 * @return the rankGeneralArray
 		 */
 		public RankGeneralArray getRankGeneralArray() {
@@ -371,6 +390,7 @@ public class RankArray implements IMessageEncoder {
 			data.writeString(this.paramStr7);
 			data.writeString(this.paramStr8);
 			data.writeString(this.paramStr9);
+			data.writeInt(this.bodyId);
 			rankGeneralArray.encode(data);
 			data.writeInt(this.count);
 			data.writeInt(this.vip);
@@ -393,6 +413,7 @@ public class RankArray implements IMessageEncoder {
 			this.paramStr7 = data.getString();
 			this.paramStr8 = data.getString();
 			this.paramStr9 = data.getString();
+			this.bodyId = data.getInt();
 			rankGeneralArray = RankGeneralArray.create();
 			rankGeneralArray.decode(data);
 			this.count = data.getInt();
@@ -405,6 +426,9 @@ public class RankArray implements IMessageEncoder {
 				return false;
 			}
 			if (!rankingHandler.validate(ranking)) {
+				return false;
+			}
+			if (!bodyIdHandler.validate(bodyId)) {
 				return false;
 			}
 			if (!rankGeneralArray.validate()) {
@@ -432,6 +456,7 @@ public class RankArray implements IMessageEncoder {
 			bb.append("paramStr7:").append(this.paramStr7).append(", ");
 			bb.append("paramStr8:").append(this.paramStr8).append(", ");
 			bb.append("paramStr9:").append(this.paramStr9).append(", ");
+			bb.append("bodyId:").append(this.bodyId).append(", ");
 			bb.append("rankGeneralArray:").append(rankGeneralArray.toString()).append(", ");
 			bb.append("count:").append(this.count).append(", ");
 			bb.append("vip:").append(this.vip);

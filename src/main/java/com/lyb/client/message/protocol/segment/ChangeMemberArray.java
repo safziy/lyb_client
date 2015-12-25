@@ -34,6 +34,7 @@ public class ChangeMemberArray implements IMessageEncoder {
 			data.writeString(item.getUserName());
 			data.writeInt(item.getFamilyPositionId());
 			data.writeInt(item.getConfigId());
+			data.writeInt(item.getBodyId());
 		}
 	}
 	
@@ -49,6 +50,7 @@ public class ChangeMemberArray implements IMessageEncoder {
 			item.setUserName(data.getString());
 			item.setFamilyPositionId(data.getInt());
 			item.setConfigId(data.getInt());
+			item.setBodyId(data.getInt());
 			list.add(item);
 		}
 	}
@@ -73,12 +75,13 @@ public class ChangeMemberArray implements IMessageEncoder {
 		return item;
 	}
 
-	public ChangeMemberArrayItem addData(long userId, String userName, int familyPositionId, int configId) {
+	public ChangeMemberArrayItem addData(long userId, String userName, int familyPositionId, int configId, int bodyId) {
 		ChangeMemberArrayItem item = new ChangeMemberArrayItem();
 		item.setUserId(userId);
 		item.setUserName(userName);
 		item.setFamilyPositionId(familyPositionId);
 		item.setConfigId(configId);
+		item.setBodyId(bodyId);
 		list.add(item);
 		return item;
 	}
@@ -107,10 +110,12 @@ public class ChangeMemberArray implements IMessageEncoder {
 		private String userName;
 		private int familyPositionId;
 		private int configId;
+		private int bodyId;
 
 		private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserId");
 		private static IntMessageParameterHandler familyPositionIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("FamilyPositionId");
 		private static IntMessageParameterHandler configIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("ConfigId");
+		private static IntMessageParameterHandler bodyIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BodyId");
 
 		public static ChangeMemberArrayItem create() {
 			ChangeMemberArrayItem item = new ChangeMemberArrayItem();
@@ -174,6 +179,20 @@ public class ChangeMemberArray implements IMessageEncoder {
 			this.configId = configId;
 		}
 		/**
+		 * @return the bodyId
+		 */
+		public int getBodyId() {
+			return bodyId;
+		}
+
+		/**
+		 * @param bodyId
+		 *            the bodyId to set
+		 */
+		public void setBodyId(int bodyId) {
+			this.bodyId = bodyId;
+		}
+		/**
 		 * 编码
 		 */
 		@Override
@@ -182,6 +201,7 @@ public class ChangeMemberArray implements IMessageEncoder {
 			data.writeString(this.userName);
 			data.writeInt(this.familyPositionId);
 			data.writeInt(this.configId);
+			data.writeInt(this.bodyId);
 		}
 		
 		
@@ -194,6 +214,7 @@ public class ChangeMemberArray implements IMessageEncoder {
 			this.userName = data.getString();
 			this.familyPositionId = data.getInt();
 			this.configId = data.getInt();
+			this.bodyId = data.getInt();
 		}
 	
 		@Override
@@ -207,6 +228,9 @@ public class ChangeMemberArray implements IMessageEncoder {
 			if (!configIdHandler.validate(configId)) {
 				return false;
 			}
+			if (!bodyIdHandler.validate(bodyId)) {
+				return false;
+			}
 			return true;
 		}
 	
@@ -215,7 +239,8 @@ public class ChangeMemberArray implements IMessageEncoder {
 			bb.append("userId:").append(this.userId).append(", ");
 			bb.append("userName:").append(this.userName).append(", ");
 			bb.append("familyPositionId:").append(this.familyPositionId).append(", ");
-			bb.append("configId:").append(this.configId);
+			bb.append("configId:").append(this.configId).append(", ");
+			bb.append("bodyId:").append(this.bodyId);
 			return bb.toString();	
 		}
 	}

@@ -8,6 +8,8 @@ import com.lyb.client.message.protocol.Message_16_2;
 import com.lyb.client.message.protocol.Message_16_4;
 import com.lyb.client.message.protocol.Message_16_6;
 import com.lyb.client.message.protocol.segment.PlaceIDArray;
+import com.lyb.client.message.protocol.segment.PlaceIDArray2;
+import com.lyb.client.message.protocol.segment.PlaceIDArray2.PlaceIDArray2Item;
 import com.lyb.client.model.ArenaData;
 import com.lyb.client.model.PlayerWork;
 import com.lyb.client.model.TargetArenaPlayer;
@@ -72,10 +74,14 @@ public class ArenaManager {
 		}
 	}
 
-	public void fight(long userId, int formationId, PlaceIDArray placeIDArray) {
+	public void fight(long userId, int formationId, PlaceIDArray2 placeIDArray2) {
 		Message_16_2 message_16_2 = new Message_16_2();
 		message_16_2.setUserId(userId);
 		message_16_2.setFormationId(formationId);
+		PlaceIDArray placeIDArray = new PlaceIDArray();
+		for (PlaceIDArray2Item item : placeIDArray2.list()) {
+			placeIDArray.addData(item.getPlace(), item.getID());
+		}
 		message_16_2.setPlaceIDArray(placeIDArray);
 
 		PlayerWork fight = new PlayerWork();

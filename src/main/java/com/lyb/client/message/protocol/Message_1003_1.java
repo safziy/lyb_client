@@ -1,12 +1,12 @@
 package com.lyb.client.message.protocol;
 
 import com.lyb.client.message.IMessage;
+import com.lyb.client.net.Data;
+import com.lyb.client.utils.DummyUtils;
+import com.lyb.client.message.protocol.segment.*;
 import com.lyb.client.message.MessageParameterContext;
 import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.message.handler.LongMessageParameterHandler;
-import com.lyb.client.message.protocol.segment.GeneralIdTableArray;
-import com.lyb.client.net.Data;
-import com.lyb.client.utils.DummyUtils;
 
 /**
  * 返回 玩家基本信息
@@ -38,6 +38,7 @@ public class Message_1003_1 implements IMessage {
 	private int level;
 	private int experience;
 	private int transforId;
+	private int bodyId;
 	private int zodiacId;
 
 	private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserId");
@@ -54,6 +55,7 @@ public class Message_1003_1 implements IMessage {
 	private static IntMessageParameterHandler levelHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Level");
 	private static IntMessageParameterHandler experienceHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Experience");
 	private static IntMessageParameterHandler transforIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("TransforId");
+	private static IntMessageParameterHandler bodyIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BodyId");
 	private static IntMessageParameterHandler zodiacIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("ZodiacId");
 
 	public static Message_1003_1 create() {
@@ -331,6 +333,21 @@ public class Message_1003_1 implements IMessage {
 	}
 
 	/**
+	 * @return the bodyId
+	 */
+	public int getBodyId() {
+		return bodyId;
+	}
+
+	/**
+	 * @param bodyId
+	 *            the bodyId to set
+	 */
+	public void setBodyId(int bodyId) {
+		this.bodyId = bodyId;
+	}
+
+	/**
 	 * @return the zodiacId
 	 */
 	public int getZodiacId() {
@@ -369,6 +386,7 @@ public class Message_1003_1 implements IMessage {
 		data.writeInt(this.level);
 		data.writeInt(this.experience);
 		data.writeInt(this.transforId);
+		data.writeInt(this.bodyId);
 		data.writeInt(this.zodiacId);
 	}
 	
@@ -396,6 +414,7 @@ public class Message_1003_1 implements IMessage {
 		this.level = data.getInt();
 		this.experience = data.getInt();
 		this.transforId = data.getInt();
+		this.bodyId = data.getInt();
 		this.zodiacId = data.getInt();
 	}
 
@@ -446,6 +465,9 @@ public class Message_1003_1 implements IMessage {
 		if (!transforIdHandler.validate(transforId)) {
 			return false;
 		}
+		if (!bodyIdHandler.validate(bodyId)) {
+			return false;
+		}
 		if (!zodiacIdHandler.validate(zodiacId)) {
 			return false;
 		}
@@ -487,6 +509,7 @@ public class Message_1003_1 implements IMessage {
 		bb.append("level:").append(this.level).append(", ");
 		bb.append("experience:").append(this.experience).append(", ");
 		bb.append("transforId:").append(this.transforId).append(", ");
+		bb.append("bodyId:").append(this.bodyId).append(", ");
 		bb.append("zodiacId:").append(this.zodiacId);
 		return bb.toString();	
 	}

@@ -123,6 +123,9 @@ public class BattleManager {
 		case ApplicationConstants.BATTLE_TYPE_15:
 			playerManager.getDilaoManager().battleOver();
 			break;
+		case ApplicationConstants.BATTLE_TYPE_17:
+			playerManager.getZhixianManager().battleOver();
+			break;
 		default:
 			break;
 		}

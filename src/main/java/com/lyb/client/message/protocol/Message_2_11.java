@@ -1,10 +1,12 @@
 package com.lyb.client.message.protocol;
 
 import com.lyb.client.message.IMessage;
-import com.lyb.client.message.MessageParameterContext;
-import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.net.Data;
 import com.lyb.client.utils.DummyUtils;
+import com.lyb.client.message.protocol.segment.*;
+import com.lyb.client.message.MessageParameterContext;
+import com.lyb.client.message.handler.IntMessageParameterHandler;
+import com.lyb.client.message.handler.LongMessageParameterHandler;
 
 /**
  * 请求 服务器账号数据
@@ -12,21 +14,39 @@ import com.lyb.client.utils.DummyUtils;
  * @author codeGenerator
  * 
  */
+@SuppressWarnings("unused")
 public class Message_2_11 implements IMessage {
 
 	private static int MAIN = 2;
 	private static int SUB = 11;
 	private static String MESSAGE_KEY = DummyUtils.getCompositeKey(2, 11);
 
+	private int origainalServerId;
 	private int platformId;
 	private String key;
 	private String pwd;
 	private String dCParamStr;
 
+	private static IntMessageParameterHandler origainalServerIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("OrigainalServerId");
 	private static IntMessageParameterHandler platformIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("PlatformId");
 
 	public static Message_2_11 create() {
 		return new Message_2_11();
+	}
+
+	/**
+	 * @return the origainalServerId
+	 */
+	public int getOrigainalServerId() {
+		return origainalServerId;
+	}
+
+	/**
+	 * @param origainalServerId
+	 *            the origainalServerId to set
+	 */
+	public void setOrigainalServerId(int origainalServerId) {
+		this.origainalServerId = origainalServerId;
 	}
 
 	/**
@@ -95,6 +115,7 @@ public class Message_2_11 implements IMessage {
 	 */
 	@Override
 	public void encode(Data data) {
+		data.writeInt(this.origainalServerId);
 		data.writeInt(this.platformId);
 		data.writeString(this.key);
 		data.writeString(this.pwd);
@@ -106,6 +127,7 @@ public class Message_2_11 implements IMessage {
 	 */
 	@Override
 	public void decode(Data data) {
+		this.origainalServerId = data.getInt();
 		this.platformId = data.getInt();
 		this.key = data.getString();
 		this.pwd = data.getString();
@@ -114,6 +136,9 @@ public class Message_2_11 implements IMessage {
 
 	@Override
 	public boolean validate() {
+		if (!origainalServerIdHandler.validate(origainalServerId)) {
+			return false;
+		}
 		if (!platformIdHandler.validate(platformId)) {
 			return false;
 		}
@@ -137,6 +162,7 @@ public class Message_2_11 implements IMessage {
 	
 	public String toString() {
 		StringBuilder bb = new StringBuilder();
+		bb.append("origainalServerId:").append(this.origainalServerId).append(", ");
 		bb.append("platformId:").append(this.platformId).append(", ");
 		bb.append("key:").append(this.key).append(", ");
 		bb.append("pwd:").append(this.pwd).append(", ");

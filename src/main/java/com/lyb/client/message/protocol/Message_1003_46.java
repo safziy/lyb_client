@@ -1,47 +1,32 @@
 package com.lyb.client.message.protocol;
 
 import com.lyb.client.message.IMessage;
+import com.lyb.client.net.Data;
+import com.lyb.client.utils.DummyUtils;
+import com.lyb.client.message.protocol.segment.*;
 import com.lyb.client.message.MessageParameterContext;
 import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.message.handler.LongMessageParameterHandler;
-import com.lyb.client.net.Data;
-import com.lyb.client.utils.DummyUtils;
 
 /**
- * 请求 合成道具
+ * 返回 召回奖励天数
  *
  * @author codeGenerator
  * 
  */
-public class Message_9_11 implements IMessage {
+@SuppressWarnings("unused")
+public class Message_1003_46 implements IMessage {
 
-	private static int MAIN = 9;
-	private static int SUB = 11;
-	private static String MESSAGE_KEY = DummyUtils.getCompositeKey(9, 11);
+	private static int MAIN = 1003;
+	private static int SUB = 46;
+	private static String MESSAGE_KEY = DummyUtils.getCompositeKey(1003, 46);
 
-	private long userItemId;
 	private int count;
 
-	private static LongMessageParameterHandler userItemIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserItemId");
 	private static IntMessageParameterHandler countHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Count");
 
-	public static Message_9_11 create() {
-		return new Message_9_11();
-	}
-
-	/**
-	 * @return the userItemId
-	 */
-	public long getUserItemId() {
-		return userItemId;
-	}
-
-	/**
-	 * @param userItemId
-	 *            the userItemId to set
-	 */
-	public void setUserItemId(long userItemId) {
-		this.userItemId = userItemId;
+	public static Message_1003_46 create() {
+		return new Message_1003_46();
 	}
 
 	/**
@@ -65,7 +50,6 @@ public class Message_9_11 implements IMessage {
 	 */
 	@Override
 	public void encode(Data data) {
-		data.writeLong(this.userItemId);
 		data.writeInt(this.count);
 	}
 	
@@ -74,15 +58,11 @@ public class Message_9_11 implements IMessage {
 	 */
 	@Override
 	public void decode(Data data) {
-		this.userItemId = data.getLong();
 		this.count = data.getInt();
 	}
 
 	@Override
 	public boolean validate() {
-		if (!userItemIdHandler.validate(userItemId)) {
-			return false;
-		}
 		if (!countHandler.validate(count)) {
 			return false;
 		}
@@ -106,7 +86,6 @@ public class Message_9_11 implements IMessage {
 	
 	public String toString() {
 		StringBuilder bb = new StringBuilder();
-		bb.append("userItemId:").append(this.userItemId).append(", ");
 		bb.append("count:").append(this.count);
 		return bb.toString();	
 	}

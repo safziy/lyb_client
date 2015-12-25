@@ -1,11 +1,12 @@
 package com.lyb.client.message.protocol;
 
 import com.lyb.client.message.IMessage;
-import com.lyb.client.message.MessageParameterContext;
-import com.lyb.client.message.handler.IntMessageParameterHandler;
-import com.lyb.client.message.protocol.segment.SceneMemberArray;
 import com.lyb.client.net.Data;
 import com.lyb.client.utils.DummyUtils;
+import com.lyb.client.message.protocol.segment.*;
+import com.lyb.client.message.MessageParameterContext;
+import com.lyb.client.message.handler.IntMessageParameterHandler;
+import com.lyb.client.message.handler.LongMessageParameterHandler;
 
 /**
  * 返回  场景信息
@@ -13,6 +14,7 @@ import com.lyb.client.utils.DummyUtils;
  * @author codeGenerator
  * 
  */
+@SuppressWarnings("unused")
 public class Message_1027_2 implements IMessage {
 
 	private static int MAIN = 1027;
@@ -23,8 +25,10 @@ public class Message_1027_2 implements IMessage {
 	private String paramStr1;
 	private String userName;
 	private int configId;
+	private int bodyId;
 
 	private static IntMessageParameterHandler configIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("ConfigId");
+	private static IntMessageParameterHandler bodyIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BodyId");
 
 	public static Message_1027_2 create() {
 		return new Message_1027_2();
@@ -90,6 +94,21 @@ public class Message_1027_2 implements IMessage {
 		this.configId = configId;
 	}
 
+	/**
+	 * @return the bodyId
+	 */
+	public int getBodyId() {
+		return bodyId;
+	}
+
+	/**
+	 * @param bodyId
+	 *            the bodyId to set
+	 */
+	public void setBodyId(int bodyId) {
+		this.bodyId = bodyId;
+	}
+
 
 	/**
 	 * 编码
@@ -100,6 +119,7 @@ public class Message_1027_2 implements IMessage {
 		data.writeString(this.paramStr1);
 		data.writeString(this.userName);
 		data.writeInt(this.configId);
+		data.writeInt(this.bodyId);
 	}
 	
 	/**
@@ -112,6 +132,7 @@ public class Message_1027_2 implements IMessage {
 		this.paramStr1 = data.getString();
 		this.userName = data.getString();
 		this.configId = data.getInt();
+		this.bodyId = data.getInt();
 	}
 
 	@Override
@@ -120,6 +141,9 @@ public class Message_1027_2 implements IMessage {
 			return false;
 		}
 		if (!configIdHandler.validate(configId)) {
+			return false;
+		}
+		if (!bodyIdHandler.validate(bodyId)) {
 			return false;
 		}
 		return true;
@@ -145,7 +169,8 @@ public class Message_1027_2 implements IMessage {
 		bb.append("sceneMemberArray:").append(sceneMemberArray.toString()).append(", ");
 		bb.append("paramStr1:").append(this.paramStr1).append(", ");
 		bb.append("userName:").append(this.userName).append(", ");
-		bb.append("configId:").append(this.configId);
+		bb.append("configId:").append(this.configId).append(", ");
+		bb.append("bodyId:").append(this.bodyId);
 		return bb.toString();	
 	}
 }

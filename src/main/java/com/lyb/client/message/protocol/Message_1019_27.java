@@ -25,12 +25,14 @@ public class Message_1019_27 implements IMessage {
 	private int endId;
 	private int carriageId;
 	private int time;
+	private int endTime;
 	private int value;
 
 	private static IntMessageParameterHandler startIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("StartId");
 	private static IntMessageParameterHandler endIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("EndId");
 	private static IntMessageParameterHandler carriageIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("CarriageId");
 	private static IntMessageParameterHandler timeHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Time");
+	private static IntMessageParameterHandler endTimeHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("EndTime");
 	private static IntMessageParameterHandler valueHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Value");
 
 	public static Message_1019_27 create() {
@@ -98,6 +100,21 @@ public class Message_1019_27 implements IMessage {
 	}
 
 	/**
+	 * @return the endTime
+	 */
+	public int getEndTime() {
+		return endTime;
+	}
+
+	/**
+	 * @param endTime
+	 *            the endTime to set
+	 */
+	public void setEndTime(int endTime) {
+		this.endTime = endTime;
+	}
+
+	/**
 	 * @return the value
 	 */
 	public int getValue() {
@@ -122,6 +139,7 @@ public class Message_1019_27 implements IMessage {
 		data.writeInt(this.endId);
 		data.writeInt(this.carriageId);
 		data.writeInt(this.time);
+		data.writeInt(this.endTime);
 		data.writeInt(this.value);
 	}
 	
@@ -134,6 +152,7 @@ public class Message_1019_27 implements IMessage {
 		this.endId = data.getInt();
 		this.carriageId = data.getInt();
 		this.time = data.getInt();
+		this.endTime = data.getInt();
 		this.value = data.getInt();
 	}
 
@@ -149,6 +168,9 @@ public class Message_1019_27 implements IMessage {
 			return false;
 		}
 		if (!timeHandler.validate(time)) {
+			return false;
+		}
+		if (!endTimeHandler.validate(endTime)) {
 			return false;
 		}
 		if (!valueHandler.validate(value)) {
@@ -178,6 +200,7 @@ public class Message_1019_27 implements IMessage {
 		bb.append("endId:").append(this.endId).append(", ");
 		bb.append("carriageId:").append(this.carriageId).append(", ");
 		bb.append("time:").append(this.time).append(", ");
+		bb.append("endTime:").append(this.endTime).append(", ");
 		bb.append("value:").append(this.value);
 		return bb.toString();	
 	}

@@ -31,6 +31,7 @@ public class GeneralIdTableArray implements IMessageEncoder {
 		data.writeInt(list.size());
 		for (GeneralIdTableArrayItem item : list) {
 			data.writeInt(item.getConfigId());
+			data.writeInt(item.getBodyId());
 		}
 	}
 	
@@ -43,6 +44,7 @@ public class GeneralIdTableArray implements IMessageEncoder {
 		for (int i = 0; i < size; i++) {
 			GeneralIdTableArrayItem item = GeneralIdTableArrayItem.create();
 			item.setConfigId(data.getInt());
+			item.setBodyId(data.getInt());
 			list.add(item);
 		}
 	}
@@ -67,9 +69,10 @@ public class GeneralIdTableArray implements IMessageEncoder {
 		return item;
 	}
 
-	public GeneralIdTableArrayItem addData(int configId) {
+	public GeneralIdTableArrayItem addData(int configId, int bodyId) {
 		GeneralIdTableArrayItem item = new GeneralIdTableArrayItem();
 		item.setConfigId(configId);
+		item.setBodyId(bodyId);
 		list.add(item);
 		return item;
 	}
@@ -95,8 +98,10 @@ public class GeneralIdTableArray implements IMessageEncoder {
 	
 	public static class GeneralIdTableArrayItem implements IMessageEncoder {
 		private int configId;
+		private int bodyId;
 
 		private static IntMessageParameterHandler configIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("ConfigId");
+		private static IntMessageParameterHandler bodyIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BodyId");
 
 		public static GeneralIdTableArrayItem create() {
 			GeneralIdTableArrayItem item = new GeneralIdTableArrayItem();
@@ -118,11 +123,26 @@ public class GeneralIdTableArray implements IMessageEncoder {
 			this.configId = configId;
 		}
 		/**
+		 * @return the bodyId
+		 */
+		public int getBodyId() {
+			return bodyId;
+		}
+
+		/**
+		 * @param bodyId
+		 *            the bodyId to set
+		 */
+		public void setBodyId(int bodyId) {
+			this.bodyId = bodyId;
+		}
+		/**
 		 * 编码
 		 */
 		@Override
 		public void encode(Data data) {
 			data.writeInt(this.configId);
+			data.writeInt(this.bodyId);
 		}
 		
 		
@@ -132,6 +152,7 @@ public class GeneralIdTableArray implements IMessageEncoder {
 		@Override
 		public void decode(Data data) {
 			this.configId = data.getInt();
+			this.bodyId = data.getInt();
 		}
 	
 		@Override
@@ -139,12 +160,16 @@ public class GeneralIdTableArray implements IMessageEncoder {
 			if (!configIdHandler.validate(configId)) {
 				return false;
 			}
+			if (!bodyIdHandler.validate(bodyId)) {
+				return false;
+			}
 			return true;
 		}
 	
 		public String toString() {
 			StringBuilder bb = new StringBuilder();
-			bb.append("configId:").append(this.configId);
+			bb.append("configId:").append(this.configId).append(", ");
+			bb.append("bodyId:").append(this.bodyId);
 			return bb.toString();	
 		}
 	}
