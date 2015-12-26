@@ -39,6 +39,15 @@ public class Processor_1004_1 extends IMessageProcessor<Message_1004_1> {
 				yxzData.setStarLevel(item.getStarLevel());
 				yxzData.setState(item.getState());
 				playerManager.getYXZManager().getYxzDataMap().put(yxzData.getId(), yxzData);
+			} else if (ValidateUtils.isEqual(type, 6)) {
+				YXZData zhixianData = new YXZData();
+				zhixianData.setId(item.getStrongPointId());
+				zhixianData.setStrongPointId(item.getStrongPointId());
+				zhixianData.setCount(item.getCount());
+				zhixianData.setTotalCount(item.getTotalCount());
+				zhixianData.setStarLevel(item.getStarLevel());
+				zhixianData.setState(item.getState());
+				playerManager.getZhixianManager().getZhixianMap().put(zhixianData.getId(), zhixianData);
 			}
 		}
 		if (isStrongPoint) {

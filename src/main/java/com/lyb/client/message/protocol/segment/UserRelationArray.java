@@ -40,6 +40,7 @@ public class UserRelationArray implements IMessageEncoder {
 			data.writeInt(item.getBooleanValue());
 			data.writeInt(item.getBooleanValue2());
 			data.writeInt(item.getBooleanValue3());
+			data.writeInt(item.getTime());
 		}
 	}
 	
@@ -61,6 +62,7 @@ public class UserRelationArray implements IMessageEncoder {
 			item.setBooleanValue(data.getInt());
 			item.setBooleanValue2(data.getInt());
 			item.setBooleanValue3(data.getInt());
+			item.setTime(data.getInt());
 			list.add(item);
 		}
 	}
@@ -85,7 +87,7 @@ public class UserRelationArray implements IMessageEncoder {
 		return item;
 	}
 
-	public UserRelationArrayItem addData(long userId, String userName, int career, int transforId, int level, int vip, int zhanli, int booleanValue, int booleanValue2, int booleanValue3) {
+	public UserRelationArrayItem addData(long userId, String userName, int career, int transforId, int level, int vip, int zhanli, int booleanValue, int booleanValue2, int booleanValue3, int time) {
 		UserRelationArrayItem item = new UserRelationArrayItem();
 		item.setUserId(userId);
 		item.setUserName(userName);
@@ -97,6 +99,7 @@ public class UserRelationArray implements IMessageEncoder {
 		item.setBooleanValue(booleanValue);
 		item.setBooleanValue2(booleanValue2);
 		item.setBooleanValue3(booleanValue3);
+		item.setTime(time);
 		list.add(item);
 		return item;
 	}
@@ -131,6 +134,7 @@ public class UserRelationArray implements IMessageEncoder {
 		private int booleanValue;
 		private int booleanValue2;
 		private int booleanValue3;
+		private int time;
 
 		private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserId");
 		private static IntMessageParameterHandler careerHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Career");
@@ -141,6 +145,7 @@ public class UserRelationArray implements IMessageEncoder {
 		private static IntMessageParameterHandler booleanValueHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BooleanValue");
 		private static IntMessageParameterHandler booleanValue2Handler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BooleanValue2");
 		private static IntMessageParameterHandler booleanValue3Handler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BooleanValue3");
+		private static IntMessageParameterHandler timeHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Time");
 
 		public static UserRelationArrayItem create() {
 			UserRelationArrayItem item = new UserRelationArrayItem();
@@ -288,6 +293,20 @@ public class UserRelationArray implements IMessageEncoder {
 			this.booleanValue3 = booleanValue3;
 		}
 		/**
+		 * @return the time
+		 */
+		public int getTime() {
+			return time;
+		}
+
+		/**
+		 * @param time
+		 *            the time to set
+		 */
+		public void setTime(int time) {
+			this.time = time;
+		}
+		/**
 		 * 编码
 		 */
 		@Override
@@ -302,6 +321,7 @@ public class UserRelationArray implements IMessageEncoder {
 			data.writeInt(this.booleanValue);
 			data.writeInt(this.booleanValue2);
 			data.writeInt(this.booleanValue3);
+			data.writeInt(this.time);
 		}
 		
 		
@@ -320,6 +340,7 @@ public class UserRelationArray implements IMessageEncoder {
 			this.booleanValue = data.getInt();
 			this.booleanValue2 = data.getInt();
 			this.booleanValue3 = data.getInt();
+			this.time = data.getInt();
 		}
 	
 		@Override
@@ -351,6 +372,9 @@ public class UserRelationArray implements IMessageEncoder {
 			if (!booleanValue3Handler.validate(booleanValue3)) {
 				return false;
 			}
+			if (!timeHandler.validate(time)) {
+				return false;
+			}
 			return true;
 		}
 	
@@ -365,7 +389,8 @@ public class UserRelationArray implements IMessageEncoder {
 			bb.append("zhanli:").append(this.zhanli).append(", ");
 			bb.append("booleanValue:").append(this.booleanValue).append(", ");
 			bb.append("booleanValue2:").append(this.booleanValue2).append(", ");
-			bb.append("booleanValue3:").append(this.booleanValue3);
+			bb.append("booleanValue3:").append(this.booleanValue3).append(", ");
+			bb.append("time:").append(this.time);
 			return bb.toString();	
 		}
 	}

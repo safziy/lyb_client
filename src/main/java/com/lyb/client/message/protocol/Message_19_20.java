@@ -3,6 +3,10 @@ package com.lyb.client.message.protocol;
 import com.lyb.client.message.IMessage;
 import com.lyb.client.net.Data;
 import com.lyb.client.utils.DummyUtils;
+import com.lyb.client.message.protocol.segment.*;
+import com.lyb.client.message.MessageParameterContext;
+import com.lyb.client.message.handler.IntMessageParameterHandler;
+import com.lyb.client.message.handler.LongMessageParameterHandler;
 
 /**
  * 请求 打开我要上朝
@@ -10,6 +14,7 @@ import com.lyb.client.utils.DummyUtils;
  * @author codeGenerator
  * 
  */
+@SuppressWarnings("unused")
 public class Message_19_20 implements IMessage {
 
 	private static int MAIN = 19;

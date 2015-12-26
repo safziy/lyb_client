@@ -1,12 +1,12 @@
 package com.lyb.client.message.protocol;
 
 import com.lyb.client.message.IMessage;
+import com.lyb.client.net.Data;
+import com.lyb.client.utils.DummyUtils;
+import com.lyb.client.message.protocol.segment.*;
 import com.lyb.client.message.MessageParameterContext;
 import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.message.handler.LongMessageParameterHandler;
-import com.lyb.client.message.protocol.segment.PlaceIDArray;
-import com.lyb.client.net.Data;
-import com.lyb.client.utils.DummyUtils;
 
 /**
  * 返回 新战队
@@ -21,7 +21,7 @@ public class Message_1016_11 implements IMessage {
 	private static String MESSAGE_KEY = DummyUtils.getCompositeKey(1016, 11);
 
 	private long userId;
-	private PlaceIDArray placeIDArray;
+	private PlaceIDArray2 placeIDArray2;
 	private int formationId;
 
 	private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserId");
@@ -47,18 +47,18 @@ public class Message_1016_11 implements IMessage {
 	}
 
 	/**
-	 * @return the placeIDArray
+	 * @return the placeIDArray2
 	 */
-	public PlaceIDArray getPlaceIDArray() {
-		return placeIDArray;
+	public PlaceIDArray2 getPlaceIDArray2() {
+		return placeIDArray2;
 	}
 
 	/**
-	 * @param placeIDArray
-	 *            the placeIDArray to set
+	 * @param placeIDArray2
+	 *            the placeIDArray2 to set
 	 */
-	public void setPlaceIDArray(PlaceIDArray placeIDArray) {
-		this.placeIDArray = placeIDArray;
+	public void setPlaceIDArray2(PlaceIDArray2 placeIDArray2) {
+		this.placeIDArray2 = placeIDArray2;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class Message_1016_11 implements IMessage {
 	@Override
 	public void encode(Data data) {
 		data.writeLong(this.userId);
-		placeIDArray.encode(data);
+		placeIDArray2.encode(data);
 		data.writeInt(this.formationId);
 	}
 	
@@ -93,8 +93,8 @@ public class Message_1016_11 implements IMessage {
 	@Override
 	public void decode(Data data) {
 		this.userId = data.getLong();
-		placeIDArray = PlaceIDArray.create();
-		placeIDArray.decode(data);
+		placeIDArray2 = PlaceIDArray2.create();
+		placeIDArray2.decode(data);
 		this.formationId = data.getInt();
 	}
 
@@ -103,7 +103,7 @@ public class Message_1016_11 implements IMessage {
 		if (!userIdHandler.validate(userId)) {
 			return false;
 		}
-		if (!placeIDArray.validate()) {
+		if (!placeIDArray2.validate()) {
 			return false;
 		}
 		if (!formationIdHandler.validate(formationId)) {
@@ -130,7 +130,7 @@ public class Message_1016_11 implements IMessage {
 	public String toString() {
 		StringBuilder bb = new StringBuilder();
 		bb.append("userId:").append(this.userId).append(", ");
-		bb.append("placeIDArray:").append(placeIDArray.toString()).append(", ");
+		bb.append("placeIDArray2:").append(placeIDArray2.toString()).append(", ");
 		bb.append("formationId:").append(this.formationId);
 		return bb.toString();	
 	}

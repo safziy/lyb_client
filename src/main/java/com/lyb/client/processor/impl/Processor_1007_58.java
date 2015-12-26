@@ -28,6 +28,9 @@ public class Processor_1007_58 extends IMessageProcessor<Message_1007_58> {
 		case ApplicationConstants.GUANQIA_TYPE_2:
 			playerManager.getYXZManager().battleOver();
 			break;
+		case ApplicationConstants.GUANQIA_TYPE_6:
+			playerManager.getZhixianManager().battleOver();
+			break;
 		default:
 			break;
 		}

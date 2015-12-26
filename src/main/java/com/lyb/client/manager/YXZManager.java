@@ -59,7 +59,7 @@ public class YXZManager {
 			int needPhysicalPower = Integer.valueOf(map.get("depletion"));
 			// 体力满足要求 直接战斗
 			if (playerManager.getPlayerData().getPhysicalPower() >= needPhysicalPower) {
-				fight(yxzData.getStrongPointId());
+				fight(yxzData.getId());
 				return;
 			}
 
@@ -87,13 +87,13 @@ public class YXZManager {
 		LogUtil.info("今天的英雄志都已经打完了");
 	}
 
-	private void fight(int strongPointId) {
-		final YXZData yxzData = yxzDataMap.get((long) strongPointId);
+	private void fight(long id) {
+		final YXZData yxzData = yxzDataMap.get(id);
 		int count = playerManager.getItemManager().getItemCountByItemId(ApplicationConstants.ITEM_ID_1015003);
 		if (ConfigContainer.getInstance().getConfig().isXyzQuickBattle() && count > 0 && yxzData.getStarLevel() >= 3) {
 			Message_7_58 message_7_58 = new Message_7_58();
 			message_7_58.setCount(1);
-			message_7_58.setStrongPointId(strongPointId);
+			message_7_58.setStrongPointId(yxzData.getStrongPointId());
 			PlayerWork work = new PlayerWork(new InnerWork() {
 				@Override
 				public void work() {
@@ -101,14 +101,14 @@ public class YXZManager {
 				}
 			});
 			work.getMessages().add(message_7_58);
-			work.setDesc("开始扫荡YXZ  strongPointId=" + strongPointId);
+			work.setDesc("开始扫荡YXZ  strongPointId=" + yxzData.getStrongPointId());
 			playerManager.getWorkQueue().offerFirst(work);
 		} else {
 			Message_7_1 message_7_1 = new Message_7_1();
-			message_7_1.setStrongPointId(strongPointId);
+			message_7_1.setStrongPointId(yxzData.getStrongPointId());
 			PlayerWork work = new PlayerWork();
 			work.getMessages().add(message_7_1);
-			work.setDesc("开始挑战YXZ  strongPointId=" + strongPointId);
+			work.setDesc("开始挑战YXZ  strongPointId=" + yxzData.getStrongPointId());
 			work.setMicroseconds(ConfigContainer.getInstance().getBattleTime());
 			playerManager.getWorkQueue().offerFirst(work);
 		}

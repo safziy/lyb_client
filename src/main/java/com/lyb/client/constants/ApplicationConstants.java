@@ -144,6 +144,8 @@ public class ApplicationConstants {
 	public static final byte BATTLE_TYPE_14 = 14;
 	// 地牢
 	public static final byte BATTLE_TYPE_15 = 15;
+	// 支线
+	public static final byte BATTLE_TYPE_17 = 17;
 
 	// 主线剧情
 	public static final int GUANQIA_TYPE_1 = 1;
@@ -153,6 +155,8 @@ public class ApplicationConstants {
 	public static final int GUANQIA_TYPE_3 = 3;
 	// 试炼
 	public static final int GUANQIA_TYPE_4 = 4;
+	// 支线
+	public static final int GUANQIA_TYPE_6 = 6;
 
 	/********************************** 次数控制 ***************************************/
 	// 好友送花
@@ -191,14 +195,13 @@ public class ApplicationConstants {
 	public static final int TIME_TYPE_1 = 1;
 	// 琅琊试炼
 	public static final int TIME_TYPE_2 = 2;
-	
-	
-	public static final int ANSWER_SLEEP_TIME = 2500;
+
+	public static final int ANSWER_SLEEP_TIME = 3000;
 
 	/**************************** 道具ID ********************************************/
 	// 扫荡券ID
 	public static final int ITEM_ID_1015003 = 1015003;
-	
+
 	public static final int ITEM_ID_1009002 = 1009002;
 
 }

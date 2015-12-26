@@ -1,12 +1,12 @@
 package com.lyb.client.message.protocol;
 
 import com.lyb.client.message.IMessage;
+import com.lyb.client.net.Data;
+import com.lyb.client.utils.DummyUtils;
+import com.lyb.client.message.protocol.segment.*;
 import com.lyb.client.message.MessageParameterContext;
 import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.message.handler.LongMessageParameterHandler;
-import com.lyb.client.message.protocol.segment.RankGeneralArray;
-import com.lyb.client.net.Data;
-import com.lyb.client.utils.DummyUtils;
 
 /**
  * 返回  查看玩家信息
@@ -25,6 +25,7 @@ public class Message_1003_11 implements IMessage {
 	private int level;
 	private int career;
 	private int transforId;
+	private int bodyId;
 	private int zhanli;
 	private RankGeneralArray rankGeneralArray;
 	private int flower;
@@ -34,6 +35,7 @@ public class Message_1003_11 implements IMessage {
 	private static IntMessageParameterHandler levelHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Level");
 	private static IntMessageParameterHandler careerHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Career");
 	private static IntMessageParameterHandler transforIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("TransforId");
+	private static IntMessageParameterHandler bodyIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BodyId");
 	private static IntMessageParameterHandler zhanliHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Zhanli");
 	private static IntMessageParameterHandler flowerHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Flower");
 	private static IntMessageParameterHandler booleanValueHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BooleanValue");
@@ -118,6 +120,21 @@ public class Message_1003_11 implements IMessage {
 	}
 
 	/**
+	 * @return the bodyId
+	 */
+	public int getBodyId() {
+		return bodyId;
+	}
+
+	/**
+	 * @param bodyId
+	 *            the bodyId to set
+	 */
+	public void setBodyId(int bodyId) {
+		this.bodyId = bodyId;
+	}
+
+	/**
 	 * @return the zhanli
 	 */
 	public int getZhanli() {
@@ -188,6 +205,7 @@ public class Message_1003_11 implements IMessage {
 		data.writeInt(this.level);
 		data.writeInt(this.career);
 		data.writeInt(this.transforId);
+		data.writeInt(this.bodyId);
 		data.writeInt(this.zhanli);
 		rankGeneralArray.encode(data);
 		data.writeInt(this.flower);
@@ -204,6 +222,7 @@ public class Message_1003_11 implements IMessage {
 		this.level = data.getInt();
 		this.career = data.getInt();
 		this.transforId = data.getInt();
+		this.bodyId = data.getInt();
 		this.zhanli = data.getInt();
 		rankGeneralArray = RankGeneralArray.create();
 		rankGeneralArray.decode(data);
@@ -223,6 +242,9 @@ public class Message_1003_11 implements IMessage {
 			return false;
 		}
 		if (!transforIdHandler.validate(transforId)) {
+			return false;
+		}
+		if (!bodyIdHandler.validate(bodyId)) {
 			return false;
 		}
 		if (!zhanliHandler.validate(zhanli)) {
@@ -262,6 +284,7 @@ public class Message_1003_11 implements IMessage {
 		bb.append("level:").append(this.level).append(", ");
 		bb.append("career:").append(this.career).append(", ");
 		bb.append("transforId:").append(this.transforId).append(", ");
+		bb.append("bodyId:").append(this.bodyId).append(", ");
 		bb.append("zhanli:").append(this.zhanli).append(", ");
 		bb.append("rankGeneralArray:").append(rankGeneralArray.toString()).append(", ");
 		bb.append("flower:").append(this.flower).append(", ");

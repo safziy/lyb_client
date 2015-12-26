@@ -1,15 +1,15 @@
 package com.lyb.client.message.protocol;
 
 import com.lyb.client.message.IMessage;
+import com.lyb.client.net.Data;
+import com.lyb.client.utils.DummyUtils;
+import com.lyb.client.message.protocol.segment.*;
 import com.lyb.client.message.MessageParameterContext;
 import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.message.handler.LongMessageParameterHandler;
-import com.lyb.client.message.protocol.segment.PlaceIDArray;
-import com.lyb.client.net.Data;
-import com.lyb.client.utils.DummyUtils;
 
 /**
- * 返回 比武大会英雄信息
+ * 返回  比武大会英雄信息
  *
  * @author codeGenerator
  * 
@@ -22,12 +22,12 @@ public class Message_1016_6 implements IMessage {
 
 	private long userId;
 	private int formationId;
-	private PlaceIDArray placeIDArray;
+	private PlaceIDArray2 placeIDArray2;
+	private int zhanli;
 
-	private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance()
-			.getLongMessageParameterHandler("UserId");
-	private static IntMessageParameterHandler formationIdHandler = MessageParameterContext.getInstance()
-			.getIntMessageParameterHandler("FormationId");
+	private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserId");
+	private static IntMessageParameterHandler formationIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("FormationId");
+	private static IntMessageParameterHandler zhanliHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Zhanli");
 
 	public static Message_1016_6 create() {
 		return new Message_1016_6();
@@ -64,19 +64,35 @@ public class Message_1016_6 implements IMessage {
 	}
 
 	/**
-	 * @return the placeIDArray
+	 * @return the placeIDArray2
 	 */
-	public PlaceIDArray getPlaceIDArray() {
-		return placeIDArray;
+	public PlaceIDArray2 getPlaceIDArray2() {
+		return placeIDArray2;
 	}
 
 	/**
-	 * @param placeIDArray
-	 *            the placeIDArray to set
+	 * @param placeIDArray2
+	 *            the placeIDArray2 to set
 	 */
-	public void setPlaceIDArray(PlaceIDArray placeIDArray) {
-		this.placeIDArray = placeIDArray;
+	public void setPlaceIDArray2(PlaceIDArray2 placeIDArray2) {
+		this.placeIDArray2 = placeIDArray2;
 	}
+
+	/**
+	 * @return the zhanli
+	 */
+	public int getZhanli() {
+		return zhanli;
+	}
+
+	/**
+	 * @param zhanli
+	 *            the zhanli to set
+	 */
+	public void setZhanli(int zhanli) {
+		this.zhanli = zhanli;
+	}
+
 
 	/**
 	 * 编码
@@ -85,9 +101,10 @@ public class Message_1016_6 implements IMessage {
 	public void encode(Data data) {
 		data.writeLong(this.userId);
 		data.writeInt(this.formationId);
-		placeIDArray.encode(data);
+		placeIDArray2.encode(data);
+		data.writeInt(this.zhanli);
 	}
-
+	
 	/**
 	 * 解码
 	 */
@@ -95,8 +112,9 @@ public class Message_1016_6 implements IMessage {
 	public void decode(Data data) {
 		this.userId = data.getLong();
 		this.formationId = data.getInt();
-		placeIDArray = PlaceIDArray.create();
-		placeIDArray.decode(data);
+		placeIDArray2 = PlaceIDArray2.create();
+		placeIDArray2.decode(data);
+		this.zhanli = data.getInt();
 	}
 
 	@Override
@@ -107,7 +125,10 @@ public class Message_1016_6 implements IMessage {
 		if (!formationIdHandler.validate(formationId)) {
 			return false;
 		}
-		if (!placeIDArray.validate()) {
+		if (!placeIDArray2.validate()) {
+			return false;
+		}
+		if (!zhanliHandler.validate(zhanli)) {
 			return false;
 		}
 		return true;
@@ -127,12 +148,13 @@ public class Message_1016_6 implements IMessage {
 	public String getMessageKey() {
 		return MESSAGE_KEY;
 	}
-
+	
 	public String toString() {
 		StringBuilder bb = new StringBuilder();
 		bb.append("userId:").append(this.userId).append(", ");
 		bb.append("formationId:").append(this.formationId).append(", ");
-		bb.append("placeIDArray:").append(placeIDArray.toString()).append(", ");
-		return bb.toString();
+		bb.append("placeIDArray2:").append(placeIDArray2.toString()).append(", ");
+		bb.append("zhanli:").append(this.zhanli);
+		return bb.toString();	
 	}
 }

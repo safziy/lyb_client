@@ -1,11 +1,12 @@
 package com.lyb.client.message.protocol;
 
 import com.lyb.client.message.IMessage;
+import com.lyb.client.net.Data;
+import com.lyb.client.utils.DummyUtils;
+import com.lyb.client.message.protocol.segment.*;
 import com.lyb.client.message.MessageParameterContext;
 import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.message.handler.LongMessageParameterHandler;
-import com.lyb.client.net.Data;
-import com.lyb.client.utils.DummyUtils;
 
 /**
  * 返回 申请加入家族
@@ -13,6 +14,7 @@ import com.lyb.client.utils.DummyUtils;
  * @author codeGenerator
  * 
  */
+@SuppressWarnings("unused")
 public class Message_1027_13 implements IMessage {
 
 	private static int MAIN = 1027;

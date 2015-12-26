@@ -8,6 +8,8 @@ import org.simpleframework.xml.Root;
 public class Config {
 	@Attribute(name = "name", required = true)
 	private String name;
+	@Attribute(name = "serverId", required = true)
+	private int serverId;
 	@Attribute(name = "serverIp", required = true)
 	private String serverIp;
 	@Attribute(name = "platform", required = true)
@@ -25,6 +27,12 @@ public class Config {
 	private boolean autoXYZ;
 	@Element(name = "xyz_quick_battle", required = false)
 	private boolean xyzQuickBattle;
+
+	// 支线
+	@Element(name = "auto_zhixian", required = false)
+	private boolean autoZhixian;
+	@Element(name = "zhixian_quick_battle", required = false)
+	private boolean zhixianQuickBattle;
 
 	// 关卡
 	@Element(name = "auto_strongpoint", required = false)
@@ -67,13 +75,17 @@ public class Config {
 	// 十国
 	@Element(name = "auto_shiguo", required = false)
 	private boolean autoShiguo;
-	
+
 	// 银两抽卡
 	@Element(name = "auto_chouka_yingliang", required = false)
 	private boolean silverEmploy;
 
 	public String getName() {
 		return name;
+	}
+
+	public int getServerId() {
+		return serverId;
 	}
 
 	public String getServerIp() {
@@ -155,9 +167,17 @@ public class Config {
 	public boolean isDilaoDiff() {
 		return dilaoDiff;
 	}
-	
+
 	public boolean isChaotangMobai() {
 		return chaotangMobai;
+	}
+	
+	public boolean isAutoZhixian() {
+		return autoZhixian;
+	}
+	
+	public boolean isZhixianQuickBattle() {
+		return zhixianQuickBattle;
 	}
 
 }

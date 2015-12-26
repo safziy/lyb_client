@@ -14,6 +14,7 @@ public class Processor_1016_6 extends IMessageProcessor<Message_1016_6> {
 
 	@Override
 	public void execute(PlayerManager playerManager, Message_1016_6 message) throws Exception {
-		playerManager.getArenaManager().fight(message.getUserId(), message.getFormationId(), message.getPlaceIDArray());
+		playerManager.getArenaManager()
+				.fight(message.getUserId(), message.getFormationId(), message.getPlaceIDArray2());
 	}
 }

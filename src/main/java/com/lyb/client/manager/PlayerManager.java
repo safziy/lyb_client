@@ -46,6 +46,7 @@ public class PlayerManager {
 	private ChoukaManager choukaManager;
 	private ChatManager chatManager;
 	private ActivityManager activityManager;
+	private ZhixianManager zhixianManager;
 
 	private Deque<PlayerWork> workQueue = new ConcurrentLinkedDeque<PlayerWork>();
 
@@ -72,6 +73,7 @@ public class PlayerManager {
 		choukaManager = new ChoukaManager(this);
 		chatManager = new ChatManager(this);
 		activityManager = new ActivityManager(this);
+		zhixianManager = new ZhixianManager(this);
 	}
 
 	public void write(IMessage message) {
@@ -83,6 +85,7 @@ public class PlayerManager {
 	 */
 	public void login() {
 		Message_2_11 message_2_11 = new Message_2_11();
+		message_2_11.setOrigainalServerId(client.getServerId());
 		message_2_11.setPlatformId(client.getPlatformId());
 		message_2_11.setKey(client.getAccount());
 		message_2_11.setPwd(client.getPassword());
@@ -141,7 +144,7 @@ public class PlayerManager {
 		// choukaManager.initWork();
 		// 来刷一波广告
 		// chatManager.initWork();
-		
+
 		// 答题
 		answerManager.initWork();
 		// 十国
@@ -160,8 +163,12 @@ public class PlayerManager {
 		strongPointManager.initWork();
 		// 英雄志
 		yxzManager.initWork();
+		// 支线
+		zhixianManager.initWork();
 		// 活动
 		activityManager.initWork();
+		
+		
 	}
 
 	public void work() {
@@ -302,6 +309,10 @@ public class PlayerManager {
 
 	public ActivityManager getActivityManager() {
 		return activityManager;
+	}
+	
+	public ZhixianManager getZhixianManager() {
+		return zhixianManager;
 	}
 
 	public boolean checkCanBuyTili() {

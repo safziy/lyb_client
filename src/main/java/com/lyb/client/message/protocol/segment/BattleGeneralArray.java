@@ -40,6 +40,7 @@ public class BattleGeneralArray implements IMessageEncoder {
 			data.writeInt(item.getPlace());
 			item.getSkillArray().encode(data);
 			item.getUnitPropertyArray().encode(data);
+			data.writeInt(item.getBodyId());
 		}
 	}
 	
@@ -63,6 +64,7 @@ public class BattleGeneralArray implements IMessageEncoder {
 			item.getSkillArray().decode(data);
 			item.setUnitPropertyArray(UnitPropertyArray.create());
 			item.getUnitPropertyArray().decode(data);
+			item.setBodyId(data.getInt());
 			list.add(item);
 		}
 	}
@@ -87,7 +89,7 @@ public class BattleGeneralArray implements IMessageEncoder {
 		return item;
 	}
 
-	public BattleGeneralArrayItem addData(long battleUnitID, long userId, int standPoint, int type, long generalId, int career, int level, int place, SkillArray skillArray, UnitPropertyArray unitPropertyArray) {
+	public BattleGeneralArrayItem addData(long battleUnitID, long userId, int standPoint, int type, long generalId, int career, int level, int place, SkillArray skillArray, UnitPropertyArray unitPropertyArray, int bodyId) {
 		BattleGeneralArrayItem item = new BattleGeneralArrayItem();
 		item.setBattleUnitID(battleUnitID);
 		item.setUserId(userId);
@@ -99,6 +101,7 @@ public class BattleGeneralArray implements IMessageEncoder {
 		item.setPlace(place);
 		item.setSkillArray(skillArray);
 		item.setUnitPropertyArray(unitPropertyArray);
+		item.setBodyId(bodyId);
 		list.add(item);
 		return item;
 	}
@@ -133,6 +136,7 @@ public class BattleGeneralArray implements IMessageEncoder {
 		private int place;
 		private SkillArray skillArray;
 		private UnitPropertyArray unitPropertyArray;
+		private int bodyId;
 
 		private static LongMessageParameterHandler battleUnitIDHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("BattleUnitID");
 		private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserId");
@@ -142,6 +146,7 @@ public class BattleGeneralArray implements IMessageEncoder {
 		private static IntMessageParameterHandler careerHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Career");
 		private static IntMessageParameterHandler levelHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Level");
 		private static IntMessageParameterHandler placeHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Place");
+		private static IntMessageParameterHandler bodyIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BodyId");
 
 		public static BattleGeneralArrayItem create() {
 			BattleGeneralArrayItem item = new BattleGeneralArrayItem();
@@ -289,6 +294,20 @@ public class BattleGeneralArray implements IMessageEncoder {
 			this.unitPropertyArray = unitPropertyArray;
 		}
 		/**
+		 * @return the bodyId
+		 */
+		public int getBodyId() {
+			return bodyId;
+		}
+
+		/**
+		 * @param bodyId
+		 *            the bodyId to set
+		 */
+		public void setBodyId(int bodyId) {
+			this.bodyId = bodyId;
+		}
+		/**
 		 * 编码
 		 */
 		@Override
@@ -303,6 +322,7 @@ public class BattleGeneralArray implements IMessageEncoder {
 			data.writeInt(this.place);
 			skillArray.encode(data);
 			unitPropertyArray.encode(data);
+			data.writeInt(this.bodyId);
 		}
 		
 		
@@ -323,6 +343,7 @@ public class BattleGeneralArray implements IMessageEncoder {
 			skillArray.decode(data);
 			unitPropertyArray = UnitPropertyArray.create();
 			unitPropertyArray.decode(data);
+			this.bodyId = data.getInt();
 		}
 	
 		@Override
@@ -357,6 +378,9 @@ public class BattleGeneralArray implements IMessageEncoder {
 			if (!unitPropertyArray.validate()) {
 				return false;
 			}
+			if (!bodyIdHandler.validate(bodyId)) {
+				return false;
+			}
 			return true;
 		}
 	
@@ -371,7 +395,8 @@ public class BattleGeneralArray implements IMessageEncoder {
 			bb.append("level:").append(this.level).append(", ");
 			bb.append("place:").append(this.place).append(", ");
 			bb.append("skillArray:").append(skillArray.toString()).append(", ");
-			bb.append("unitPropertyArray:").append(unitPropertyArray.toString());
+			bb.append("unitPropertyArray:").append(unitPropertyArray.toString()).append(", ");
+			bb.append("bodyId:").append(this.bodyId);
 			return bb.toString();	
 		}
 	}

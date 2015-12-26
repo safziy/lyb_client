@@ -35,6 +35,7 @@ public class ChancellorArray implements IMessageEncoder {
 			data.writeString(item.getUserName());
 			data.writeInt(item.getLevel());
 			data.writeInt(item.getTransforId());
+			data.writeInt(item.getBodyId());
 			data.writeInt(item.getBooleanValue());
 		}
 	}
@@ -52,6 +53,7 @@ public class ChancellorArray implements IMessageEncoder {
 			item.setUserName(data.getString());
 			item.setLevel(data.getInt());
 			item.setTransforId(data.getInt());
+			item.setBodyId(data.getInt());
 			item.setBooleanValue(data.getInt());
 			list.add(item);
 		}
@@ -77,13 +79,14 @@ public class ChancellorArray implements IMessageEncoder {
 		return item;
 	}
 
-	public ChancellorArrayItem addData(long iD, long userId, String userName, int level, int transforId, int booleanValue) {
+	public ChancellorArrayItem addData(long iD, long userId, String userName, int level, int transforId, int bodyId, int booleanValue) {
 		ChancellorArrayItem item = new ChancellorArrayItem();
 		item.setID(iD);
 		item.setUserId(userId);
 		item.setUserName(userName);
 		item.setLevel(level);
 		item.setTransforId(transforId);
+		item.setBodyId(bodyId);
 		item.setBooleanValue(booleanValue);
 		list.add(item);
 		return item;
@@ -114,12 +117,14 @@ public class ChancellorArray implements IMessageEncoder {
 		private String userName;
 		private int level;
 		private int transforId;
+		private int bodyId;
 		private int booleanValue;
 
 		private static LongMessageParameterHandler iDHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("ID");
 		private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserId");
 		private static IntMessageParameterHandler levelHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Level");
 		private static IntMessageParameterHandler transforIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("TransforId");
+		private static IntMessageParameterHandler bodyIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BodyId");
 		private static IntMessageParameterHandler booleanValueHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BooleanValue");
 
 		public static ChancellorArrayItem create() {
@@ -198,6 +203,20 @@ public class ChancellorArray implements IMessageEncoder {
 			this.transforId = transforId;
 		}
 		/**
+		 * @return the bodyId
+		 */
+		public int getBodyId() {
+			return bodyId;
+		}
+
+		/**
+		 * @param bodyId
+		 *            the bodyId to set
+		 */
+		public void setBodyId(int bodyId) {
+			this.bodyId = bodyId;
+		}
+		/**
 		 * @return the booleanValue
 		 */
 		public int getBooleanValue() {
@@ -221,6 +240,7 @@ public class ChancellorArray implements IMessageEncoder {
 			data.writeString(this.userName);
 			data.writeInt(this.level);
 			data.writeInt(this.transforId);
+			data.writeInt(this.bodyId);
 			data.writeInt(this.booleanValue);
 		}
 		
@@ -235,6 +255,7 @@ public class ChancellorArray implements IMessageEncoder {
 			this.userName = data.getString();
 			this.level = data.getInt();
 			this.transforId = data.getInt();
+			this.bodyId = data.getInt();
 			this.booleanValue = data.getInt();
 		}
 	
@@ -252,6 +273,9 @@ public class ChancellorArray implements IMessageEncoder {
 			if (!transforIdHandler.validate(transforId)) {
 				return false;
 			}
+			if (!bodyIdHandler.validate(bodyId)) {
+				return false;
+			}
 			if (!booleanValueHandler.validate(booleanValue)) {
 				return false;
 			}
@@ -265,6 +289,7 @@ public class ChancellorArray implements IMessageEncoder {
 			bb.append("userName:").append(this.userName).append(", ");
 			bb.append("level:").append(this.level).append(", ");
 			bb.append("transforId:").append(this.transforId).append(", ");
+			bb.append("bodyId:").append(this.bodyId).append(", ");
 			bb.append("booleanValue:").append(this.booleanValue);
 			return bb.toString();	
 		}

@@ -1,11 +1,12 @@
 package com.lyb.client.message.protocol;
 
 import com.lyb.client.message.IMessage;
+import com.lyb.client.net.Data;
+import com.lyb.client.utils.DummyUtils;
+import com.lyb.client.message.protocol.segment.*;
 import com.lyb.client.message.MessageParameterContext;
 import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.message.handler.LongMessageParameterHandler;
-import com.lyb.client.net.Data;
-import com.lyb.client.utils.DummyUtils;
 
 /**
  * 广播  进入场景
@@ -13,6 +14,7 @@ import com.lyb.client.utils.DummyUtils;
  * @author codeGenerator
  * 
  */
+@SuppressWarnings("unused")
 public class Message_1027_3 implements IMessage {
 
 	private static int MAIN = 1027;
@@ -22,10 +24,12 @@ public class Message_1027_3 implements IMessage {
 	private long userId;
 	private String userName;
 	private int configId;
+	private int bodyId;
 	private int vip;
 
 	private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserId");
 	private static IntMessageParameterHandler configIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("ConfigId");
+	private static IntMessageParameterHandler bodyIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BodyId");
 	private static IntMessageParameterHandler vipHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Vip");
 
 	public static Message_1027_3 create() {
@@ -78,6 +82,21 @@ public class Message_1027_3 implements IMessage {
 	}
 
 	/**
+	 * @return the bodyId
+	 */
+	public int getBodyId() {
+		return bodyId;
+	}
+
+	/**
+	 * @param bodyId
+	 *            the bodyId to set
+	 */
+	public void setBodyId(int bodyId) {
+		this.bodyId = bodyId;
+	}
+
+	/**
 	 * @return the vip
 	 */
 	public int getVip() {
@@ -101,6 +120,7 @@ public class Message_1027_3 implements IMessage {
 		data.writeLong(this.userId);
 		data.writeString(this.userName);
 		data.writeInt(this.configId);
+		data.writeInt(this.bodyId);
 		data.writeInt(this.vip);
 	}
 	
@@ -112,6 +132,7 @@ public class Message_1027_3 implements IMessage {
 		this.userId = data.getLong();
 		this.userName = data.getString();
 		this.configId = data.getInt();
+		this.bodyId = data.getInt();
 		this.vip = data.getInt();
 	}
 
@@ -121,6 +142,9 @@ public class Message_1027_3 implements IMessage {
 			return false;
 		}
 		if (!configIdHandler.validate(configId)) {
+			return false;
+		}
+		if (!bodyIdHandler.validate(bodyId)) {
 			return false;
 		}
 		if (!vipHandler.validate(vip)) {
@@ -149,6 +173,7 @@ public class Message_1027_3 implements IMessage {
 		bb.append("userId:").append(this.userId).append(", ");
 		bb.append("userName:").append(this.userName).append(", ");
 		bb.append("configId:").append(this.configId).append(", ");
+		bb.append("bodyId:").append(this.bodyId).append(", ");
 		bb.append("vip:").append(this.vip);
 		return bb.toString();	
 	}

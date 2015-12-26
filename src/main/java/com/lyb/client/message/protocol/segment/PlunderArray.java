@@ -33,6 +33,7 @@ public class PlunderArray implements IMessageEncoder {
 			data.writeLong(item.getUserId());
 			data.writeString(item.getUserName());
 			data.writeInt(item.getCarriageId());
+			data.writeInt(item.getLevel());
 			data.writeInt(item.getStartId());
 			data.writeInt(item.getEndId());
 			data.writeInt(item.getTime());
@@ -51,6 +52,7 @@ public class PlunderArray implements IMessageEncoder {
 			item.setUserId(data.getLong());
 			item.setUserName(data.getString());
 			item.setCarriageId(data.getInt());
+			item.setLevel(data.getInt());
 			item.setStartId(data.getInt());
 			item.setEndId(data.getInt());
 			item.setTime(data.getInt());
@@ -79,11 +81,12 @@ public class PlunderArray implements IMessageEncoder {
 		return item;
 	}
 
-	public PlunderArrayItem addData(long userId, String userName, int carriageId, int startId, int endId, int time, int count) {
+	public PlunderArrayItem addData(long userId, String userName, int carriageId, int level, int startId, int endId, int time, int count) {
 		PlunderArrayItem item = new PlunderArrayItem();
 		item.setUserId(userId);
 		item.setUserName(userName);
 		item.setCarriageId(carriageId);
+		item.setLevel(level);
 		item.setStartId(startId);
 		item.setEndId(endId);
 		item.setTime(time);
@@ -115,6 +118,7 @@ public class PlunderArray implements IMessageEncoder {
 		private long userId;
 		private String userName;
 		private int carriageId;
+		private int level;
 		private int startId;
 		private int endId;
 		private int time;
@@ -122,6 +126,7 @@ public class PlunderArray implements IMessageEncoder {
 
 		private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserId");
 		private static IntMessageParameterHandler carriageIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("CarriageId");
+		private static IntMessageParameterHandler levelHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Level");
 		private static IntMessageParameterHandler startIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("StartId");
 		private static IntMessageParameterHandler endIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("EndId");
 		private static IntMessageParameterHandler timeHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Time");
@@ -173,6 +178,20 @@ public class PlunderArray implements IMessageEncoder {
 		 */
 		public void setCarriageId(int carriageId) {
 			this.carriageId = carriageId;
+		}
+		/**
+		 * @return the level
+		 */
+		public int getLevel() {
+			return level;
+		}
+
+		/**
+		 * @param level
+		 *            the level to set
+		 */
+		public void setLevel(int level) {
+			this.level = level;
 		}
 		/**
 		 * @return the startId
@@ -238,6 +257,7 @@ public class PlunderArray implements IMessageEncoder {
 			data.writeLong(this.userId);
 			data.writeString(this.userName);
 			data.writeInt(this.carriageId);
+			data.writeInt(this.level);
 			data.writeInt(this.startId);
 			data.writeInt(this.endId);
 			data.writeInt(this.time);
@@ -253,6 +273,7 @@ public class PlunderArray implements IMessageEncoder {
 			this.userId = data.getLong();
 			this.userName = data.getString();
 			this.carriageId = data.getInt();
+			this.level = data.getInt();
 			this.startId = data.getInt();
 			this.endId = data.getInt();
 			this.time = data.getInt();
@@ -265,6 +286,9 @@ public class PlunderArray implements IMessageEncoder {
 				return false;
 			}
 			if (!carriageIdHandler.validate(carriageId)) {
+				return false;
+			}
+			if (!levelHandler.validate(level)) {
 				return false;
 			}
 			if (!startIdHandler.validate(startId)) {
@@ -287,6 +311,7 @@ public class PlunderArray implements IMessageEncoder {
 			bb.append("userId:").append(this.userId).append(", ");
 			bb.append("userName:").append(this.userName).append(", ");
 			bb.append("carriageId:").append(this.carriageId).append(", ");
+			bb.append("level:").append(this.level).append(", ");
 			bb.append("startId:").append(this.startId).append(", ");
 			bb.append("endId:").append(this.endId).append(", ");
 			bb.append("time:").append(this.time).append(", ");

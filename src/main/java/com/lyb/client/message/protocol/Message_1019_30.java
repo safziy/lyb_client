@@ -23,16 +23,20 @@ public class Message_1019_30 implements IMessage {
 
 	private long userId;
 	private String userName;
+	private int level;
 	private int carriageId;
 	private int startId;
 	private int endId;
 	private int time;
+	private int count;
 
 	private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserId");
+	private static IntMessageParameterHandler levelHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Level");
 	private static IntMessageParameterHandler carriageIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("CarriageId");
 	private static IntMessageParameterHandler startIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("StartId");
 	private static IntMessageParameterHandler endIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("EndId");
 	private static IntMessageParameterHandler timeHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Time");
+	private static IntMessageParameterHandler countHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Count");
 
 	public static Message_1019_30 create() {
 		return new Message_1019_30();
@@ -66,6 +70,21 @@ public class Message_1019_30 implements IMessage {
 	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	/**
+	 * @return the level
+	 */
+	public int getLevel() {
+		return level;
+	}
+
+	/**
+	 * @param level
+	 *            the level to set
+	 */
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	/**
@@ -128,6 +147,21 @@ public class Message_1019_30 implements IMessage {
 		this.time = time;
 	}
 
+	/**
+	 * @return the count
+	 */
+	public int getCount() {
+		return count;
+	}
+
+	/**
+	 * @param count
+	 *            the count to set
+	 */
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 
 	/**
 	 * 编码
@@ -136,10 +170,12 @@ public class Message_1019_30 implements IMessage {
 	public void encode(Data data) {
 		data.writeLong(this.userId);
 		data.writeString(this.userName);
+		data.writeInt(this.level);
 		data.writeInt(this.carriageId);
 		data.writeInt(this.startId);
 		data.writeInt(this.endId);
 		data.writeInt(this.time);
+		data.writeInt(this.count);
 	}
 	
 	/**
@@ -149,15 +185,20 @@ public class Message_1019_30 implements IMessage {
 	public void decode(Data data) {
 		this.userId = data.getLong();
 		this.userName = data.getString();
+		this.level = data.getInt();
 		this.carriageId = data.getInt();
 		this.startId = data.getInt();
 		this.endId = data.getInt();
 		this.time = data.getInt();
+		this.count = data.getInt();
 	}
 
 	@Override
 	public boolean validate() {
 		if (!userIdHandler.validate(userId)) {
+			return false;
+		}
+		if (!levelHandler.validate(level)) {
 			return false;
 		}
 		if (!carriageIdHandler.validate(carriageId)) {
@@ -170,6 +211,9 @@ public class Message_1019_30 implements IMessage {
 			return false;
 		}
 		if (!timeHandler.validate(time)) {
+			return false;
+		}
+		if (!countHandler.validate(count)) {
 			return false;
 		}
 		return true;
@@ -194,10 +238,12 @@ public class Message_1019_30 implements IMessage {
 		StringBuilder bb = new StringBuilder();
 		bb.append("userId:").append(this.userId).append(", ");
 		bb.append("userName:").append(this.userName).append(", ");
+		bb.append("level:").append(this.level).append(", ");
 		bb.append("carriageId:").append(this.carriageId).append(", ");
 		bb.append("startId:").append(this.startId).append(", ");
 		bb.append("endId:").append(this.endId).append(", ");
-		bb.append("time:").append(this.time);
+		bb.append("time:").append(this.time).append(", ");
+		bb.append("count:").append(this.count);
 		return bb.toString();	
 	}
 }

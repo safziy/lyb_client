@@ -11,4 +11,5 @@ key9={9,"领取活跃度奖励","<content><font color='#ffffff'>咱</font><font 
 key10={10,"帮派排行进前3（保持不算变化才算）","<content><font color='#ffffff'>咱们的帮派一跃成为排名第</font><font color='#fff600'>@1</font><font color='#ffffff'>的大帮了！</font></content>"},
 key11={11,"帮派升级","<content><font color='#ffffff'>咱帮派升级啦！现在是</font><font color='#fff600'>@1</font><font color='#ffffff'>级了，多亏大家的努力！</font></content>"},
 key12={12,"帮派中功能开启","<content><font color='#ffffff'>新的功能</font><font color='#fff600'>@1</font><font color='#ffffff'>开启啦！</font></content>"},
-key13={13,"帮主被弹劾","<content><font color='#ffffff'>咱</font><font color='#fff600'>@1</font><font color='#ffffff'>弹劾了</font><font color='#ffa800'>@2</font><font color='#ffffff'>，成为了大家的新帮主~</font></content>"}}
+key13={13,"帮主被弹劾","<content><font color='#ffffff'>咱</font><font color='#fff600'>@1</font><font color='#ffffff'>弹劾了</font><font color='#ffa800'>@2</font><font color='#ffffff'>，成为了大家的新帮主~</font></content>"},
+key14={14,"有人祈福","<content><font color='#ffffff'>壕</font><font color='#fff600'>@1</font><font color='#ffffff'>在帮派福袋中帮大家祈福了！</font></content>"}}

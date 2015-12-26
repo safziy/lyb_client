@@ -33,6 +33,7 @@ public class SceneMemberArray implements IMessageEncoder {
 			data.writeLong(item.getUserId());
 			data.writeString(item.getUserName());
 			data.writeInt(item.getConfigId());
+			data.writeInt(item.getBodyId());
 			data.writeInt(item.getVip());
 		}
 	}
@@ -48,6 +49,7 @@ public class SceneMemberArray implements IMessageEncoder {
 			item.setUserId(data.getLong());
 			item.setUserName(data.getString());
 			item.setConfigId(data.getInt());
+			item.setBodyId(data.getInt());
 			item.setVip(data.getInt());
 			list.add(item);
 		}
@@ -73,11 +75,12 @@ public class SceneMemberArray implements IMessageEncoder {
 		return item;
 	}
 
-	public SceneMemberArrayItem addData(long userId, String userName, int configId, int vip) {
+	public SceneMemberArrayItem addData(long userId, String userName, int configId, int bodyId, int vip) {
 		SceneMemberArrayItem item = new SceneMemberArrayItem();
 		item.setUserId(userId);
 		item.setUserName(userName);
 		item.setConfigId(configId);
+		item.setBodyId(bodyId);
 		item.setVip(vip);
 		list.add(item);
 		return item;
@@ -106,10 +109,12 @@ public class SceneMemberArray implements IMessageEncoder {
 		private long userId;
 		private String userName;
 		private int configId;
+		private int bodyId;
 		private int vip;
 
 		private static LongMessageParameterHandler userIdHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("UserId");
 		private static IntMessageParameterHandler configIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("ConfigId");
+		private static IntMessageParameterHandler bodyIdHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BodyId");
 		private static IntMessageParameterHandler vipHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("Vip");
 
 		public static SceneMemberArrayItem create() {
@@ -160,6 +165,20 @@ public class SceneMemberArray implements IMessageEncoder {
 			this.configId = configId;
 		}
 		/**
+		 * @return the bodyId
+		 */
+		public int getBodyId() {
+			return bodyId;
+		}
+
+		/**
+		 * @param bodyId
+		 *            the bodyId to set
+		 */
+		public void setBodyId(int bodyId) {
+			this.bodyId = bodyId;
+		}
+		/**
 		 * @return the vip
 		 */
 		public int getVip() {
@@ -181,6 +200,7 @@ public class SceneMemberArray implements IMessageEncoder {
 			data.writeLong(this.userId);
 			data.writeString(this.userName);
 			data.writeInt(this.configId);
+			data.writeInt(this.bodyId);
 			data.writeInt(this.vip);
 		}
 		
@@ -193,6 +213,7 @@ public class SceneMemberArray implements IMessageEncoder {
 			this.userId = data.getLong();
 			this.userName = data.getString();
 			this.configId = data.getInt();
+			this.bodyId = data.getInt();
 			this.vip = data.getInt();
 		}
 	
@@ -202,6 +223,9 @@ public class SceneMemberArray implements IMessageEncoder {
 				return false;
 			}
 			if (!configIdHandler.validate(configId)) {
+				return false;
+			}
+			if (!bodyIdHandler.validate(bodyId)) {
 				return false;
 			}
 			if (!vipHandler.validate(vip)) {
@@ -215,6 +239,7 @@ public class SceneMemberArray implements IMessageEncoder {
 			bb.append("userId:").append(this.userId).append(", ");
 			bb.append("userName:").append(this.userName).append(", ");
 			bb.append("configId:").append(this.configId).append(", ");
+			bb.append("bodyId:").append(this.bodyId).append(", ");
 			bb.append("vip:").append(this.vip);
 			return bb.toString();	
 		}

@@ -35,7 +35,7 @@
 	<param main="2" sub="8" desc="请求 随机名字">Career</param>
 	<!-- 返回 随机名字 -->
 	<param main="1002" sub="8" desc="返回 随机名字成功">UserName</param>
-	<param main="2" sub="11" desc="请求 服务器账号数据" subsidiary="loginSubJob">PlatformId,Key,Pwd,DCParamStr
+	<param main="2" sub="11" desc="请求 服务器账号数据" subsidiary="loginSubJob">OrigainalServerId,PlatformId,Key,Pwd,DCParamStr
 	</param>
 	<!-- LoginState 0-返回成功 1-用户名与密码不正确 2-没有邀请码 3-Mac地址被封 4-IP地址被封 5-没有测试资格 6-服务器暂未开放 -->
 	<param main="1002" sub="11" desc="返回  服务器账号数据">LoginState,YunyingUserId,UserAccountInfoArray</param>
@@ -63,7 +63,7 @@
 	<!-- ********************玩家相关******************** -->
 	<!-- 返回 玩家基本信息 -->
 	<!-- LastStrongPointId(当前打的最远的关卡),State为LastStrongPointId状态 -->
-	<param main="1003" sub="1" desc="返回 玩家基本信息">YunyingUserId,UserId,UserName,Career,Vip,FamilyId,FamilyPositionId,FamilyName,FamilyLevel,Nobility,GeneralIdTableArray,LastStrongPointId,State,Stage,Step,Level,Experience,TransforId,ZodiacId</param>
+	<param main="1003" sub="1" desc="返回 玩家基本信息">YunyingUserId,UserId,UserName,Career,Vip,FamilyId,FamilyPositionId,FamilyName,FamilyLevel,Nobility,GeneralIdTableArray,LastStrongPointId,State,Stage,Step,Level,Experience,TransforId,BodyId,ZodiacId</param>
 	<param main="1003" sub="2" desc="返回 登陆结束"></param>
 	<param main="3" sub="6" desc="请求 时间">TimerType</param>
 	<param main="3" sub="7" desc="请求 时间加速">TimerType</param>
@@ -80,7 +80,7 @@
 	<!--TODO qianduan UserId -->
 	<param main="3" sub="11" desc="请求  查看玩家信息" subsidiary="databaseSubJob">UserId,UserName</param>
 	<!-- BooleanValue(1=拒绝挑战) -->
-	<param main="1003" sub="11" desc="返回  查看玩家信息">UserId,UserName,Level,Career,TransforId,Zhanli,RankGeneralArray,Flower,BooleanValue</param>
+	<param main="1003" sub="11" desc="返回  查看玩家信息">UserId,UserName,Level,Career,TransforId,BodyId,Zhanli,RankGeneralArray,Flower,BooleanValue</param>
 	<!-- 服务器相关数据,登陆的时候同步 -->
 	<param main="1003" sub="12" desc="返回  系统数据">GeneralMaxLevel,ServerTime,BeginTime</param>
 	<param main="3" sub="13" desc="请求  查看玩家英雄库" subsidiary="databaseSubJob">UserId,UserName</param>
@@ -110,9 +110,10 @@
 	<param main="3" sub="43" desc="请求 幻化库"></param>
 	<param main="1003" sub="43" desc="返回 幻化库">IDArray</param>
 	<param main="3" sub="44" desc="请求 幻化">ID</param>
-	
 	<param main="3" sub="45" desc="请求 点天相">ID</param>
-
+	
+	<param main="1003" sub="46" desc="返回 召回奖励天数">Count</param>
+	<param main="3" sub="47" desc="请求 领取召回奖励"></param>
 	<!-- ********************关卡相关******************** -->
 	<!-- StrongPointArray(关卡信息数组) -->
 	<param main="1004" sub="1" desc="返回 关卡数据">StoryLineId,StrongPointArray</param>
@@ -164,10 +165,13 @@
 	<param main="6" sub="24" desc="请求 激活兵书属性">GeneralId,ID</param>
 	<param main="6" sub="25" desc="请求 强化兵书">GeneralId,ID</param>
 	<param main="1006" sub="25" desc="返回 兵书数据">GeneralId,ID,Level,StrengthenLevel</param>
+	<!-- ConfigId为换装衣服的id,ID是卡牌数据库id -->
+    <param main="6" sub="26" desc="请求 换装">BodyId,GeneralId</param>
+    <param main="1006" sub="26" desc="返回 换装">BodyId,GeneralId</param>
+    <param main="1006" sub="27" desc="返回 卡牌换装信息">HuanzhuangArray</param>
 	
 	<!-- ********************战斗相关******************** -->
-	<param main="7" sub="1" desc="请求 进入关卡战斗" interval="2000">StrongPointId
-	</param>
+	<param main="7" sub="1" desc="请求 进入关卡战斗" interval="2000">StrongPointId</param>
 	<!-- 返回 初始化战场数据 StandPoint: 需要转换坐标的势力方 -->
 	<!-- BattleTemplateId 战场模板id -->
 	<param main="1007" sub="1" desc="返回 初始化战场数据">BattleId,BattleFieldId,MapId,BattleTemplateId,RandomSeed,BattleUserArray,BattleGeneralArray,BattleUnitIDArray,ItemIdArray</param>
@@ -269,7 +273,8 @@
 	<!-- 对于问号事件(每触发一次之后都会变化),完成以后重新随机一次事件  -->
 	<param main="1008" sub="13" desc="返回  事件更新">Place,ID,Param,BooleanValue</param>
 	<param main="8" sub="14" desc="请求  刷新寻宝"></param>
-	
+	<param main="8" sub="15" desc="请求  领取完成所有每日任务后的奖励"></param>
+	<param main="1008" sub="15" desc="返回  领取完成所有每日任务后的奖励"></param>
 
 
 	<!-- ********************背包相关******************** -->
@@ -284,13 +289,16 @@
 	<param main="1009" sub="7" desc="返回 道具使用队列">ItemUseQueue</param>
 	<param main="9" sub="8" desc="请求 整理背包" interval="10000"></param>
 	<param main="9" sub="10" desc="请求 卖道具">UserItemId,Count</param>
-	<param main="9" sub="11" desc="请求 合成道具">UserItemId,Count</param>
 	<param main="9" sub="14" desc="请求 卖道具">UserItemIdArray</param>
 	<!-- 购买并使用物品,只支持数量为1 -->
 	<param main="9" sub="15" desc="请求  商店购买并使用道具">ID</param>
 	<param main="1009" sub="16" desc="返回 gm道具">GMItemArray</param>
 	<param main="1009" sub="17" desc="返回 动态商店">ShopItemArray</param>
-
+	<!-- IDArray(增加道具id) BooleanValue(1=1次，0=10次)-->
+	<param main="9" sub="18" desc="请求  道具合成">ID,IDArray,BooleanValue</param>
+	<!-- BooleanValue(1=成功，0=失败) -->
+	<param main="1009" sub="18" desc="返回 道具合成">BooleanValue</param>
+	
 	<!-- ********************装备相关******************** -->
 	<param main="1010" sub="1" desc="返回 装备信息">EquipmentInfoArray</param>
 	<!-- BooleanValue为true表示全部强化 -->
@@ -347,14 +355,14 @@
 	<param main="1016" sub="5" desc="返回 竞技场排名">UserArenaArray</param>
 	<param main="16" sub="6" desc="请求 比武大会英雄信息" subsidiary="databaseSubJob">UserId</param>
 	<!-- PlaceIDArray(ID:卡牌表id) -->
-	<param main="1016" sub="6" desc="返回  比武大会英雄信息">UserId,FormationId,PlaceIDArray,Zhanli</param>
+	<param main="1016" sub="6" desc="返回  比武大会英雄信息">UserId,FormationId,PlaceIDArray2,Zhanli</param>
 	<!-- BooleanValue(1=更新中不能进入竞技场，0=可以进入) -->
 	<param main="1016" sub="8" desc="返回  赛季更新">BooleanValue</param>
 	<param main="16" sub="9" desc="请求 任务"></param>
 	<!-- State(1=已完成,0=未完成) -->
 	<param main="1016" sub="9" desc="返回 任务">IDStateArray</param>
 	<param main="1016" sub="10" desc="返回 竞技场常修改数据">Score</param>
-	<param main="1016" sub="11" desc="返回 新战队">UserId,PlaceIDArray,FormationId</param>
+	<param main="1016" sub="11" desc="返回 新战队">UserId,PlaceIDArray2,FormationId</param>
 	<!-- 挑战玩家 -->
 	<param main="16" sub="12" desc="请求 挑战玩家" subsidiary="databaseSubJob">UserId</param>
 	<!-- ******************** 势力相关 ******************** -->
@@ -406,13 +414,15 @@
 	<param main="19" sub="25" desc="请求 刷新路线或马车">Type</param>
 	<!-- BooleanValue:为1表示使用钱保护不被抢劫 -->
 	<param main="19" sub="26" desc="请求 开始护送">BooleanValue</param>
-	<!-- Time:为剩余的秒数,value为被抢的次数 -->
-	<param main="1019" sub="27" desc="返回 护送界面需要同步的信息">StartId,EndId,CarriageId,Time,Value</param>
+	<param main="19" sub="27" desc="请求 护送界面需要同步的信息"></param>
+	<!-- Time:为当前时间,EndTime为到期时间,value为被抢的次数 -->
+	<param main="1019" sub="27" desc="返回 护送界面需要同步的信息">StartId,EndId,CarriageId,Time,EndTime,Value</param>
 	<!-- 打开界面返回 -->
 	<param main="1019" sub="28" desc="返回 掠夺界面需要同步的信息">PlunderArray</param>
 	<param main="19" sub="29" desc="请求 刷新掠夺界面"></param>
 	<param main="19" sub="30" desc="请求 刷新可以掠夺的马车">UserId</param>
-	<param main="1019" sub="30" desc="返回 刷新可以掠夺的马车">UserId,UserName,CarriageId,StartId,EndId,Time</param>
+	<!-- UserId为0表示刷新失败 -->
+	<param main="1019" sub="30" desc="返回 刷新可以掠夺的马车">UserId,UserName,Level,CarriageId,StartId,EndId,Time,Count</param>
 	<param main="19" sub="31" desc="请求 掠夺马车">UserId</param>
 	<!-- BooleanValue为1表示掠夺成功 -->
 	<param main="1019" sub="31" desc="返回 掠夺马车">BooleanValue,ItemIdArray</param>
@@ -420,6 +430,12 @@
 	<param main="19" sub="33" desc="请求 领取押镖奖励"></param>
 	<param main="19" sub="34" desc="请求 花钱刷新所有打劫的马车"></param>
 	<param main="1019" sub="35" desc="返回 活动结束"></param>
+	<param main="19" sub="36" desc="请求 查看日志"></param>
+	<param main="1019" sub="36" desc="返回 查看日志">YabiaoLogArray</param>
+	<param main="1019" sub="37" desc="返回 用过的卡牌">HusongUsedGeneralArray,PlunderUsedGeneralArray,Time,EndTime</param>
+	<param main="19" sub="38" desc="请求 是否正在被多人抢">UserId</param>
+	<!-- BooleanValue为1表示正在被多人抢,可能获取不了奖励 -->
+	<param main="1019" sub="38" desc="返回 正在被多人抢">UserId,BooleanValue</param>
 
 	<!-- ********************用户关系相关******************** -->
 	<param main="21" sub="1" desc="请求 打开界面"></param>
@@ -435,10 +451,15 @@
 	<param main="21" sub="6" desc="请求 送花记录"></param>
 	<param main="1021" sub="6" desc="返回 送花记录">FlowerHistoryArray</param>
 	<param main="21" sub="7" desc="请求 送体力" subsidiary="databaseSubJob">UserId</param>
+	<param main="1021" sub="7" desc="返回 送体力">IDArray</param>
 	<param main="21" sub="8" desc="请求 申请记录"></param>
 	<param main="21" sub="9" desc="请求 拒绝添加好友">UserId</param>
 	<param main="1021" sub="10" desc="返回 好友基本信息">IDArray</param>
 	<param main="1021" sub="11" desc="返回 申请加好友提示">BooleanValue</param>
+	<param main="1021" sub="12" desc="返回 送体力的好友">IDArray</param>
+	<param main="1021" sub="13" desc="返回 送体力的好友">UserId</param>
+	<param main="21" sub="14" desc="请求 领取体力">UserId</param>
+	<param main="1021" sub="14" desc="返回 送体力的好友">UserId</param>
 
 	<!-- ********************附件相关******************** -->
 	<param main="23" sub="10" desc="请求 查看邮箱"></param>
@@ -503,10 +524,8 @@
 	<param main="1027" sub="1" desc="返回  自己信息的改变">FamilyId,FamilyPositionId,FamilyName</param>
 	<param main="27" sub="2" desc="请求 进入场景"></param>
 	<!-- ParamStr1为公告信息.UserName为帮主名字.ConfigId为帮主职业模型 -->
-	<param main="1027" sub="2" desc="返回  场景信息">SceneMemberArray,ParamStr1,UserName,ConfigId
-	</param>
-	<param main="1027" sub="3" desc="广播  进入场景">UserId,UserName,ConfigId,Vip
-	</param>
+	<param main="1027" sub="2" desc="返回  场景信息">SceneMemberArray,ParamStr1,UserName,ConfigId,BodyId</param>
+	<param main="1027" sub="3" desc="广播  进入场景">UserId,UserName,ConfigId,BodyId,Vip</param>
 	<!-- 退出家族 -->
 	<param main="27" sub="4" desc="请求 退出家族"></param>
 	<!-- 申请列表 -->
@@ -575,10 +594,26 @@
 	<!-- Value:当天活跃度,Huoyuedu:总活跃度 -->
     <param main="1027" sub="43" desc="广播 活跃度变化">Value,Huoyuedu</param>
     <param main="1027" sub="44" desc="广播 活跃度宝箱闪动效果取消"></param>
-<param main="27" sub="45" desc="请求 打开帮派技能界面"></param>
+    <param main="27" sub="45" desc="请求 打开帮派技能界面"></param>
     <param main="1027" sub="45" desc="返回 打开帮派技能界面">SkillArray</param>
     <param main="27" sub="46" desc="请求 升级帮派技能">ConfigId</param>
     <param main="1027" sub="46" desc="返回 升级帮派技能">ConfigId,Level</param>
+
+	<param main="27" sub="47" desc="请求 家族改名">FamilyName</param>
+	<param main="1027" sub="47" desc="返回 家族新名字">FamilyName</param>
+	
+	<!-- 家族挂机 -->
+	<!-- BooleanValue:是否已经添加过灯油 -->
+	<param main="1027" sub="54" desc="返回 家族挂机活动开启">BooleanValue,RemainSeconds</param>
+	<param main="27" sub="55" desc="请求 家族挂机祈福"></param>
+	<!-- State 1:成功 0:失败,已经有人添加了-->
+	<param main="1027" sub="55" desc="返回 家族挂机祈福">State</param>
+	<param main="1027" sub="56" desc="返回 掉落福袋">IDParamArray</param>
+	<param main="27" sub="57" desc="请求 收集福袋">ID</param>
+	<!-- BooleanValue 1:活动结束 0:未结束-->
+	<param main="1027" sub="58" desc="返回 家族挂机奖励">Experience,BooleanValue</param>
+	<param main="1027" sub="59" desc="返回 广播祈福状态"></param>
+
 	<!-- ****** 运营活动相关 ***** -->
 	<param main="1029" sub="1" desc="返回 运营活动数据">OperationActivityArray</param>
 	<param main="29" sub="2" desc="请求 活动详细数据">ID</param>

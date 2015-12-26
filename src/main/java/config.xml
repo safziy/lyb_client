@@ -2,13 +2,18 @@
 
 <configs>
 	<sleep_time>3000</sleep_time>
-	<battle_time>35000</battle_time>
+	<battle_time>5000</battle_time>
 
 	<config-name>safziy</config-name>
 
-	<config name="mydefault" serverIp="127.0.0.1" platform="1" account="f555" password="0">
+	<config name="mydefault" serverId="4" serverIp="127.0.0.1" platform="1" account="f555" password="0">
 		<!-- 体力不足时是否自动买体力 -->
 		<auto_buy_tili>true</auto_buy_tili>
+		
+		<!-- 支线 -->
+		<auto_zhixian>true</auto_zhixian>
+		<!-- 支线是否扫荡 -->
+		<zhixian_quick_battle>true</zhixian_quick_battle>
 
 		<!-- 英雄志 -->
 		<auto_xyz>true</auto_xyz>
@@ -16,7 +21,7 @@
 		<xyz_quick_battle>true</xyz_quick_battle>
 
 		<!-- 关卡 -->
-		<auto_strongpoint>true</auto_strongpoint>
+		<auto_strongpoint>false</auto_strongpoint>
 
 		<!-- 寻宝 -->
 		<auto_xunbao>true</auto_xunbao>
@@ -53,7 +58,7 @@
 		<auto_chouka_yingliang>true</auto_chouka_yingliang>
 	</config>
 	
-	<config name="safziy" serverIp="119.29.25.197" platform="100" account="safziy" password="safziymy">
+	<config name="safziy" serverId="40211" serverIp="119.29.25.197" platform="100" account="safziy" password="safziymy">
 		<!-- 体力不足时是否自动买体力 -->
 		<auto_buy_tili>true</auto_buy_tili>
 
@@ -61,9 +66,14 @@
 		<auto_xyz>true</auto_xyz>
 		<!-- 英雄志是否扫荡 -->
 		<xyz_quick_battle>true</xyz_quick_battle>
+		
+		<!-- 支线 -->
+		<auto_zhixian>true</auto_zhixian>
+		<!-- 支线是否扫荡 -->
+		<zhixian_quick_battle>true</zhixian_quick_battle>
 
 		<!-- 关卡 -->
-		<auto_strongpoint>true</auto_strongpoint>
+		<auto_strongpoint>false</auto_strongpoint>
 
 		<!-- 寻宝 -->
 		<auto_xunbao>true</auto_xunbao>
@@ -100,12 +110,17 @@
 		<auto_chouka_yingliang>false</auto_chouka_yingliang>
 	</config>
 	
-	<config name="safziy1" serverIp="119.29.25.197" platform="100" account="safziy4" password="safziymy">
+	<config name="safziy1" serverId="40211" serverIp="119.29.25.197" platform="100" account="safziy4" password="safziymy">
 		<!-- 关卡 -->
 		<auto_strongpoint>true</auto_strongpoint>
 
 		<!-- 寻宝 -->
 		<auto_xunbao>true</auto_xunbao>
+		
+		<!-- 支线 -->
+		<auto_zhixian>true</auto_zhixian>
+		<!-- 支线是否扫荡 -->
+		<zhixian_quick_battle>true</zhixian_quick_battle>
 
 		<!-- 朝堂 -->
 		<auto_chaotang>true</auto_chaotang>
@@ -123,7 +138,7 @@
 
 	</config>
 	
-	<config name="youyou" serverIp="119.29.25.197" platform="100" account="62683011" password="woshiziyi">
+	<config name="youyou" serverId="40211" serverIp="119.29.25.197" platform="100" account="62683011" password="woshiziyi">
 		<!-- 答题 -->
 		<auto_answer>true</auto_answer>
 
