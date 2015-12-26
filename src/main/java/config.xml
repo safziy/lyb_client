@@ -79,14 +79,14 @@
 		<auto_shilian>true</auto_shilian>
 
 		<!-- 答题 -->
-		<auto_answer>false</auto_answer>
+		<auto_answer>true</auto_answer>
 
 		<!-- 地牢 -->
 		<auto_dilao>true</auto_dilao>
 		<!-- 地牢是否重置 -->
 		<dilao_reset>false</dilao_reset>
 		<!-- 地牢刷新品质次数 -->
-		<dilao_refresh_count>10</dilao_refresh_count>
+		<dilao_refresh_count>0</dilao_refresh_count>
 		<!-- 是否选择高难度 -->
 		<dilao_diff>true</dilao_diff>
 
@@ -128,7 +128,7 @@
 		<auto_answer>true</auto_answer>
 
 		<!-- 地牢 -->
-		<auto_dilao>true</auto_dilao>
+		<auto_dilao>false</auto_dilao>
 		<!-- 是否选择高难度 -->
 		<dilao_diff>false</dilao_diff>
 	</config>
