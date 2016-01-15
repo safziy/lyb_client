@@ -1,12 +1,12 @@
 package com.lyb.client.message.protocol;
 
 import com.lyb.client.message.IMessage;
-import com.lyb.client.net.Data;
-import com.lyb.client.utils.DummyUtils;
-import com.lyb.client.message.protocol.segment.*;
 import com.lyb.client.message.MessageParameterContext;
 import com.lyb.client.message.handler.IntMessageParameterHandler;
 import com.lyb.client.message.handler.LongMessageParameterHandler;
+import com.lyb.client.message.protocol.segment.GeneralStateArray;
+import com.lyb.client.net.Data;
+import com.lyb.client.utils.DummyUtils;
 
 /**
  * 返回 打开十国征战
@@ -23,9 +23,11 @@ public class Message_1019_3 implements IMessage {
 	private long iD;
 	private int state;
 	private GeneralStateArray generalStateArray;
+	private int booleanValue;
 
 	private static LongMessageParameterHandler iDHandler = MessageParameterContext.getInstance().getLongMessageParameterHandler("ID");
 	private static IntMessageParameterHandler stateHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("State");
+	private static IntMessageParameterHandler booleanValueHandler = MessageParameterContext.getInstance().getIntMessageParameterHandler("BooleanValue");
 
 	public static Message_1019_3 create() {
 		return new Message_1019_3();
@@ -76,6 +78,21 @@ public class Message_1019_3 implements IMessage {
 		this.generalStateArray = generalStateArray;
 	}
 
+	/**
+	 * @return the booleanValue
+	 */
+	public int getBooleanValue() {
+		return booleanValue;
+	}
+
+	/**
+	 * @param booleanValue
+	 *            the booleanValue to set
+	 */
+	public void setBooleanValue(int booleanValue) {
+		this.booleanValue = booleanValue;
+	}
+
 
 	/**
 	 * 编码
@@ -85,6 +102,7 @@ public class Message_1019_3 implements IMessage {
 		data.writeLong(this.iD);
 		data.writeInt(this.state);
 		generalStateArray.encode(data);
+		data.writeInt(this.booleanValue);
 	}
 	
 	/**
@@ -96,6 +114,7 @@ public class Message_1019_3 implements IMessage {
 		this.state = data.getInt();
 		generalStateArray = GeneralStateArray.create();
 		generalStateArray.decode(data);
+		this.booleanValue = data.getInt();
 	}
 
 	@Override
@@ -107,6 +126,9 @@ public class Message_1019_3 implements IMessage {
 			return false;
 		}
 		if (!generalStateArray.validate()) {
+			return false;
+		}
+		if (!booleanValueHandler.validate(booleanValue)) {
 			return false;
 		}
 		return true;
@@ -131,7 +153,8 @@ public class Message_1019_3 implements IMessage {
 		StringBuilder bb = new StringBuilder();
 		bb.append("iD:").append(this.iD).append(", ");
 		bb.append("state:").append(this.state).append(", ");
-		bb.append("generalStateArray:").append(generalStateArray.toString());
+		bb.append("generalStateArray:").append(generalStateArray.toString()).append(", ");
+		bb.append("booleanValue:").append(this.booleanValue);
 		return bb.toString();	
 	}
 }

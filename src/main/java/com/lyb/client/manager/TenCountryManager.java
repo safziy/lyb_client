@@ -11,11 +11,13 @@ import com.lyb.client.constants.ApplicationConstants;
 import com.lyb.client.log.LogUtil;
 import com.lyb.client.message.protocol.Message_19_18;
 import com.lyb.client.message.protocol.Message_19_3;
+import com.lyb.client.message.protocol.Message_19_4;
 import com.lyb.client.message.protocol.Message_19_6;
 import com.lyb.client.message.protocol.Message_19_7;
 import com.lyb.client.message.protocol.Message_19_8;
 import com.lyb.client.model.HeroData;
 import com.lyb.client.model.PlayerWork;
+import com.lyb.client.utils.ValidateUtils;
 
 public class TenCountryManager {
 	private PlayerManager playerManager;
@@ -36,12 +38,20 @@ public class TenCountryManager {
 		}
 	}
 
-	public void state(long id, int state, Map<Long, Integer> heroStateMap) {
+	public void state(long id, int state, Map<Long, Integer> heroStateMap, int canDaodang) {
 		this.heroStateMap = heroStateMap;
 		if (id > 10) {
 			return;
 		}
 		curCountry = (int) id;
+		if (ValidateUtils.isNotEqual(curCountry, 10) && ValidateUtils.isEqual(canDaodang, 1)) {
+			PlayerWork work = new PlayerWork();
+			work.getMessages().add(new Message_19_4());
+			work.setDesc("开始扫荡十国");
+			playerManager.getWorkQueue().offerFirst(work);
+			return;
+		}
+
 		switch (state) {
 		case 0:
 		case 1:

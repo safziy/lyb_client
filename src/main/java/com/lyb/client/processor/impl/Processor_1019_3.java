@@ -24,6 +24,6 @@ public class Processor_1019_3 extends IMessageProcessor<Message_1019_3> {
 		for (GeneralStateArrayItem item : message.getGeneralStateArray().list()) {
 			heroStateMap.put(item.getBattleUnitID(), item.getCurrentHP());
 		}
-		playerManager.getTenCountryManager().state(id, state, heroStateMap);
+		playerManager.getTenCountryManager().state(id, state, heroStateMap, message.getBooleanValue());
 	}
 }

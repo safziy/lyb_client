@@ -168,7 +168,6 @@ public class PlayerManager {
 		// 活动
 		activityManager.initWork();
 		
-		
 	}
 
 	public void work() {

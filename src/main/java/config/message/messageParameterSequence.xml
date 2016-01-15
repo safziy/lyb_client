@@ -373,8 +373,10 @@
 	<!-- 十国征战 -->
 	<param main="19" sub="3" desc="请求 打开十国征战"></param>
 	<!-- ID:当前关卡(国家) state: 0-未开始 1-挑战中 2-挑战完成,宝箱未领 3-宝箱领取完成
-      GeneralState:兵源状态(出战过的卡牌血量,能量) -->
-	<param main="1019" sub="3" desc="返回 打开十国征战">ID,State,GeneralStateArray</param>
+      GeneralState:兵源状态(出战过的卡牌血量,能量) BooleanValue:是否可以扫荡  -->
+	<param main="1019" sub="3" desc="返回 打开十国征战">ID,State,GeneralStateArray,BooleanValue</param>
+	<param main="19" sub="4" desc="请求 扫荡十国"></param>
+	<param main="1019" sub="4" desc="返回 扫荡十国">ItemIdArray</param>
 	<param main="19" sub="6" desc="请求 开始挑战"></param>
 	<param main="19" sub="7" desc="请求 领取宝箱"></param>
 	<param main="19" sub="8" desc="请求 刷新十国征战"></param>
